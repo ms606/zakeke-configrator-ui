@@ -1,0 +1,10 @@
+  #tray-header {
+    display: flex;
+    justify-content: center;
+    font-family: "Helvetica Now Text";
+  } 
+  
+  .active-marketing-component-name {
+    font-size: 18px;
+    font-weight: 500;
+  }

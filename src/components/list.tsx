@@ -22,7 +22,7 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     border-color: ${props => props.selected ? 'red' : '#DDD'};
 
     &:hover {
-        background-color: #EEE;
+        background-color: #ffd966;
     }
 `;
 
