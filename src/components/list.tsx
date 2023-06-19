@@ -7,6 +7,8 @@ export const List = styled.ul`
     align-items: center;
     margin-bottom: 40px;
     flex-wrap:wrap;
+    border-radius: 50px;
+
 `;
 
 export const ListItem = styled.li<{ selected?: boolean }>`
@@ -15,11 +17,14 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     align-items: center;
     text-align: center;
     justify-content: center;
-    padding: 20px 30px;
+    padding: 0px 10px;
     border: 1px #DDD solid;
     cursor: pointer;
-    margin-right: 20px;
-    border-color: ${props => props.selected ? 'red' : '#DDD'};
+    margin: 0 32px;
+    border-radius: 50px;
+    width: 152px;
+    height: 36px;
+    border-color: ${props => props.selected ? 'black' : '#DDD'};
 
     &:hover {
         background-color: #ffd966;

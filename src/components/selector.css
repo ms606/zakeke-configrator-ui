@@ -7,4 +7,33 @@
   .active-marketing-component-name {
     font-size: 18px;
     font-weight: 500;
+    /* position: absolute; */
+  }
+
+  .previous-customization {
+    /* -webkit-box-flex: 1;
+    flex-grow: 1; */
+    /* z-index: 3;
+    height: 100%; */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    /* position: relative; */
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    text-align: right;
+  }
+
+  .next-customization {
+    /* -webkit-box-flex: 1;
+    flex-grow: 1; */
+    /* z-index: 3;
+    height: 100%; */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    /* position: relative; */
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    text-align: right;
   }
