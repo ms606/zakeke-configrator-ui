@@ -4,7 +4,7 @@ import { group, log } from 'console';
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { useZakeke } from 'zakeke-configurator-react';
-import { List, ListItem, ListItemImage } from './list';
+import { List, ListItem, ListItemImage, ListItemColor } from './list';
 
 const Container = styled.div`
     height: 100%;
@@ -84,13 +84,17 @@ const Selector: FunctionComponent<{}> = () => {
     // -- -- -- options
 
     const handleLeftClick = () => {
-        setCurrentIndex((currentIndex - 1 + groups.length) % groups.length);
-        selectGroup(groups[currentIndex].id);
+        //console.log(groups,(currentIndex - 1 + groups.length)% groups.length);
         
+        setCurrentIndex((currentIndex - 1 + groups.length) % groups.length);
+        //selectGroup(groups[currentIndex].id); 
+        selectGroup(groups[(currentIndex - 1 + groups.length) % groups.length].id);
       };
     
       const handleRightClick = () => {
         setCurrentIndex((currentIndex + 1) % groups.length);
+        // selectGroup(groups[currentIndex].id);
+        selectGroup(groups[(currentIndex + 1) % groups.length].id);
       };
     
     return <Container>
@@ -115,16 +119,16 @@ const Selector: FunctionComponent<{}> = () => {
       <br />
 
 
-        <List>
+        {/* <List>
             {groups.map(group => {
                 return <ListItem key={group.id} onClick={() => {
                     selectGroup(group.id)
                 }} selected={selectedGroup === group}> {group.id === -1 ? 'Other' : group.name}</ListItem>;
             })}
-        </List>
+        </List> */}
 
-
-        {selectedGroup && selectedGroup.steps.length > 0 && <List>
+       <div className='animate-wrapper'>
+       {selectedGroup && selectedGroup.steps.length > 0 && <List>
             {selectedGroup.steps.map(step => {
                 return <ListItem key={step.id} onClick={() => selectStep(step.id)} selected={selectedStep === step}>Step: {step.name}</ListItem>;
             })}
@@ -143,13 +147,15 @@ const Selector: FunctionComponent<{}> = () => {
             {selectedAttribute && selectedAttribute.options.map(option => {
                // console.log('yyyyeeeeee', option);
                 
-                return <ListItem key={option.id} onClick={() => selectOption(option.id)} selected={option.selected}>
+                return <ListItemColor key={option.id} onClick={() => selectOption(option.id)} selected={option.selected}>
                     {option.imageUrl && <ListItemImage src={option.imageUrl} />}
                      {option.name}
-                </ListItem>;
+                </ListItemColor>;
             })}
         </List>
 
+       </div> 
+        
         <h3>Price: {price}</h3>
         {isAddToCartLoading ? 'Adding to cart...' : <button onClick={addToCart}>Add to cart</button>}
 

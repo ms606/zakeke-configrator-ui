@@ -8,7 +8,7 @@ export const List = styled.ul`
     margin-bottom: 40px;
     flex-wrap:wrap;
     border-radius: 50px;
-
+    white-space: nowrap;
 `;
 
 export const ListItem = styled.li<{ selected?: boolean }>`
@@ -25,6 +25,29 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     width: 152px;
     height: 36px;
     border-color: ${props => props.selected ? 'black' : '#DDD'};
+    white-space: nowrap;
+    overflow: 'hidden';
+    &:hover {
+        background-color: #ffd966;
+    }
+`;
+
+export const ListItemColor = styled.li<{ selected?: boolean }>`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 0px 10px;
+    border: 1px #DDD solid;
+    cursor: pointer;
+    margin: 0 32px;
+    border-radius: 100%;
+    width: 36px;
+    height: 36px;
+    white-space: nowrap;
+    overflow: 'hidden';
+    border-color: ${props => props.selected ? 'black' : '#DDD'};
 
     &:hover {
         background-color: #ffd966;
@@ -35,5 +58,15 @@ export const ListItemImage = styled.img`
     width: 64px;
     height: 64px;
     object-fit: contain;
-    margin-bottom: 20px;
+    margin: 0px 11px;
 `
+
+// top: 0px;
+//     border: none;
+//     outline: none;
+//     
+//     overflow: hidden;
+//     position: relative;
+//     width: 40px;
+//     height: 40px;
+//     background-color: transparent;
