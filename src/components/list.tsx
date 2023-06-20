@@ -39,7 +39,7 @@ export const ListItemColor = styled.li<{ selected?: boolean }>`
     text-align: center;
     justify-content: center;
     padding: 0px 10px;
-    border: 1px #DDD solid;
+    
     cursor: pointer;
     margin: 0 32px;
     border-radius: 100%;
@@ -55,10 +55,11 @@ export const ListItemColor = styled.li<{ selected?: boolean }>`
 `;
 
 export const ListItemImage = styled.img`
-    width: 64px;
-    height: 64px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
     margin: 0px 11px;
+    border-radius: 100%
 `
 
 // top: 0px;
