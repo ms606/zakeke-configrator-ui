@@ -1,3 +1,21 @@
+   :root {
+    --podium-cds-typography-body2: 500 1.1rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
+   }
+   
+  .top-nav {
+    font: var(--podium-cds-typography-body2);
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    padding: 44px 20px;
+  }
+
+  #product-info { 
+    display: flex;
+    flex-direction: column;
+  }
+
   #tray-header {
     display: flex;
     justify-content: center;
@@ -5,9 +23,15 @@
   } 
   
   .active-marketing-component-name {
+    font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
     font-size: 18px;
     font-weight: 500;
     /* position: absolute; */
+  }
+
+  .active-marketing-component-index{
+    color: rgb(117, 117, 117);
+    margin-left: 8px;
   }
 
   .previous-customization {
@@ -37,3 +61,4 @@
     -webkit-tap-highlight-color: transparent;
     text-align: right;
   }
+
