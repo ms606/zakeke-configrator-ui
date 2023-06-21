@@ -49,7 +49,7 @@ const Selector: FunctionComponent<{}> = () => {
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      console.log(groups, price, "pkpkkpkpkpkp");
+      //console.log(groups, price, "pkpkkpkpkpkp");
 
       selectGroup(groups[0].id);
 
