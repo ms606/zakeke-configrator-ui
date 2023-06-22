@@ -32,34 +32,44 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     }
 `;
 
-export const ListItemColor = styled.li<{ selected?: boolean }>`
+export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any }>`
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: center;
     padding: 0px 10px;
-    
     cursor: pointer;
     margin: 0 32px;
     border-radius: 100%;
     width: 36px;
     height: 36px;
-    white-space: nowrap;
-    overflow: 'hidden';
+    white-space: nowrap;    
     border-color: ${props => props.selected ? 'black' : '#DDD'};
 
     &:hover {
-        background-color: #ffd966;
+        background-color: #D8D8D8;
+    };
+    
+    &:before {
+        content: '';
+        /* Additional styling for the :before pseudo-element can be added here */
+    };
+
+    &:after {
+    content: "${props => props.selected ? props.selectedColor : ''}";
+    /* Additional styling for the :before pseudo-element can be added here */
     }
 `;
 
-export const ListItemImage = styled.img`
+export const ListItemImage = styled.img<{ selected?: any }>`
     width: 50px;
     height: 50px;
     object-fit: contain;
     margin: 0px 11px;
-    border-radius: 100%
+    border-radius: 100%;
+    
+
 `
 
 // top: 0px;

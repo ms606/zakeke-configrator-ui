@@ -35,6 +35,13 @@ const Selector: FunctionComponent<{}> = () => {
     ? selectedGroup.steps.find((step) => step.id === selectedStepId)
     : null;
 
+    const [selectedColorName, selectColorName] = useState<any | null>(null);
+    
+//   const selectedOptionColor = (colorName: any) => {
+//     console.log('selected Color', colorName);
+    
+//   }  
+
   // Attributes can be in both groups and steps, so show the attributes of step or in a group based on selection
   const attributes = useMemo(
     () => (selectedStep || selectedGroup)?.attributes ?? [],
@@ -45,20 +52,17 @@ const Selector: FunctionComponent<{}> = () => {
   );
 
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  console.log(selectOption);
+  
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      //console.log(groups, price, "pkpkkpkpkpkp");
-
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
 
       if (templates.length > 0) setTemplate(templates[0].id);
     }
-
-    //   console.log(groups,'groups','selectOption',selectOption);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGroup, groups]);
@@ -91,16 +95,12 @@ const Selector: FunctionComponent<{}> = () => {
   // -- -- -- options
 
   const handleLeftClick = () => {
-    //console.log(groups,(currentIndex - 1 + groups.length)% groups.length);
-
     setCurrentIndex((currentIndex - 1 + groups.length) % groups.length);
-    //selectGroup(groups[currentIndex].id);
     selectGroup(groups[(currentIndex - 1 + groups.length) % groups.length].id);
   };
 
   const handleRightClick = () => {
     setCurrentIndex((currentIndex + 1) % groups.length);
-    // selectGroup(groups[currentIndex].id);
     selectGroup(groups[(currentIndex + 1) % groups.length].id);
   };
 
@@ -208,19 +208,24 @@ const Selector: FunctionComponent<{}> = () => {
           <List>
             {selectedAttribute &&
               selectedAttribute.options.map((option) => {
-                // console.log('yyyyeeeeee', option);
-
                 return (
                   <ListItemColor
                     key={option.id}
                     onClick={() => selectOption(option.id)}
                     selected={option.selected}
+                    selectedColor={selectedColorName}
                   >
-                    {option.imageUrl && <ListItemImage src={option.imageUrl} />}
-                    {option.name}
-                  </ListItemColor>
+                    {option.imageUrl && <ListItemImage src={option.imageUrl} 
+                                            onClick={() => selectColorName(option.name)} 
+                                            selected={option.selected}
+                                            
+                                            
+                    />}                    
+                    {/* //{option.name} */}
+                  </ListItemColor>                  
                 );
               })}
+              {/* {selectedColorName}   */}
           </List>
         </div>
 
