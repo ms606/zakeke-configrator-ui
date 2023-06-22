@@ -44,7 +44,8 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     border-radius: 100%;
     width: 36px;
     height: 36px;
-    white-space: nowrap;    
+    white-space: nowrap;  
+    font-size: 12px;  
     border-color: ${props => props.selected ? 'black' : '#DDD'};
 
     &:hover {
@@ -58,18 +59,18 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
 
     &:after {
     content: "${props => props.selected ? props.selectedColor : ''}";
+    
+    transform: translateY(38px);
     /* Additional styling for the :before pseudo-element can be added here */
     }
 `;
 
 export const ListItemImage = styled.img<{ selected?: any }>`
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
     margin: 0px 11px;
     border-radius: 100%;
-    
-
 `
 
 // top: 0px;

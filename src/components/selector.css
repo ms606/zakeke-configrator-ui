@@ -21,6 +21,11 @@
     justify-content: center;
     font-family: "Helvetica Now Text";
   } 
+
+  #tray-header-1 {
+    display: flex;
+    position: relative;
+  }
   
   .active-marketing-component-name {
     font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
@@ -61,4 +66,3 @@
     -webkit-tap-highlight-color: transparent;
     text-align: right;
   }
-

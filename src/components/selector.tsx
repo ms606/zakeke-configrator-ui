@@ -7,7 +7,7 @@ import { useZakeke } from "zakeke-configurator-react";
 import { List, ListItem, ListItemImage, ListItemColor } from "./list";
 
 const Container = styled.div`
-  height: 100%;
+  height: 230px;
   overflow: auto;
 `;
 
@@ -116,7 +116,8 @@ const Selector: FunctionComponent<{}> = () => {
 
       <Container>
         <div id="tray-header">
-          <button className="previous-customization" onClick={handleLeftClick}>
+         
+         <button className="previous-customization" onClick={handleLeftClick}>
             <svg
               aria-hidden="true"
               focusable="false"
@@ -133,6 +134,7 @@ const Selector: FunctionComponent<{}> = () => {
               ></path>
             </svg>
           </button>
+          <div className="tray-header-1">
           <div style={{ position: "relative", padding: "0px 100px" }}>
             <div className="active-marketing-component-name">
               <span style={{ fontSize: "18px", padding: "20px" }}>
@@ -144,6 +146,7 @@ const Selector: FunctionComponent<{}> = () => {
               </span>
             </div>
           </div>
+          </div> 
           <button className="next-customization" onClick={handleRightClick}>
             <svg
               aria-hidden="true"
@@ -160,7 +163,7 @@ const Selector: FunctionComponent<{}> = () => {
                 d="M12.979 18.967L19.945 12 12.98 5.033M20 12H3"
               ></path>
             </svg>
-          </button>
+          </button>          
         </div>
 
         <br />

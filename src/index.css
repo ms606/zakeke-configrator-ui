@@ -29,3 +29,9 @@ html,body {
   justify-content: center;
   align-items: center;
 }
+
+button:focus {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -moz-outline-style: none !important;
+}
