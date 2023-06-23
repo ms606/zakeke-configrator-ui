@@ -8,12 +8,12 @@ const Layout = styled.div`
     grid-template-columns: auto;
     grid-gap: 40px;
     height: 100%;
-    padding: 30px;
+    padding: 0px;
     font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
 `
 
 // const Layout = styled.div`
-//     display: flex;
+//     display: flex;   
 //     height: 100%;
 //     padding: 40px;
 // `
@@ -23,8 +23,8 @@ const zakekeEnvironment = new ZakekeEnvironment();
 const App: FunctionComponent<{}> = () => {
     return <ZakekeProvider environment={zakekeEnvironment}>
         <Layout>
-         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',gridArea: '1 / 2 / 11 / 1', backgroundColor: '#f3f3f3'}}>
-           <div className='ThreeDRenderer' style={{width:'661px', height:'348px'}}>
+         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',gridArea: '1 / 2 / 11 / 1', backgroundColor: '#d9d9d9'}}>
+           <div className='ThreeDRenderer' style={{width:'661px', height:'348px'    }}>
             <ZakekeViewer />
            </div>             
          </div>

@@ -18,8 +18,9 @@
 
   #tray-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     font-family: "Helvetica Now Text";
+    width: 100vw;
   } 
 
   #tray-header-1 {
@@ -65,4 +66,12 @@
     background-color: transparent;
     -webkit-tap-highlight-color: transparent;
     text-align: right;
+  }
+
+
+
+  @media screen and (max-width: 492px) {
+    #tray-header-1  {
+      padding: 0px;
+    }
   }
