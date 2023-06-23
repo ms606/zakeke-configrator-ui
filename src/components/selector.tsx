@@ -115,7 +115,7 @@ const Selector: FunctionComponent<{}> = () => {
        </div>
 
       <Container>
-        <div id="tray-header">
+        <div className="tray-header">
          
          <button className="previous-customization" onClick={handleLeftClick}>
             <svg
