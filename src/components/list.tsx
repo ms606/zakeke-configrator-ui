@@ -13,7 +13,8 @@ export const List = styled.ul`
 
 export const ListItem = styled.li<{ selected?: boolean }>`
     display: flex;
-    flex-direction: column;
+    flex-direction: column;    
+    font-weight: 600;
     align-items: center;
     text-align: center;
     justify-content: center;

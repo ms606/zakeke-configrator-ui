@@ -1,6 +1,14 @@
    :root {
     --podium-cds-typography-body2: 500 1.1rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
    }
+
+   body {
+    font-size: inherit;
+    line-height: inherit;
+    font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
+    color: var(--podium-cds-color-black);
+    background-color: var(--podium-cds-color-white)
+}
    
   .top-nav {
     font: var(--podium-cds-typography-body2);
@@ -16,7 +24,7 @@
     flex-direction: column;
   }
 
-  #tray-header {
+  .tray-header {
     display: flex;
     justify-content: space-between;
     font-family: "Helvetica Now Text";
@@ -68,6 +76,22 @@
     text-align: right;
   }
 
+  .tray-trigger-open-button {
+    width: auto;
+    left: auto ;
+    right: 50px;
+    height: auto;
+    transform: none;
+    border-radius: 24px;
+    padding: 6px 18px 6px 16px;
+    border: 1px solid rgb(229, 229, 229);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    position: relative;
+  }
 
 
   @media screen and (max-width: 492px) {
