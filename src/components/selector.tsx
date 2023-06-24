@@ -29,13 +29,16 @@ const Selector: FunctionComponent<{}> = () => {
   const [selectedGroupId, selectGroup] = useState<number | null>(null);
   const [selectedStepId, selectStep] = useState<number | null>(null);
   const [selectedAttributeId, selectAttribute] = useState<number | null>(null);
-
+ 
   const selectedGroup = groups.find((group) => group.id === selectedGroupId);
   const selectedStep = selectedGroup
     ? selectedGroup.steps.find((step) => step.id === selectedStepId)
     : null;
 
-    const [selectedColorName, selectColorName] = useState<any | null>(null);
+  const [selectedColorName, selectColorName] = useState<any | null>(null);
+
+  // Get a list of all group names so we can populate on the tray 
+  const [selectedGroupList, selectGroupList] = useState<any | null>(null)
     
 //   const selectedOptionColor = (colorName: any) => {
 //     console.log('selected Color', colorName);
@@ -52,11 +55,12 @@ const Selector: FunctionComponent<{}> = () => {
   );
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  console.log(selectOption);
+
   
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
+
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
@@ -64,8 +68,16 @@ const Selector: FunctionComponent<{}> = () => {
       if (templates.length > 0) setTemplate(templates[0].id);
     }
 
+    if (groups.length > 0) {
+      var groupRec: string[] = [];
+      groups.map(group => groupRec.push(group.name))
+      selectGroupList(groupRec)
+      console.log(selectedGroupList, 'grpupRec');
+
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedGroup, groups]);
+  }, [selectedGroup, groups]); 
 
   // Select attribute first time
   useEffect(() => {
@@ -117,6 +129,11 @@ const Selector: FunctionComponent<{}> = () => {
       <Container>
         <div className="tray-header">
          
+        <button className="tray-preview-open-button">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none"><path stroke="currentColor" stroke-width="1.5" d="M18.966 8.476L12 15.443 5.033 8.476"></path></svg>
+        </button>
+
+         <div style={{display:'flex'}}>         
          <button className="previous-customization" onClick={handleLeftClick}>
             <svg
               aria-hidden="true"
@@ -129,7 +146,7 @@ const Selector: FunctionComponent<{}> = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 d="M11.021 18.967L4.055 12l6.966-6.967M4 12h17"
               ></path>
             </svg>
@@ -159,11 +176,16 @@ const Selector: FunctionComponent<{}> = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 d="M12.979 18.967L19.945 12 12.98 5.033M20 12H3"
               ></path>
             </svg>
-          </button>          
+          </button>   
+          </div> 
+{/* className="d-sm-flx flx-ai-sm-c flx-jc-sm-c css-imoxvt" */}
+          <button className="tray-trigger-open-button">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none" id="tray-trigger-button-icon"><path stroke="currentColor" strokeWidth="1.5" d="M21 5.25H3M21 12H3m18 6.75H3"></path></svg><span style={{marginLeft: '3px'}}>Menu</span>
+          </button>      
         </div>
 
         <br />
