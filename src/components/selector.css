@@ -1,4 +1,5 @@
    :root {
+    --podium-cds-typography-body1-strong: 500 1rem/1.5 'Helvetica Now Text Medium',Helvetica,Arial,sans-serif;
     --podium-cds-typography-body2: 500 1.1rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
    }
 
@@ -29,11 +30,14 @@
     justify-content: space-between;
     font-family: "Helvetica Now Text";
     width: 100vw;
+    height: 40px;
   } 
 
   #tray-header-1 {
     display: flex;
     position: relative;
+    align-items: center;
+    justify-content: center;
   }
   
   .active-marketing-component-name {
@@ -75,6 +79,21 @@
     -webkit-tap-highlight-color: transparent;
     text-align: right;
   }
+  
+  .tray-preview-open-button {
+    padding: 0px;
+    left: 50px;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    background: none;
+    position: relative;
+    border-radius: 100%;
+    border: 1px solid rgb(229, 229, 229);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .tray-trigger-open-button {
     width: auto;
@@ -91,6 +110,7 @@
     font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
     font-size: 16px;
     position: relative;
+    background: none rgb(255, 255, 255);
   }
 
 

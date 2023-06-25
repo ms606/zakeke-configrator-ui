@@ -30,6 +30,18 @@ html,body {
   align-items: center;
 }
 
+.animate-wrapper-2 {
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  mix-blend-mode: normal;
+  backdrop-filter: blur(10px);
+  /* background: rgba(0, 0, 0, 0.4); */
+}
+
 button:focus {
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
