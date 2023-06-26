@@ -125,7 +125,7 @@ const Selector: FunctionComponent<{}> = () => {
   };
 
   const groupIdFromFunc = (data:any) => {
-    console.log('ayyy',groups,data);
+     //console.log('ayyy',groups,data);
     const filteredArray = groups.filter((group) => group.name === data);
     // const filteredArrayId = groups.filter((group) => group.name === data);
 
@@ -147,10 +147,8 @@ const Selector: FunctionComponent<{}> = () => {
       setCurrentIndex(foundItemIndex)
     } 
 
-
     selectGroup(filteredArray[0].id);    
     selectGroupIdFromTray(filteredArray[0].id);
-
   };
 
 
@@ -266,7 +264,7 @@ const Selector: FunctionComponent<{}> = () => {
             })}
         </List> */}
 
-        <div className={`animate-wrapper${isTrayOpen ? "-2" : ""}`}>
+        <div className={`animate-wrapper${isTrayOpen ? "-2 show" : ""}`}>
           {isTrayOpen && (
             <Tray groupNameList={selectedGroupList} toggleFunc={toggleTray} UpdateGroupId={groupIdFromFunc}/>
           )}
@@ -287,7 +285,7 @@ const Selector: FunctionComponent<{}> = () => {
           )}
 
           <List>
-            {attributes &&
+            {attributes && !isTrayOpen && 
               attributes.map((attribute) => {
                 return (
                   <ListItem
@@ -302,7 +300,7 @@ const Selector: FunctionComponent<{}> = () => {
           </List>
 
           <List>
-            {selectedAttribute &&
+            {selectedAttribute && !isTrayOpen &&
               selectedAttribute.options.map((option) => {
                 return (
                   <ListItemColor

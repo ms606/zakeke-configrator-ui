@@ -9,12 +9,16 @@
     /* backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.4); */
     height: 504px;
-    transform-origin: 50% 50% 0px;
+    /* transform-origin: 50% 50% 0px; */
 }
 
 .tray-mc-container {
     position: relative;
     display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
 }
 
 .tray-mc-header {
@@ -29,6 +33,18 @@
 
 .tray-trigger-close-button {
     right: 60px;
+    padding: 0px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid rgb(229, 229, 229);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    position: absolute;
+
+    z-index: 3;
 }
   
 
@@ -82,13 +98,31 @@
     margin-bottom: 19px;
   }
   
+  .mc-list-count {
+    color: rgb(189, 189, 189);
+    margin-left: 13px;
+  }
+
   .heading {
     background-color: #fff;
     padding: 8px;
     text-align: center;
+    align-items: center;
     margin: 2px;
     height: 58px;
     border: none;
     width: 31%;
     text-align: left;
+    cursor: pointer;
+    display: flex;
+  }
+
+  .tray-mc-list-item-selection::before {
+    width: 10px;
+    height: 10px;
+    content: "";
+    display: block;
+    margin: 0px 16px 0px 0px;
+    border-radius: 100%;
+    border: 1px solid rgb(14 2 2);
   }
