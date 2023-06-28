@@ -23,7 +23,7 @@ const zakekeEnvironment = new ZakekeEnvironment();
 const App: FunctionComponent<{}> = () => {
     return <ZakekeProvider environment={zakekeEnvironment}>
         <Layout>
-         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',gridArea: '1 / 2 / 11 / 1', backgroundColor: '#d9d9d9'}}>
+         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',gridArea: '1 / 2 / 11 / 1', backgroundColor: 'rgb(249 246 248)'}}>
            <div className='ThreeDRenderer' style={{width:'661px', height:'348px'    }}>
             <ZakekeViewer />
            </div>             

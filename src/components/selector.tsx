@@ -7,12 +7,8 @@ import { useZakeke } from "zakeke-configurator-react";
 import { List, ListItem, ListItemImage, ListItemColor } from "./list";
 import Tray from "./Tray";
 
-const Container = styled.div`
-  height: 230px;
-  overflow: auto;
-`;
-
 const Selector: FunctionComponent<{}> = () => {
+
   const {
     isSceneLoading,
     isAddToCartLoading,
@@ -44,13 +40,16 @@ const Selector: FunctionComponent<{}> = () => {
   // Open tray for menu
   const [isTrayOpen, setIsTrayOpen] = useState(false);
 
-  // Get the id of the selected group from the tray 
-  const [selectedGroupIdFromTray, selectGroupIdFromTray] = useState<number | null>(null);
+  // Get the id of the selected group from the tray
+  const [selectedGroupIdFromTray, selectGroupIdFromTray] = useState<
+    number | null
+  >(null);
 
-  //   const selectedOptionColor = (colorName: any) => {
-  //     console.log('selected Color', colorName);
+  // Update tray preview open button
+  const [selectedTrayPreviewOpenButton, selectTrayPreviewOpenButton] = useState<
+    any | null
+  >(false);
 
-  //   }
 
   // Attributes can be in both groups and steps, so show the attributes of step or in a group based on selection
   const attributes = useMemo(
@@ -66,7 +65,6 @@ const Selector: FunctionComponent<{}> = () => {
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
@@ -121,36 +119,46 @@ const Selector: FunctionComponent<{}> = () => {
   };
 
   const toggleTray = () => {
+    trayPreviewOpenButton();
     setIsTrayOpen(!isTrayOpen);
   };
 
-  const groupIdFromFunc = (data:any) => {
-     //console.log('ayyy',groups,data);
+  const trayPreviewOpenButton = () => {
+    selectTrayPreviewOpenButton(!selectedTrayPreviewOpenButton);
+  };
+
+  const groupIdFromFunc = (data: any) => {
+    //console.log('ayyy',groups,data);
     const filteredArray = groups.filter((group) => group.name === data);
     // const filteredArrayId = groups.filter((group) => group.name === data);
 
-  //  console.log(filteredArrayId, 'sddfasfdafdsf');
-    
+    //  console.log(filteredArrayId, 'sddfasfdafdsf');
 
-
-    const filteredArrayId = groups.filter((i:any, index:number) => {
+    const filteredArrayId = groups.filter((i: any, index: number) => {
       // Perform the desired comparison
       return i.name === data;
     });
-    
+
     if (filteredArrayId.length > 0) {
       const foundItem = filteredArrayId[0];
       const foundItemId = foundItem.id;
       const foundItemIndex = groups.indexOf(foundItem);
-      console.log('Found ID:', foundItemId);
-      console.log('Found Index:', foundItemIndex);
-      setCurrentIndex(foundItemIndex)
-    } 
+      console.log("Found ID:", foundItemId);
+      console.log("Found Index:", foundItemIndex);
+      setCurrentIndex(foundItemIndex);
+    }
 
-    selectGroup(filteredArray[0].id);    
+    selectGroup(filteredArray[0].id);
     selectGroupIdFromTray(filteredArray[0].id);
   };
 
+  // height: 230px;
+  const Container = styled.div`
+  
+  overflow: auto;
+
+  ${selectedTrayPreviewOpenButton ? 'css `height: 230px`' : 'css `height: 70px`' }
+  `;
 
   return (
     <>
@@ -163,7 +171,10 @@ const Selector: FunctionComponent<{}> = () => {
 
       <Container>
         <div className="tray-header">
-          <button className="tray-preview-open-button">
+          <button
+            className="tray-preview-open-button"
+            onClick={trayPreviewOpenButton}
+          >
             <svg
               aria-hidden="true"
               focusable="false"
@@ -181,7 +192,7 @@ const Selector: FunctionComponent<{}> = () => {
             </svg>
           </button>
 
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", width: '420px' }}>
             <button
               className="previous-customization"
               onClick={handleLeftClick}
@@ -203,9 +214,10 @@ const Selector: FunctionComponent<{}> = () => {
               </svg>
             </button>
             <div className="tray-header-1">
-              <div style={{ position: "relative", padding: "0px 100px" }}>
+              <div style={{ position: "absolute", padding: "0px", width: '100%'}}>
                 <div className="active-marketing-component-name">
-                  <span style={{ fontSize: "18px" }}>
+                  <span style={{ fontSize: "18px", whiteSpace: 'nowrap', textOverflow: 'ellipsis',
+                                  overflow: 'hidden', lineHeight: '28px' }}>
                     {groups[currentIndex].name}
                   </span>
                   <span className="active-marketing-component-index">
@@ -265,10 +277,14 @@ const Selector: FunctionComponent<{}> = () => {
         </List> */}
 
         <div className={`animate-wrapper${isTrayOpen ? "-2 show" : ""}`}>
-          {isTrayOpen && (
-            <Tray groupNameList={selectedGroupList} toggleFunc={toggleTray} UpdateGroupId={groupIdFromFunc}/>
+          {isTrayOpen && !selectedTrayPreviewOpenButton && (
+            <Tray
+              groupNameList={selectedGroupList}
+              toggleFunc={toggleTray}
+              UpdateGroupId={groupIdFromFunc}
+            />
           )}
-          {selectedGroup && selectedGroup.steps.length > 0 && !isTrayOpen && (
+          {selectedGroup && !selectedTrayPreviewOpenButton && selectedGroup.steps.length > 0 && !isTrayOpen && (
             <List>
               {selectedGroup.steps.map((step) => {
                 return (
@@ -284,44 +300,51 @@ const Selector: FunctionComponent<{}> = () => {
             </List>
           )}
 
-          <List>
-            {attributes && !isTrayOpen && 
-              attributes.map((attribute) => {
-                return (
-                  <ListItem
-                    key={attribute.id}
-                    onClick={() => selectAttribute(attribute.id)}
-                    selected={selectedAttribute === attribute}
-                  >
-                    {attribute.name}
-                  </ListItem>
-                );
-              })}
-          </List>
+          {!selectedTrayPreviewOpenButton && (
+            <div>
+              <List>
+                {attributes &&
+                  !isTrayOpen &&
+                  attributes.map((attribute) => {
+                    return (
+                      <ListItem
+                        key={attribute.id}
+                        onClick={() => selectAttribute(attribute.id)}
+                        selected={selectedAttribute === attribute}
+                      >
+                        {attribute.name}
+                      </ListItem>
+                    );
+                  })}
+              </List>
 
-          <List>
-            {selectedAttribute && !isTrayOpen &&
-              selectedAttribute.options.map((option) => {
-                return (
-                  <ListItemColor
-                    key={option.id}
-                    onClick={() => selectOption(option.id)}
-                    selected={option.selected}
-                    selectedColor={selectedColorName}
-                  >
-                    {option.imageUrl && (
-                      <ListItemImage
-                        src={option.imageUrl}
-                        onClick={() => selectColorName(option.name)}
+              <List>
+                {!selectedTrayPreviewOpenButton &&
+                  selectedAttribute &&
+                   !isTrayOpen &&
+                  selectedAttribute.options.map((option) => {
+                    return (
+                      <ListItemColor
+                        key={option.id}
+                        onClick={() => selectOption(option.id)}
                         selected={option.selected}
-                      />
-                    )}
-                    {/* //{option.name} */}
-                  </ListItemColor>
-                );
-              })}
-            {/* {selectedColorName}   */}
-          </List>
+                        selectedColor={selectedColorName}
+                      >
+                        {option.imageUrl && (
+                          <ListItemImage
+                            src={option.imageUrl}
+                            onClick={() => selectColorName(option.name)}
+                            selected={option.selected}
+                          />
+                        )}
+                        {/* //{option.name} */}
+                      </ListItemColor>
+                    );
+                  })}
+                {/* {selectedColorName}   */}
+              </List>
+            </div>
+          )}
         </div>
       </Container>
     </>

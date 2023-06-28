@@ -33,14 +33,20 @@
     height: 40px;
   } 
 
-  #tray-header-1 {
+  .tray-header-1 {
     display: flex;
     position: relative;
     align-items: center;
     justify-content: center;
+    min-width: 200px;
+    max-width: 500px;
+    width: 100%;
   }
   
   .active-marketing-component-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
     font-size: 18px;
     font-weight: 500;
