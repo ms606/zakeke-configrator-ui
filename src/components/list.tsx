@@ -9,6 +9,7 @@ export const List = styled.ul`
     flex-wrap:wrap;
     border-radius: 50px;
     white-space: nowrap;
+    justify-content: center;
 `;
 
 export const ListItem = styled.li<{ selected?: boolean }>`

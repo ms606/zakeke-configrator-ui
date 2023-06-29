@@ -1,15 +1,20 @@
    :root {
     --podium-cds-typography-body1-strong: 500 1rem/1.5 'Helvetica Now Text Medium',Helvetica,Arial,sans-serif;
-    --podium-cds-typography-body2: 500 1.1rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
-   }
+    --podium-cds-typography-body2: 400 .875rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
+    --podium-cds-typography-body3: 400 .95rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
+  }
 
-   body {
+  body {
     font-size: inherit;
     line-height: inherit;
     font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
     color: var(--podium-cds-color-black);
     background-color: var(--podium-cds-color-white)
-}
+  }
+
+  .body-3{
+    font: var(--podium-cds-typography-body3);
+  }
    
   .top-nav {
     font: var(--podium-cds-typography-body2);
@@ -23,6 +28,9 @@
   #product-info { 
     display: flex;
     flex-direction: column;
+    padding: 0px 30px;
+    font-weight: 500;
+    max-width: 568px;
   }
 
   .tray-header {

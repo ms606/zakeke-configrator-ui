@@ -2,7 +2,7 @@
 import "./selector.css";
 import { group, log } from "console";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import { useZakeke } from "zakeke-configurator-react";
 import { List, ListItem, ListItemImage, ListItemColor } from "./list";
 import Tray from "./Tray";
@@ -119,7 +119,10 @@ const Selector: FunctionComponent<{}> = () => {
   };
 
   const toggleTray = () => {
-    trayPreviewOpenButton();
+    if(selectedTrayPreviewOpenButton){
+      selectTrayPreviewOpenButton(!selectedTrayPreviewOpenButton);
+    }
+   // trayPreviewOpenButton();
     setIsTrayOpen(!isTrayOpen);
   };
 
@@ -143,8 +146,8 @@ const Selector: FunctionComponent<{}> = () => {
       const foundItem = filteredArrayId[0];
       const foundItemId = foundItem.id;
       const foundItemIndex = groups.indexOf(foundItem);
-      console.log("Found ID:", foundItemId);
-      console.log("Found Index:", foundItemIndex);
+      // console.log("Found ID:", foundItemId);
+      // console.log("Found Index:", foundItemIndex);
       setCurrentIndex(foundItemIndex);
     }
 
@@ -154,16 +157,15 @@ const Selector: FunctionComponent<{}> = () => {
 
   // height: 230px;
   const Container = styled.div`
-  
   overflow: auto;
 
-  ${selectedTrayPreviewOpenButton ? 'css `height: 230px`' : 'css `height: 70px`' }
-  `;
+  ${!selectedTrayPreviewOpenButton ? css`height: 230px;` : css`height: 70px;`}
+`;
 
   return (
     <>
       <div className="top-nav">
-        <div id="product-info">
+        <div className="body-3" id="product-info">
           <span>{productName}</span>
           <span>${price}</span>
         </div>
@@ -187,7 +189,7 @@ const Selector: FunctionComponent<{}> = () => {
               <path
                 stroke="currentColor"
                 strokeWidth="1.5"
-                d="M18.966 8.476L12 15.443 5.033 8.476"
+                d={!selectedTrayPreviewOpenButton ? "M18.966 8.476L12 15.443 5.033 8.476" : "M5.034 15.527L12 8.561l6.967 6.966"}
               ></path>
             </svg>
           </button>
