@@ -39,6 +39,7 @@
     font-family: "Helvetica Now Text";
     width: 100vw;
     height: 40px;
+    position: absolute;
   } 
 
   .tray-header-1 {
@@ -47,12 +48,13 @@
     align-items: center;
     justify-content: center;
     min-width: 200px;
-    max-width: 500px;
+    max-width: 30vw;
     width: 100%;
   }
   
   .active-marketing-component-name {
     display: flex;
+    padding: 0px 20px;
     align-items: center;
     justify-content: center;
     font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
@@ -67,17 +69,31 @@
   }
 
   .previous-customization {
-    /* -webkit-box-flex: 1;
-    flex-grow: 1; */
-    /* z-index: 3;
-    height: 100%; */
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    z-index: 3;
+    height: 100%;
     border: none;
     outline: none;
     cursor: pointer;
-    /* position: relative; */
+    position: relative;
     background-color: transparent;
     -webkit-tap-highlight-color: transparent;
     text-align: right;
+  }
+
+  .mc-prev {
+    top: 0px;
+    height: 28px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .next-customization {
@@ -110,7 +126,13 @@
   }
 
   .tray-trigger-open-button {
-    width: auto;
+    outline: none;
+    background: none rgb(255, 255, 255);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: auto;
     left: auto ;
     right: 50px;
     height: auto;
@@ -118,18 +140,29 @@
     border-radius: 24px;
     padding: 6px 18px 6px 16px;
     border: 1px solid rgb(229, 229, 229);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
     font-size: 16px;
     position: relative;
-    background: none rgb(255, 255, 255);
+    background: none rgb(255, 255, 255); */
   }
-
 
   @media screen and (max-width: 492px) {
-    #tray-header-1  {
-      padding: 0px;
+    .tray-header-1  {
+      max-width: 30vw;
     }
   }
+
+  @media screen and (min-width: 568px){
+  .tray-trigger-open-button {
+    width: auto;
+    left: auto;
+    right: 50px;
+    height: auto;
+    transform: none;
+    border-radius: 24px;
+    padding: 6px 18px 6px 16px;
+    border: 1px solid rgb(229, 229, 229);
+    }
+  }
+
+  

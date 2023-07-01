@@ -2,13 +2,12 @@
 import "./selector.css";
 import { group, log } from "console";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 import { useZakeke } from "zakeke-configurator-react";
 import { List, ListItem, ListItemImage, ListItemColor } from "./list";
 import Tray from "./Tray";
 
 const Selector: FunctionComponent<{}> = () => {
-
   const {
     isSceneLoading,
     isAddToCartLoading,
@@ -50,7 +49,6 @@ const Selector: FunctionComponent<{}> = () => {
     any | null
   >(false);
 
-
   // Attributes can be in both groups and steps, so show the attributes of step or in a group based on selection
   const attributes = useMemo(
     () => (selectedStep || selectedGroup)?.attributes ?? [],
@@ -61,6 +59,22 @@ const Selector: FunctionComponent<{}> = () => {
   );
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+      //   setHeight(window.innerHeight);
+    };
+
+    //window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   // Open the first group and the first step when loaded
   useEffect(() => {
@@ -119,10 +133,10 @@ const Selector: FunctionComponent<{}> = () => {
   };
 
   const toggleTray = () => {
-    if(selectedTrayPreviewOpenButton){
+    if (selectedTrayPreviewOpenButton) {
       selectTrayPreviewOpenButton(!selectedTrayPreviewOpenButton);
     }
-   // trayPreviewOpenButton();
+    // trayPreviewOpenButton();
     setIsTrayOpen(!isTrayOpen);
   };
 
@@ -157,22 +171,35 @@ const Selector: FunctionComponent<{}> = () => {
 
   // height: 230px;
   const Container = styled.div`
-  overflow: auto;
+    overflow: auto;
 
-  ${!selectedTrayPreviewOpenButton ? css`height: 230px;` : css`height: 70px;`}
-`;
+    ${!selectedTrayPreviewOpenButton
+      ? css`
+          height: 230px;
+        `
+      : css`
+          height: 70px;
+        `}
+  `;
 
   return (
     <>
       <div className="top-nav">
-        <div className="body-3" id="product-info">
-          <span>{productName}</span>
-          <span>${price}</span>
-        </div>
+        {width > 568 ? (
+          <div className="body-3" id="product-info">
+            <span>{productName}</span>
+            <span>${price}</span>
+          </div>
+        ) : (
+          <div className="body-3" id="product-info">
+            {" "}
+          </div>
+        )}
       </div>
 
       <Container>
         <div className="tray-header">
+        {width > 568 ? (  
           <button
             className="tray-preview-open-button"
             onClick={trayPreviewOpenButton}
@@ -189,17 +216,35 @@ const Selector: FunctionComponent<{}> = () => {
               <path
                 stroke="currentColor"
                 strokeWidth="1.5"
-                d={!selectedTrayPreviewOpenButton ? "M18.966 8.476L12 15.443 5.033 8.476" : "M5.034 15.527L12 8.561l6.967 6.966"}
+                d={
+                  !selectedTrayPreviewOpenButton
+                    ? "M18.966 8.476L12 15.443 5.033 8.476"
+                    : "M5.034 15.527L12 8.561l6.967 6.966"
+                }
               ></path>
             </svg>
-          </button>
+          </button> ) : ''}
 
-          <div style={{ display: "flex", width: '420px' }}>
+          <div
+            style={{
+              display: "flex",
+              width: "420px",
+              top: "75%",
+              left: "50%",
+              height: "auto",
+              margin: "0px auto",
+              position: "absolute",
+              transform: "translate(-50%, -50%)",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <button
               className="previous-customization"
               onClick={handleLeftClick}
             >
-              <svg
+             <div className="mc-prev">
+             <svg
                 aria-hidden="true"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -214,12 +259,23 @@ const Selector: FunctionComponent<{}> = () => {
                   d="M11.021 18.967L4.055 12l6.966-6.967M4 12h17"
                 ></path>
               </svg>
+             </div>
             </button>
+            
             <div className="tray-header-1">
-              <div style={{ position: "absolute", padding: "0px", width: '100%'}}>
+              <div
+                style={{ position: "absolute", padding: "0px", width: "100%" }}
+              >
                 <div className="active-marketing-component-name">
-                  <span style={{ fontSize: "18px", whiteSpace: 'nowrap', textOverflow: 'ellipsis',
-                                  overflow: 'hidden', lineHeight: '28px' }}>
+                  <span
+                    style={{
+                      fontSize: "18px",
+                      whiteSpace: "nowrap",
+                      textOverflow: "ellipsis",
+                      overflow: "hidden",
+                      lineHeight: "28px",
+                    }}
+                  >
                     {groups[currentIndex].name}
                   </span>
                   <span className="active-marketing-component-index">
@@ -247,25 +303,29 @@ const Selector: FunctionComponent<{}> = () => {
               </svg>
             </button>
           </div>
-          <button className="tray-trigger-open-button" onClick={toggleTray}>
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              viewBox="0 0 24 24"
-              role="img"
-              width="24px"
-              height="24px"
-              fill="none"
-              id="tray-trigger-button-icon"
-            >
-              <path
-                stroke="currentColor"
-                strokeWidth="1.5"
-                d="M21 5.25H3M21 12H3m18 6.75H3"
-              ></path>
-            </svg>
-            <span style={{ marginLeft: "3px" }}>Menu</span>
-          </button>
+          {width > 568 ? (
+            <button className="tray-trigger-open-button" onClick={toggleTray}>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                viewBox="0 0 24 24"
+                role="img"
+                width="24px"
+                height="24px"
+                fill="none"
+                id="tray-trigger-button-icon"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  d="M21 5.25H3M21 12H3m18 6.75H3"
+                ></path>
+              </svg>
+              <span style={{ marginLeft: "3px" }}>Menu</span>
+            </button>
+          ) : (
+            ""
+          )}
         </div>
 
         <br />
@@ -286,21 +346,24 @@ const Selector: FunctionComponent<{}> = () => {
               UpdateGroupId={groupIdFromFunc}
             />
           )}
-          {selectedGroup && !selectedTrayPreviewOpenButton && selectedGroup.steps.length > 0 && !isTrayOpen && (
-            <List>
-              {selectedGroup.steps.map((step) => {
-                return (
-                  <ListItem
-                    key={step.id}
-                    onClick={() => selectStep(step.id)}
-                    selected={selectedStep === step}
-                  >
-                    Step: {step.name}
-                  </ListItem>
-                );
-              })}
-            </List>
-          )}
+          {selectedGroup &&
+            !selectedTrayPreviewOpenButton &&
+            selectedGroup.steps.length > 0 &&
+            !isTrayOpen && (
+              <List>
+                {selectedGroup.steps.map((step) => {
+                  return (
+                    <ListItem
+                      key={step.id}
+                      onClick={() => selectStep(step.id)}
+                      selected={selectedStep === step}
+                    >
+                      Step: {step.name}
+                    </ListItem>
+                  );
+                })}
+              </List>
+            )}
 
           {!selectedTrayPreviewOpenButton && (
             <div>
@@ -323,7 +386,7 @@ const Selector: FunctionComponent<{}> = () => {
               <List>
                 {!selectedTrayPreviewOpenButton &&
                   selectedAttribute &&
-                   !isTrayOpen &&
+                  !isTrayOpen &&
                   selectedAttribute.options.map((option) => {
                     return (
                       <ListItemColor

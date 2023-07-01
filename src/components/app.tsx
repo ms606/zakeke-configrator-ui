@@ -21,15 +21,17 @@ const Layout = styled.div`
 const zakekeEnvironment = new ZakekeEnvironment();
 
 const App: FunctionComponent<{}> = () => {
-    return <ZakekeProvider environment={zakekeEnvironment}>
-        <Layout>
-         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',gridArea: '1 / 2 / 12 / 1', backgroundColor: 'rgb(249 246 248)'}}>
-           <div className='ThreeDRenderer' style={{width:'661px', height:'348px'    }}>
+    return <ZakekeProvider environment={zakekeEnvironment}> 
+     <Layout>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center',gridArea: '1 / 2 / 12 / 1', backgroundColor: 'rgb(249 246 248)'}}>
+        <div className='ThreeDRenderer' style={{width:'661px', height:'348px'    }}>
             <ZakekeViewer />
-           </div>             
-         </div>
-         <Selector />   
-        </Layout>
+        </div>             
+        </div>
+        <Selector />   
+     </Layout>
+     
+        
     </ZakekeProvider>;
 }
 

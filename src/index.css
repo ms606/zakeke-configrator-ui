@@ -21,13 +21,29 @@ html,body {
 .active-marketing-component-name {
   font-size: 18px;
   font-weight: 500;
+  /* transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateX(0); */
 }
+
+/* .slide-out {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-in {
+  opacity: 0;
+  transform: translateX(-100%);
+} */
 
 .animate-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  padding-top: 52px;  
+  width: 100%;
 }
 
 .animate-wrapper-2 {
@@ -48,6 +64,37 @@ html,body {
   opacity: 1;
   transform: translateY(0);
 }
+
+.tray-preview-close-button {
+  height: 0px;
+}
+
+button, input[type=button],input[type=reset],input[type=submit] {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+  line-height: inherit;
+  overflow: visible;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+  text-transform: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none
+}
+
+button::-moz-focus-inner,input[type=button]::-moz-focus-inner,input[type=reset]::-moz-focus-inner,input[type=submit]::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-style: none
+}
+
 
 button:focus {
   outline: none !important;
