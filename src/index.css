@@ -16,6 +16,7 @@ html,body {
   display: flex;
   justify-content: center;
   font-family: "Helvetica Now Text";
+  position: relative;
 }
 
 .active-marketing-component-name {
@@ -100,4 +101,27 @@ button:focus {
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
   -moz-outline-style: none !important;
+}
+
+.dgqSKi {
+  position: absolute;
+  left: 45px;
+  top: calc(56%);
+  width: 32px;
+  height: 32px;
+  z-index: 3;
+  cursor: pointer;
+  fill: #42464b;
+} 
+
+.gwevdV {
+  position: absolute;
+  left: 45px;
+  top: calc(56% + 50px);
+  width: 32px;
+  height: 32px;
+  z-index: 3;
+  cursor: pointer;
+  fill: #42464b;
+  
 }

@@ -6,6 +6,8 @@ import styled, { css } from "styled-components";
 import { useZakeke } from "zakeke-configurator-react";
 import { List, ListItem, ListItemImage, ListItemColor } from "./list";
 import Tray from "./Tray";
+import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
+import MenuTriggerButton from "./MenuTriggerButton";
 
 const Selector: FunctionComponent<{}> = () => {
   const {
@@ -19,6 +21,8 @@ const Selector: FunctionComponent<{}> = () => {
     setTemplate,
     setCamera,
     productName,
+    zoomIn,
+    zoomOut,
   } = useZakeke();
 
   // Keep saved the ID and not the refereces, they will change on each update
@@ -37,7 +41,7 @@ const Selector: FunctionComponent<{}> = () => {
   const [selectedGroupList, selectGroupList] = useState<any | null>(null);
 
   // Open tray for menu
-  const [isTrayOpen, setIsTrayOpen] = useState(false);
+  const [isTrayOpen, setIsTrayOpen] = useState<any | null>(false);
 
   // Get the id of the selected group from the tray
   const [selectedGroupIdFromTray, selectGroupIdFromTray] = useState<
@@ -199,31 +203,13 @@ const Selector: FunctionComponent<{}> = () => {
 
       <Container>
         <div className="tray-header">
-        {width > 568 ? (  
-          <button
-            className="tray-preview-open-button"
-            onClick={trayPreviewOpenButton}
-          >
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              viewBox="0 0 24 24"
-              role="img"
-              width="24px"
-              height="24px"
-              fill="none"
-            >
-              <path
-                stroke="currentColor"
-                strokeWidth="1.5"
-                d={
-                  !selectedTrayPreviewOpenButton
-                    ? "M18.966 8.476L12 15.443 5.033 8.476"
-                    : "M5.034 15.527L12 8.561l6.967 6.966"
-                }
-              ></path>
-            </svg>
-          </button> ) : ''}
+    
+          <TrayPreviewOpenButton
+            width={width}
+            trayPreviewOpenButton={trayPreviewOpenButton}
+            selectedTrayPreviewOpenButton={selectedTrayPreviewOpenButton}
+            selectTrayPreviewOpenButton={selectTrayPreviewOpenButton}
+          />
 
           <div
             style={{
@@ -243,25 +229,25 @@ const Selector: FunctionComponent<{}> = () => {
               className="previous-customization"
               onClick={handleLeftClick}
             >
-             <div className="mc-prev">
-             <svg
-                aria-hidden="true"
-                focusable="false"
-                viewBox="0 0 24 24"
-                role="img"
-                width="24px"
-                height="24px"
-                fill="none"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  d="M11.021 18.967L4.055 12l6.966-6.967M4 12h17"
-                ></path>
-              </svg>
-             </div>
+              <div className="mc-prev">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                  role="img"
+                  width="24px"
+                  height="24px"
+                  fill="none"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    d="M11.021 18.967L4.055 12l6.966-6.967M4 12h17"
+                  ></path>
+                </svg>
+              </div>
             </button>
-            
+
             <div className="tray-header-1">
               <div
                 style={{ position: "absolute", padding: "0px", width: "100%" }}
@@ -303,7 +289,9 @@ const Selector: FunctionComponent<{}> = () => {
               </svg>
             </button>
           </div>
-          {width > 568 ? (
+          
+          <MenuTriggerButton width={width} toggleTray={toggleTray}/>
+          {/* {width > 568 ? (
             <button className="tray-trigger-open-button" onClick={toggleTray}>
               <svg
                 aria-hidden="true"
@@ -325,7 +313,27 @@ const Selector: FunctionComponent<{}> = () => {
             </button>
           ) : (
             ""
-          )}
+          )} */}
+        </div>
+
+        <div>
+          <div
+            className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
+            onClick={zoomIn}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z M 18 9 L 18 12 L 15 12 L 15 14 L 18 14 L 18 17 L 20 17 L 20 14 L 23 14 L 23 12 L 20 12 L 20 9 Z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div
+          className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomOutIcon-sc-1nws045-20 gIdUDj gwevdV"
+          onClick={zoomOut}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z M 15 12 L 15 14 L 23 14 L 23 12 Z"></path>
+          </svg>
         </div>
 
         <br />
