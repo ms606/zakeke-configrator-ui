@@ -12,12 +12,31 @@ html,body {
   height: 100%;
 }
 
-.tray-header {
+.css-1q5ttm8 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: fixed;
   display: flex;
-  justify-content: center;
-  font-family: "Helvetica Now Text";
-  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
+
+.css-1ecy5z8 {
+  position: relative;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 
 .active-marketing-component-name {
   font-size: 18px;
@@ -37,13 +56,32 @@ html,body {
   transform: translateX(-100%);
 } */
 
-.animate-wrapper {
+.animate-wrapper-0 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
   padding-top: 52px;  
+  width: 100%;
+  position: absolute;
+  padding-top: 52px;  
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+}
+
+.animate-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding-top: 1px;  
   width: 100%;
 }
 
@@ -107,8 +145,8 @@ button:focus {
   position: absolute;
   left: 45px;
   top: calc(56%);
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   z-index: 3;
   cursor: pointer;
   fill: #42464b;
@@ -118,10 +156,24 @@ button:focus {
   position: absolute;
   left: 45px;
   top: calc(56% + 50px);
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   z-index: 3;
   cursor: pointer;
   fill: #42464b;
-  
 }
+
+.css-1wryxoe {
+  transform: translateX(-465px) translateZ(0px);
+  user-select: none;
+  touch-action: pan-y;
+  position: relative;
+  left: 50vw;
+}
+
+@media (min-width: 568px){
+  .tray-trigger-preview-button {
+    border-radius: 100%;
+    border: 1px solid rgb(229, 229, 229);
+    }
+  }
