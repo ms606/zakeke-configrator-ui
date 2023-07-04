@@ -6,7 +6,7 @@ const TrayPreviewOpenButton = ({
   selectedTrayPreviewOpenButton,
   selectTrayPreviewOpenButton,
 }) => {
-    console.log(selectTrayPreviewOpenButton, selectedTrayPreviewOpenButton);
+//    console.log(width, 'width');
 
   return width > 568 ? (
     <>
