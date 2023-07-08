@@ -4,13 +4,16 @@ import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 import { useZakeke } from "zakeke-configurator-react";
 import { List, ListItem, ListItemImage, ListItemColor } from "./list";
+import { PreviewContainer, BlurOverlay } from "./previewContainer";
 import Tray from "./Tray";
 import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
 import MenuTriggerButton from "./MenuTriggerButton";
+import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
 
 const Selector: FunctionComponent<{}> = () => {
   const {
     isSceneLoading,
+    loadComposition,
     isAddToCartLoading,
     price,
     groups,
@@ -83,8 +86,8 @@ const Selector: FunctionComponent<{}> = () => {
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      console.log(groups);
-      
+      console.log(groups, loadComposition, "aaa");
+
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
@@ -119,7 +122,14 @@ const Selector: FunctionComponent<{}> = () => {
   }, [selectedGroupId]);
 
   if (isSceneLoading || !groups || groups.length === 0)
-    return <span>Loading scene...</span>;
+    return (
+      <PreviewContainer>
+        <BlurOverlay>
+          {/* <span>Loading scene...</span>; */}
+          <ProgressBarLoadingOverlay />
+        </BlurOverlay>
+      </PreviewContainer>
+    );
 
   // groups
   // -- attributes
@@ -410,29 +420,26 @@ const Selector: FunctionComponent<{}> = () => {
                     !isTrayOpen &&
                     selectedAttribute.options.map((option) => {
                       return (
-             
-                          <ListItemColor
-                            key={option.id}
-                            onClick={() => selectOption(option.id)}
-                            selected={option.selected}
-                            selectedColor={selectedColorName}
-                          >
-                            {option.imageUrl && (
-                              <ListItemImage
-                                src={option.imageUrl}
-                                onClick={() => selectColorName(option.name)}
-                                selected={option.selected}
-                              />
-                            )}
+                        <ListItemColor
+                          key={option.id}
+                          onClick={() => selectOption(option.id)}
+                          selected={option.selected}
+                          selectedColor={selectedColorName}
+                        >
+                          {option.imageUrl && (
+                            <ListItemImage
+                              src={option.imageUrl}
+                              onClick={() => selectColorName(option.name)}
+                              selected={option.selected}
+                            />
+                          )}
 
-                            {/* //{option.name} */}
-                          </ListItemColor>
-              
+                          {/* //{option.name} */}
+                        </ListItemColor>
                       );
                     })}
                   {/* {selectedColorName}   */}
-                </List>              
-                
+                </List>
               </div>
             )}
           </div>
