@@ -1,13 +1,13 @@
    :root {
-    --podium-cds-typography-body1-strong: 500 1rem/1.5 'Helvetica Now Text Medium',Helvetica,Arial,sans-serif;
-    --podium-cds-typography-body2: 400 .875rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
-    --podium-cds-typography-body3: 800 1.4rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
+    --podium-cds-typography-body1-strong: 500 1rem/1.5 'Inter';
+    --podium-cds-typography-body2: 400 .875rem/1.5 'Inter';
+    --podium-cds-typography-body3: 800 1.4rem/1.5 'Inter';
   }
 
   body {
     font-size: inherit;
     line-height: inherit;
-    font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
+    font-family: 'Inter';
     color: var(--podium-cds-color-black);
     background-color: var(--podium-cds-color-white)
   }
@@ -58,10 +58,8 @@
     padding: 0px 20px;
     align-items: center;
     justify-content: center;
-    font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 18px;
-    font-weight: 500;
-    /* position: absolute; */
   }
 
   .active-marketing-component-index{
@@ -179,12 +177,16 @@
   }
  */
 
-
-
- 
-@media (min-width: 568px){
+@media screen and (min-width: 568px){
   .tray-trigger-preview-button {
     border-radius: 100%;
     border: 1px solid rgb(229, 229, 229);
     }
-  }
+}
+
+
+@media screen and (max-width: 568px){
+  .tray-header-1 {
+    max-width: 250px;
+  }  
+}

@@ -43,11 +43,9 @@
     justify-content: center;
     background: #fff;
     position: absolute;
-
     z-index: 3;
 }
   
-
 .menu-button {
     background-color: #ccc;
     padding: 8px 16px;
@@ -72,6 +70,7 @@
   }
   
   .tray-mc-grid {
+    font-family: 'Inter';
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -125,12 +124,4 @@
     margin: 0px 16px 0px 0px;
     border-radius: 100%;
     border: 1px solid rgb(14 2 2);
-  }
-
-  
-@media (min-width: 568px){
-  .tray-trigger-preview-button {
-    border-radius: 100%;
-    border: 1px solid rgb(229, 229, 229);
-    }
   }

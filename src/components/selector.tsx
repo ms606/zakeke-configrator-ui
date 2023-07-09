@@ -10,7 +10,11 @@ import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
 import MenuTriggerButton from "./MenuTriggerButton";
 import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
 
-const Selector: FunctionComponent<{}> = () => {
+interface TrayPreviewOpenButton3DProps {
+  trayPreviewOpenButton3DFunc: (data:any) => void;
+}
+
+const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewOpenButton3DFunc}) => {
   const {
     isSceneLoading,
     loadComposition,
@@ -158,6 +162,9 @@ const Selector: FunctionComponent<{}> = () => {
 
   const trayPreviewOpenButton = () => {
     selectTrayPreviewOpenButton(!selectedTrayPreviewOpenButton);
+    
+    //trayPreviewOpenButton3DFunc(selectedTrayPreviewOpenButton);
+    trayPreviewOpenButton3DFunc(selectedTrayPreviewOpenButton);
   };
 
   const groupIdFromFunc = (data: any) => {
@@ -397,7 +404,15 @@ const Selector: FunctionComponent<{}> = () => {
               )}
 
             {!selectedTrayPreviewOpenButton && (
-              <div>
+              <div style={{
+                //transform: "translateX(-527px) translateZ(0px)",
+                // transform: "translate3d(-168.507px, 0px, 0px) scale(1, 1)",
+                // transformOrigin: "50% 50% 0px",
+                // position: "relative",
+                // left: "84v",
+                // userSelect: "none",
+                // scrollPaddingLeft: "2em"
+              }}>
                 <List>
                   {attributes &&
                     !isTrayOpen &&

@@ -10,15 +10,23 @@ export const List = styled.ul`
     white-space: nowrap;
     justify-content: center;
 
-    
-    
+    @media screen and (max-width: 568px) {
+        width: 100vw;
+        transform-origin: 50% 50% 0px;
+        transform: translate3d(-186.507px, 0px, 0px) scale(1, 1);
+        position: relative;
+        left: 60vw;
+        }
 
 `;
+
+    
+
 
 export const ListItem = styled.li<{ selected?: boolean }>`
     display: flex;
     flex-direction: column;    
-    font: 500 1.1rem/1.5 'Helvetica Now Text',Helvetica,Arial,sans-serif;
+    font: 500 1.1rem/1.5 'Inter';
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -34,7 +42,6 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     &:hover {
         background-color: #ffd966;
     }
-
 `;
 
 export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any }>`
@@ -65,7 +72,7 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     &:after {
     content: "${props => props.selected ? props.selectedColor : ''}";
     position: absolute;
-    transform: translateY(38px);re
+    // transform: translateY(38px);
     /* Additional styling for the :before pseudo-element can be added here */
     }
 `;
