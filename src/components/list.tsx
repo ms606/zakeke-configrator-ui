@@ -21,8 +21,6 @@ export const List = styled.ul`
 `;
 
     
-
-
 export const ListItem = styled.li<{ selected?: boolean }>`
     display: flex;
     flex-direction: column;    
@@ -72,6 +70,7 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     &:after {
     content: "${props => props.selected ? props.selectedColor : ''}";
     position: absolute;
+    top: 10pc;
     // transform: translateY(38px);
     /* Additional styling for the :before pseudo-element can be added here */
     }

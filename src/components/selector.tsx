@@ -30,6 +30,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     zoomIn,
     zoomOut,
     getPDF,
+    items,
+    product
   } = useZakeke();
 
   // Keep saved the ID and not the refereces, they will change on each update
@@ -90,7 +92,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      console.log(groups, loadComposition, "aaa");
+      console.log(items,'sddfsdf', product, 'product', loadComposition, "aaa");
 
       selectGroup(groups[0].id);
 

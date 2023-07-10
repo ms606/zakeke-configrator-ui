@@ -37,6 +37,9 @@ html,body {
   border: 0;
 }
 
+.ThreeDRenderer {
+  
+}
 
 .active-marketing-component-name {
   font-size: 18px;
@@ -98,6 +101,7 @@ html,body {
   position: fixed;
   z-index: 2;
   mix-blend-mode: normal;
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
 }
 

@@ -19,6 +19,10 @@ const LoaderContainer = styled.div`
   width: 600px;
   border-radius: 4px;
   background-color: #dbe2e6;
+
+  @media screen and (max-width: 766px){
+    width: 310px;
+   }
 `;
 
 const LoadingPercentageLabel = styled.span`
