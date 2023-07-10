@@ -221,7 +221,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
         )}
       </div>
 
-      <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>
+      {!isTrayOpen ? <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>
         <div
           className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
           onClick={zoomIn}
@@ -240,6 +240,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
           </svg>
         </div>
       </div>
+      : 
+      ""
+      }    
 
       {/* <button style={{background: 'pink', width: '100px', height: '100px'}}
            onClick={() => {console.log(getPDF())
