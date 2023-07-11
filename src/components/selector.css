@@ -189,4 +189,12 @@
   .tray-header-1 {
     max-width: 250px;
   }  
+
+  .active-marketing-component-index {
+    margin-left: 6px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
 }
