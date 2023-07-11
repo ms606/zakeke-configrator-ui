@@ -42,7 +42,7 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     }
 `;
 
-export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any }>`
+export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any}>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,17 +64,29 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     
     &:before {
         content: '';
+        position: absolute;
+        bottom: 20%;
         /* Additional styling for the :before pseudo-element can be added here */
     };
 
     &:after {
-    content: "${props => props.selected ? props.selectedColor : ''}";
+    content: "${props => { return props.selected ? props.selectedColor : ''
+                        }}";
     position: absolute;
-    top: 10pc;
+    bottom: 20%;
     // transform: translateY(38px);
     /* Additional styling for the :before pseudo-element can be added here */
     }
-`;
+    
+    
+    @media screen and (max-width: 568px) {
+    &:after {
+      bottom: -65%;  
+    }
+    }
+
+
+    `;
 
 export const ListItemImage = styled.img<{ selected?: any }>`
     width: 40px;

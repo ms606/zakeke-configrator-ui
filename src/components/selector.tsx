@@ -34,10 +34,18 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     product
   } = useZakeke();
 
+
   // Keep saved the ID and not the refereces, they will change on each update
   const [selectedGroupId, selectGroup] = useState<number | null>(null);
   const [selectedStepId, selectStep] = useState<number | null>(null);
   const [selectedAttributeId, selectAttribute] = useState<number | null>(null);
+
+
+  let indexToRemove = groups.findIndex(obj => obj.id === -1); 
+
+  if (indexToRemove !== -1) {
+    groups.splice(indexToRemove, 1)
+  }
 
   const selectedGroup = groups.find((group) => group.id === selectedGroupId);
   const selectedStep = selectedGroup
@@ -92,7 +100,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      console.log(items,'sddfsdf', product, 'product', loadComposition, "aaa");
+     // console.log(groups, 'groups',items,'sddfsdf', product, 'product', loadComposition, "aaa");
 
       selectGroup(groups[0].id);
 
@@ -113,6 +121,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // Select attribute first time
   useEffect(() => {
     if (!selectedAttribute && attributes.length > 0)
+   
+    
       selectAttribute(attributes[0].id);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -145,11 +155,13 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // -- -- -- options
 
   const handleLeftClick = () => {
+    selectColorName('');
     setCurrentIndex((currentIndex - 1 + groups.length) % groups.length);
     selectGroup(groups[(currentIndex - 1 + groups.length) % groups.length].id);
   };
 
   const handleRightClick = () => {
+    selectColorName('');
     setCurrentIndex((currentIndex + 1) % groups.length);
     selectGroup(groups[(currentIndex + 1) % groups.length].id);
   };
@@ -420,7 +432,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
               }}>
                 <List>
                   {attributes &&
-                    !isTrayOpen &&
+                    !isTrayOpen &&                
                     attributes.map((attribute) => {
                       return (
                         <ListItem
