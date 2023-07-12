@@ -269,6 +269,14 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
              }} >
           
         </button> */}
+      <div className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
+       //    onClick={} 
+      >
+        Animation
+        {/* <img loading="lazy" src="./static/media/font-solid.b65e835fe39251bb009f81ac821a4b56.svg" 
+            className="LayoutStyled__GroupIcon-sc-1nws045-3 fKOFKl"> */}
+              {/* <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Personalize</font></font></span> */}
+      </div>
 
       <div className="animate-wrapper-0">
         <Container>
