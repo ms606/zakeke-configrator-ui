@@ -31,7 +31,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     zoomOut,
     getPDF,
     items,
-    product
+    product,
+    setItemText,
   } = useZakeke();
 
 
@@ -101,7 +102,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
      // console.log(groups, 'groups',items,'sddfsdf', product, 'product', loadComposition, "aaa");
-
+     // console.log( product, 'product', items, 'items',groups, 'groups',setItemText,'setItemText');
+      
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
@@ -111,7 +113,11 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
 
     if (groups.length > 0) {
       var groupRec: string[] = [];
-      groups.map((group) => groupRec.push(group.name));
+      groups.map((group) => {
+          groupRec.push(group.name)
+          // console.log(group.guid);
+          // setItemText(group.guid,'Textsdsfdsfdsfsdfdsfsdsdfsdf')
+        });
       selectGroupList(groupRec);
     }
 
