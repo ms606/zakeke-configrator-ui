@@ -11,6 +11,18 @@ import MenuTriggerButton from "./MenuTriggerButton";
 import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
 import Designer from "./layouts/Designer";
 
+// const Container = styled.div`
+// overflow: auto;
+// width: 100%;  
+// ${!selectedTrayPreviewOpenButton
+//     ? css`
+//         height: 230px;
+//       `
+//     : css`
+//         height: 70px;
+//       `}   
+// `;
+
 interface TrayPreviewOpenButton3DProps {
   trayPreviewOpenButton3DFunc: (data:any) => void;
 }
@@ -57,9 +69,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   >(null);
 
   // Update tray preview open button
-  const [selectedTrayPreviewOpenButton, selectTrayPreviewOpenButton] = useState<
-    any | null
-  >(false);
+  const [selectedTrayPreviewOpenButton, selectTrayPreviewOpenButton] = useState<boolean>(false);
 
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -108,8 +118,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      console.log('items',items, 'groups', groups, 'product', product);
+       console.log('items',items, 'groups', groups, 'product', product);
       
+      
+
      // console.log(groups, 'groups',items,'sddfsdf', product, 'product', loadComposition, "aaa");
      // console.log( product, 'product', items, 'items',groups, 'groups',setItemText,'setItemText');
       
@@ -125,7 +137,11 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
       groups.map((group) => {
           groupRec.push(group.name)
           // console.log(group.guid);
-          // setItemText(group.guid,'Textsdsfdsfdsfsdfdsfsdsdfsdf')
+          // setItemText(group.guid,'this is a first text')
+          //  setItemText('40cad644-b807-4a35-82fb-90b49e390638','Textsdsfdsfdsfsdfdsfsdsdfsdf')
+          //  setItemText('f651bc53-3a32-4874-ab05-faa36b6c393d','Textsdsfdsfdsfsdfdsfsdsdfsdf')
+          //  setItemText('40cad644-b807-4a35-82fb-90b49e390638','Textsdsfdsfdsfsdfdsfsdsdfsdf')
+           
         });
       selectGroupList(groupRec);
     }
@@ -133,10 +149,25 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGroup, groups]);
 
+  useEffect(() => {
+		const textItems = items.filter((item) => item.type === 0) // as TextItem[];
+		//const newItems = textItems.filter((item) => !prevItems.some((prevItem) => prevItem.guid === item.guid));
+		// newItems.forEach((item) => {
+		// 	if (item.isTemplateElement) setItemText(item.guid, T._d(item.text));
+		// });
+		// setPrevItems(textItems);
+  
+    textItems.map((item) => {
+      setItemText(item.guid,'first tezzt')
+    })  
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [items]);
+
+
   // Select attribute first time
   useEffect(() => {
-    if (!selectedAttribute && attributes.length > 0)
-   
+    if (!selectedAttribute && attributes.length > 0)  
     
       selectAttribute(attributes[0].id);
 
@@ -147,6 +178,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     if (selectedGroup) {
       const camera = selectedGroup.cameraLocationId;
       if (camera) setCamera(camera);
+
+      console.log(items,groups);
+
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -221,19 +255,25 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     selectGroupIdFromTray(filteredArray[0].id);
   };
 
-  // height: 230px;
-  const Container = styled.div`
-    overflow: auto;
-    width: 100%;
+  // Styling for height: 230px;
+  // const Container = styled.div`
+  //   overflow: auto;
+  //   width: 100%;    
+  //   ${!selectedTrayPreviewOpenButton
+  //   ? css`
+  //       height: 230px;
+  //     `
+  //   : css`
+  //       height: 70px;
+  //     `}
+  // `;
 
-    ${!selectedTrayPreviewOpenButton
-      ? css`
-          height: 230px;
-        `
-      : css`
-          height: 70px;
-        `}
-  `;
+  const containerStyles = {
+    overflow: 'auto',
+    width: '100%',
+    height: !selectedTrayPreviewOpenButton ? '230px' : '70px',
+  };
+
 
   return (
     <>
@@ -290,7 +330,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
       </div>
 
       <div className="animate-wrapper-0">
-        <Container>
+        <div style={containerStyles}>
           <div className="tray-header">
             <TrayPreviewOpenButton
               width={width}
@@ -493,7 +533,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
               </div>
             )}
           </div>
-        </Container>
+        </div>
       </div>
     </>
   );
