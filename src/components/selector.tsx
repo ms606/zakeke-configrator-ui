@@ -9,6 +9,7 @@ import Tray from "./Tray";
 import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
 import MenuTriggerButton from "./MenuTriggerButton";
 import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
+import Designer from "./layouts/Designer";
 
 interface TrayPreviewOpenButton3DProps {
   trayPreviewOpenButton3DFunc: (data:any) => void;
@@ -42,17 +43,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   const [selectedAttributeId, selectAttribute] = useState<number | null>(null);
 
 
-  let indexToRemove = groups.findIndex(obj => obj.id === -1); 
-
-  if (indexToRemove !== -1) {
-    groups.splice(indexToRemove, 1)
-  }
-
-  const selectedGroup = groups.find((group) => group.id === selectedGroupId);
-  const selectedStep = selectedGroup
-    ? selectedGroup.steps.find((step) => step.id === selectedStepId)
-    : null;
-
   const [selectedColorName, selectColorName] = useState<any | null>(null);
 
   // Get a list of all group names so we can populate on the tray
@@ -71,6 +61,19 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     any | null
   >(false);
 
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const selectedGroup = groups.find((group) => group.id === selectedGroupId);
+  const selectedStep = selectedGroup
+    ? selectedGroup.steps.find((step) => step.id === selectedStepId)
+    : null;
+
+
+  const [selectedPersonalize, setSelectedPersonalize] = useState<any | null>(false); 
+
   // Attributes can be in both groups and steps, so show the attributes of step or in a group based on selection
   const attributes = useMemo(
     () => (selectedStep || selectedGroup)?.attributes ?? [],
@@ -80,9 +83,13 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     (attribute) => attribute.id === selectedAttributeId
   );
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  
 
-  const [width, setWidth] = useState(window.innerWidth);
+  let indexToRemove = groups.findIndex(obj => obj.id === -1); 
+
+  if (indexToRemove !== -1) {
+    groups.splice(indexToRemove, 1)
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -101,6 +108,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
+      console.log('items',items, 'groups', groups, 'product', product);
+      
      // console.log(groups, 'groups',items,'sddfsdf', product, 'product', loadComposition, "aaa");
      // console.log( product, 'product', items, 'items',groups, 'groups',setItemText,'setItemText');
       
@@ -270,9 +279,11 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
           
         </button> */}
       <div className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-       //    onClick={} 
+           style={{position: 'absolute'}}
+           onClick={() => setSelectedPersonalize(!selectedPersonalize)} 
       >
-        Animation
+        Personalize
+        {selectedPersonalize ? <Designer /> : ""}
         {/* <img loading="lazy" src="./static/media/font-solid.b65e835fe39251bb009f81ac821a4b56.svg" 
             className="LayoutStyled__GroupIcon-sc-1nws045-3 fKOFKl"> */}
               {/* <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Personalize</font></font></span> */}
@@ -436,13 +447,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
 
             {!selectedTrayPreviewOpenButton && (
               <div style={{
-                //transform: "translateX(-527px) translateZ(0px)",
-                // transform: "translate3d(-168.507px, 0px, 0px) scale(1, 1)",
-                // transformOrigin: "50% 50% 0px",
-                // position: "relative",
-                // left: "84v",
-                // userSelect: "none",
-                // scrollPaddingLeft: "2em"
               }}>
                 <List>
                   {attributes &&

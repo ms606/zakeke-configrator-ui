@@ -10,9 +10,9 @@
 // } from 'zakeke/zakeke-configurator-react';
 // import useStore from 'Store';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { useZakeke } from "zakeke-configurator-react";
+import { useZakeke, ProductArea } from "zakeke-configurator-react";
 //import Select, { GroupBase, OptionProps, SingleValueProps, components } from 'react-select';
-//import styled from 'styled-components/macro';
+import styled from 'styled-components/macro';
 // import { T } from '../../Helpers';
 import { ReactComponent as ArrowLeftIcon } from '../../assets/icons/arrow-left-solid.svg';
 import { ReactComponent as ArrowRightIcon } from '../../assets/icons/arrow-right-solid.svg';
@@ -98,28 +98,28 @@ export interface TranslatedTemplate {
 // 	margin: 20px 0px;
 // `;
 
-// const Area = styled.div<{ selected?: boolean }>`
-// 	display: flex;
-// 	flex-direction: column;
-// 	justify-content: space-around;
-// 	align-items: left;
-// 	min-height: 47px;
-// 	min-width: 70px;
-// 	border-bottom: 5px solid transparent;
-// 	cursor: pointer;
-// 	padding: 0px 5px;
-//     text-align: center;
+const Area = styled.div<{ selected?: boolean }>`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: left;
+	min-height: 47px;
+	min-width: 70px;
+	border-bottom: 5px solid transparent;
+	cursor: pointer;
+	padding: 0px 5px;
+    text-align: center;
 
-// 	&:hover {
-// 		border-bottom: 5px solid #c4c4c4;
-// 	}
+	&:hover {
+		border-bottom: 5px solid #c4c4c4;
+	}
 
-// 	${(props) =>
-// 		props.selected &&
-// 		`
-//        border-bottom: 5px solid #c4c4c4;
-//     `}
-// `;
+	${(props) =>
+		props.selected &&
+		`
+       border-bottom: 5px solid #c4c4c4;
+    `}
+`;
 
 // const OptionContainer = styled(components.Option)`
 // 	background-color: white !important;
@@ -190,8 +190,8 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	const customizerRef = useRef<any | null>(null);
 	const [selectedCarouselSlide, setSelectedCarouselSlide] = useState<number>(0);
 
-	// const filteredAreas = product?.areas.filter((area) => isAreaVisible(area.id)) ?? [];
-	// let finalVisibleAreas: ProductArea[] = [];
+	 const filteredAreas = product?.areas.filter((area) => isAreaVisible(area.id)) ?? [];
+	 let finalVisibleAreas: ProductArea[] = [];
 
 	// const [moveElements, setMoveElements] = useState(false);
 
@@ -207,31 +207,31 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	// 	return { id: area.id, name: T._d(area.name) };
 	// });
 
-	// filteredAreas.length > 0 &&
-	// 	filteredAreas.forEach((filteredArea) => {
-	// 		let currentTemplateArea = currentTemplate!.areas.find((x) => x.id === filteredArea.id);
-	// 		let itemsOfTheArea = items.filter((item) => item.areaId === filteredArea.id);
-	// 		const areAllItemsStatic = !itemsOfTheArea.some((item) => {
-	// 			return (
-	// 				!item.constraints ||
-	// 				item.constraints.canMove ||
-	// 				item.constraints.canRotate ||
-	// 				item.constraints.canResize ||
-	// 				item.constraints.canEdit
-	// 			);
-	// 		});
-	// 		if (
-	// 			!areAllItemsStatic ||
-	// 			!currentTemplateArea ||
-	// 			currentTemplateArea?.canAddImage ||
-	// 			currentTemplateArea?.canAddText
-	// 		)
-	// 			finalVisibleAreas.push(filteredArea);
-	// 	});
+	filteredAreas.length > 0 &&
+		filteredAreas.forEach((filteredArea) => {
+			let currentTemplateArea = currentTemplate!.areas.find((x) => x.id === filteredArea.id);
+			let itemsOfTheArea = items.filter((item) => item.areaId === filteredArea.id);
+			const areAllItemsStatic = !itemsOfTheArea.some((item) => {
+				return (
+					!item.constraints ||
+					item.constraints.canMove ||
+					item.constraints.canRotate ||
+					item.constraints.canResize ||
+					item.constraints.canEdit
+				);
+			});
+			if (
+				!areAllItemsStatic ||
+				!currentTemplateArea ||
+				currentTemplateArea?.canAddImage ||
+				currentTemplateArea?.canAddText
+			)
+				finalVisibleAreas.push(filteredArea);
+		});
 
-	// const [actualAreaId, setActualAreaId] = useState<number>(
-	// 	finalVisibleAreas && finalVisibleAreas.length > 0 ? finalVisibleAreas[0].id : 0
-	// );
+	const [actualAreaId, setActualAreaId] = useState<number>(
+		finalVisibleAreas && finalVisibleAreas.length > 0 ? finalVisibleAreas[0].id : 0
+	);
 
 	// let currentTemplateArea = currentTemplate!.areas.find((x) => x.id === actualAreaId);
 	// let itemsFiltered = items.filter((item) => item.areaId === actualAreaId);
@@ -268,11 +268,11 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	// }, [actualAreaId]);
 
-	// useEffect(() => {
-	// 	if (finalVisibleAreas.length > 0 && actualAreaId === 0) setActualAreaId(finalVisibleAreas[0].id);
+	useEffect(() => {
+		if (finalVisibleAreas.length > 0 && actualAreaId === 0) setActualAreaId(finalVisibleAreas[0].id);
 
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [finalVisibleAreas]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [finalVisibleAreas]);
 
 	function getSupportedUploadFileFormats(templateId: number, areaId: number) {
 		const restrictions = getTemplateUploadRestrictictions(templateId, areaId);
@@ -458,6 +458,7 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 
 	return (
 		<>
+		<h1>Personalize</h1>
 			{/* {!moveElements && (
 				<DesignerContainer isMobile={isMobile}>
 					{/* Templates */}
@@ -523,6 +524,17 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 							))}
 						</CarouselContainer>
 					)} */}
+
+							{finalVisibleAreas.map((area) => (
+								<Area
+									key={area.id}
+									selected={actualAreaId === area.id}
+									onClick={() => setActualAreaId(area.id)}
+								>
+									{(area.name)}
+								</Area>
+							))}
+							
 
 					{/* {isMobile && translatedTemplates.length > 1 && (
 						<SelectContainer>
