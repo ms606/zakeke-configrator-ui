@@ -10,6 +10,7 @@ import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
 import MenuTriggerButton from "./MenuTriggerButton";
 import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
 import Designer from "./layouts/Designer";
+import {GroupItem, GroupIcon} from "./layouts/LayoutStyled"
 
 // const Container = styled.div`
 // overflow: auto;
@@ -46,6 +47,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     items,
     product,
     setItemText,
+    defaultColor,
+    fonts,
+    addItemText
   } = useZakeke();
 
 
@@ -120,11 +124,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     if (!selectedGroup && groups.length > 0) {
        console.log('items',items, 'groups', groups, 'product', product);
       
-      
-
-     // console.log(groups, 'groups',items,'sddfsdf', product, 'product', loadComposition, "aaa");
-     // console.log( product, 'product', items, 'items',groups, 'groups',setItemText,'setItemText');
-      
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
@@ -136,33 +135,26 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
       var groupRec: string[] = [];
       groups.map((group) => {
           groupRec.push(group.name)
-          // console.log(group.guid);
-          // setItemText(group.guid,'this is a first text')
-          //  setItemText('40cad644-b807-4a35-82fb-90b49e390638','Textsdsfdsfdsfsdfdsfsdsdfsdf')
-          //  setItemText('f651bc53-3a32-4874-ab05-faa36b6c393d','Textsdsfdsfdsfsdfdsfsdsdfsdf')
-          //  setItemText('40cad644-b807-4a35-82fb-90b49e390638','Textsdsfdsfdsfsdfdsfsdsdfsdf')
-           
         });
       selectGroupList(groupRec);
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGroup, groups]);
 
-  useEffect(() => {
-		const textItems = items.filter((item) => item.type === 0) // as TextItem[];
-		//const newItems = textItems.filter((item) => !prevItems.some((prevItem) => prevItem.guid === item.guid));
-		// newItems.forEach((item) => {
-		// 	if (item.isTemplateElement) setItemText(item.guid, T._d(item.text));
-		// });
-		// setPrevItems(textItems);
+  // useEffect(() => {
+	// 	const textItems = items.filter((item) => item.type === 0) // as TextItem[];
+	// 	//const newItems = textItems.filter((item) => !prevItems.some((prevItem) => prevItem.guid === item.guid));
+	// 	// newItems.forEach((item) => {
+	// 	// 	if (item.isTemplateElement) setItemText(item.guid, T._d(item.text));
+	// 	// });
+	// 	// setPrevItems(textItems);
   
-    textItems.map((item) => {
-      setItemText(item.guid,'first tezzt')
-    })  
+  //   textItems.map((item) => {
+  //     setItemText(item.guid,'first tezzt')
+  //   })  
 
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [items]);
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [items]);
 
 
   // Select attribute first time
@@ -179,7 +171,23 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
       const camera = selectedGroup.cameraLocationId;
       if (camera) setCamera(camera);
 
-      console.log(items,groups);
+  //     console.log(items[0]?.guid,groups);
+      
+  //     // push text into zakeke component 
+  //   const item  = {
+  //     // guid: items[0]?.guid,
+  //     text: 'heheheheheheh',
+  //     // text: T._("Text", "Composer"),
+  //     // fillColor: defaultColor,
+  //     fontFamily: fonts[0].name,
+  //     // fontSize: 48,
+  //     // fontWeight: 'normal normal',
+  //     // isTextOnPath: false,
+  //     // constraints: null,
+  // }
+
+  //    addItemText(item, 345656)
+
 
     }
 
@@ -318,15 +326,17 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
              }} >
           
         </button> */}
+      {/* <GroupItem   */}
       <div className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
            style={{position: 'absolute'}}
            onClick={() => setSelectedPersonalize(!selectedPersonalize)} 
       >
         Personalize
         {selectedPersonalize ? <Designer /> : ""}
-        {/* <img loading="lazy" src="./static/media/font-solid.b65e835fe39251bb009f81ac821a4b56.svg" 
-            className="LayoutStyled__GroupIcon-sc-1nws045-3 fKOFKl"> */}
-              {/* <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Personalize</font></font></span> */}
+        <img src="font-solid.svg" 
+            className="LayoutStyled__GroupIcon-sc-1nws045-3 fKOFKl" /> 
+              {/* <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Personalize</font></font></span> */} 
+
       </div>
 
       <div className="animate-wrapper-0">
