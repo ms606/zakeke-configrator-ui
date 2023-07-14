@@ -327,16 +327,21 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
           
         </button> */}
       {/* <GroupItem   */}
+      {/* Personalize A */}
+
       <div className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-           style={{position: 'absolute'}}
+           style={{position: 'absolute', top: "17%", left: "62%" }}
            onClick={() => setSelectedPersonalize(!selectedPersonalize)} 
       >
-        Personalize
+        
         {selectedPersonalize ? <Designer /> : ""}
-        <img src="font-solid.svg" 
-            className="LayoutStyled__GroupIcon-sc-1nws045-3 fKOFKl" /> 
-              {/* <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Personalize</font></font></span> */} 
 
+        <div className="personalize" style={{display: 'flex',  flexDirection: 'column', padding: '14px', borderRadius: '48px', 
+                                             backgroundColor: '#FEFE8A'}}>
+         <GroupIcon src ="font-solid.svg" /> 
+         <span>Personaliza</span>
+        </div>
+        
       </div>
 
       <div className="animate-wrapper-0">

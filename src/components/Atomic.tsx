@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components/macro';
-// import Carousel from 'nuka-carousel';
+import Carousel from 'nuka-carousel';
 
-// export const CarouselContainer = styled(Carousel)`
-//   border-bottom:2px solid #c4c4c4;
-//   position: relative;
-// `;
+export const CarouselContainer = styled(Carousel)`
+  border-bottom:2px solid #c4c4c4;
+  position: relative;
+`;
 
 export const Icon = styled.div<{ hoverable?: boolean }>`
 	display: inline-block;
