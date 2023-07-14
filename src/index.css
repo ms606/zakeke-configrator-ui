@@ -59,6 +59,11 @@ html,body {
   transform: translateX(-100%);
 } */
 
+.personalize {
+  background-color: white;
+  
+}
+
 .animate-wrapper-0 {
   display: flex;
   flex-direction: column;

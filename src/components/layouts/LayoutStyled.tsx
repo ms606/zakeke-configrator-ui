@@ -45,3 +45,49 @@ height: 40px;
 object-fit: contain;
 margin-bottom: 10px;
 `;
+
+
+export const TemplatesContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	grid-gap: 5px;
+	align-items: flex-start;
+	margin-bottom: 40px;
+	overflow: hidden;
+	min-height: 0;
+`;
+
+export const Template = styled.div<{ selected?: boolean }>`
+	padding: 10px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #f4f4f4;
+	}
+
+	${(props) =>
+		props.selected &&
+		`
+       background-color: #f4f4f4;
+    `}
+`;
+
+
+export const SelectContainer = styled.div`
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+	border-bottom: 1px #ccc dotted;
+	position: relative;
+
+	span {
+		margin-bottom: 10px;
+		font-size: 16px;
+		display: block;
+	}
+`;
+
+export const Center = styled.div`
+	text-align: center;
+	font-size: 18px;
+	padding: 30px;
+`;

@@ -11,48 +11,48 @@
 // import useStore from 'Store';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useZakeke, ProductArea } from "zakeke-configurator-react";
-//import Select, { GroupBase, OptionProps, SingleValueProps, components } from 'react-select';
+import Select, { GroupBase, OptionProps, SingleValueProps, components } from 'react-select';
 import styled from 'styled-components/macro';
 // import { T } from '../../Helpers';
-import { ReactComponent as ArrowLeftIcon } from '../../assets/icons/arrow-left-solid.svg';
-import { ReactComponent as ArrowRightIcon } from '../../assets/icons/arrow-right-solid.svg';
+import { ReactComponent as ArrowLeftIcon } from '../../assets/icons/left-arrow.svg';
+import { ReactComponent as ArrowRightIcon } from '../../assets/icons/right-arrow.svg';
 import { ReactComponent as Arrows } from '../../assets/icons/arrows-alt-solid.svg';
 import { ReactComponent as Add } from '../../assets/icons/plus-circle-solid.svg';
 import { ReactComponent as SearchMinusSolid } from '../../assets/icons/search-minus-solid.svg';
 import { ReactComponent as SearchPlusSolid } from '../../assets/icons/search-plus-solid.svg';
-// import {
-// 	ArrowLeft,
-// 	ArrowLeftIconStyled,
-// 	ArrowRight,
-// 	ArrowRightIconStyled,
-// 	Button,
-// 	CarouselContainer,
-// 	CloseEditorButton,
-// 	Icon
-// } from '../Atomic';
-// import AddTextDialog from '../dialogs/AddTextDialog';
-// import { useDialogManager } from '../dialogs/Dialogs';
+import {
+	ArrowLeft,
+	ArrowLeftIconStyled,
+	ArrowRight,
+	ArrowRightIconStyled,
+	Button,
+	CarouselContainer,
+	CloseEditorButton,
+	Icon
+} from '../Atomic';
+import AddTextDialog from '../dialog/AddTextDialog';
+import { useDialogManager } from '../dialog/Dialogs';
 // import ErrorDialog from '../dialogs/ErrorDialog';
 // import ImagesGalleryDialog from '../dialogs/ImagesGalleryDialog';
-// import ItemImage, { EditImageItem } from '../widgets/ItemImage';
-// import ItemText, { EditTextItem } from '../widgets/ItemText';
-// import {
-// 	Center,
-// 	IconsAndDesignerContainer,
-// 	SelectContainer,
-// 	SupportedFormatsList,
-// 	Template,
-// 	TemplatesContainer,
-// 	ZakekeDesignerContainer,
-// 	ZoomInIcon,
-// 	ZoomOutIcon
-// } from './LayoutStyled';
+ import ItemImage, { EditImageItem } from '../widgets/ItemImage';
+import ItemText, { EditTextItem } from '../widgets/ItemText';
+import {
+	Center,
+	// IconsAndDesignerContainer,
+	SelectContainer,
+	// SupportedFormatsList,
+	Template,
+	TemplatesContainer,
+	// ZakekeDesignerContainer,
+	// ZoomInIcon,
+	// ZoomOutIcon
+} from './LayoutStyled';
 
-// export type PropChangeHandler = (
-// 	item: EditTextItem | EditImageItem,
-// 	prop: string,
-// 	value: string | boolean | File
-// ) => void;
+export type PropChangeHandler = (
+	item: EditTextItem | EditImageItem,
+	prop: string,
+	value: string | boolean | File
+) => void;
 
 export interface TranslatedTemplate {
 	id: number;
@@ -91,12 +91,12 @@ export interface TranslatedTemplate {
 //     `}
 // `;
 
-// const UploadButtons = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// 	grid-gap: 5px;
-// 	margin: 20px 0px;
-// `;
+const UploadButtons = styled.div`
+	display: flex;
+	flex-direction: column;
+	grid-gap: 5px;
+	margin: 20px 0px;
+`;
 
 const Area = styled.div<{ selected?: boolean }>`
 	display: flex;
@@ -121,21 +121,21 @@ const Area = styled.div<{ selected?: boolean }>`
     `}
 `;
 
-// const OptionContainer = styled(components.Option)`
-// 	background-color: white !important;
-// 	span {
-// 		color: black;
-// 	}
-// 	&:hover {
-// 		background-color: #ddd !important;
-// 	}
-// `;
+const OptionContainer = styled(components.Option)`
+	background-color: white !important;
+	span {
+		color: black;
+	}
+	&:hover {
+		background-color: #ddd !important;
+	}
+`;
 
-// const SingleValueContainer = styled(components.SingleValue)`
-// 	span {
-// 		color: black;
-// 	}
-// `;
+const SingleValueContainer = styled(components.SingleValue)`
+	span {
+		color: black;
+	}
+`;
 
 // const CopyrightMessage = styled.div`
 // 	display: flex;
@@ -155,7 +155,7 @@ const Area = styled.div<{ selected?: boolean }>`
 // const CopyrightMandatoryMessage = styled.div``;
 
 const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
-	// const { showDialog, closeDialog } = useDialogManager();
+	 const { showDialog, closeDialog } = useDialogManager();
 	// const [forceUpdate, setForceUpdate] = useState(false);
 	// const { setIsLoading, isMobile } = useStore();
 
@@ -190,22 +190,23 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	const customizerRef = useRef<any | null>(null);
 	const [selectedCarouselSlide, setSelectedCarouselSlide] = useState<number>(0);
 
-	 const filteredAreas = product?.areas.filter((area) => isAreaVisible(area.id)) ?? [];
-	 let finalVisibleAreas: ProductArea[] = [];
+	const filteredAreas = product?.areas.filter((area) => isAreaVisible(area.id)) ?? [];
+	let finalVisibleAreas: ProductArea[] = [];
 
-	// const [moveElements, setMoveElements] = useState(false);
+	const [moveElements, setMoveElements] = useState(false);
 
-	// let translatedTemplates = templates.map((template) => {
-	// 	return { id: template.id, name: T._d(template.name), areas: template.areas };
-	// });
-	// let translatedCurrentTemplate = {
-	// 	id: currentTemplate?.id,
-	// 	name: T._d(currentTemplate?.name ?? ''),
-	// 	areas: currentTemplate?.areas
-	// };
-	// let translatedAreas = filteredAreas.map((area) => {
-	// 	return { id: area.id, name: T._d(area.name) };
-	// });
+	let translatedTemplates = templates.map((template) => {		
+		return { id: template.id, name: template.name, areas: template.areas };
+	});
+
+	let translatedCurrentTemplate = {
+		id: currentTemplate?.id,
+		name: (currentTemplate?.name ?? ''),
+		areas: currentTemplate?.areas
+	};
+	let translatedAreas = filteredAreas.map((area) => {
+		return { id: area.id, name: (area.name) };
+	});
 
 	filteredAreas.length > 0 &&
 		filteredAreas.forEach((filteredArea) => {
@@ -233,40 +234,41 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 		finalVisibleAreas && finalVisibleAreas.length > 0 ? finalVisibleAreas[0].id : 0
 	);
 
-	// let currentTemplateArea = currentTemplate!.areas.find((x) => x.id === actualAreaId);
-	// let itemsFiltered = items.filter((item) => item.areaId === actualAreaId);
-	// const allStaticElements = !itemsFiltered.some((item) => {
-	// 	return (
-	// 		!item.constraints ||
-	// 		item.constraints.canMove ||
-	// 		item.constraints.canRotate ||
-	// 		item.constraints.canResize
-	// 	);
-	// });
-	// const showAddTextButton = !currentTemplateArea || currentTemplateArea.canAddText;
-	// const showUploadButton =
-	// 	!currentTemplateArea ||
-	// 	(currentTemplateArea.canAddImage && currentTemplateArea.uploadRestrictions.isUserImageAllowed);
-	// const showGalleryButton =
-	// 	!currentTemplateArea || (currentTemplateArea.canAddImage && !currentTemplateArea.disableSellerImages);
+	let currentTemplateArea = currentTemplate!.areas.find((x) => x.id === actualAreaId);
+	let itemsFiltered = items.filter((item) => item.areaId === actualAreaId);
 
-	// const supportedFileFormats = getSupportedUploadFileFormats(currentTemplate!.id, actualAreaId).join(', ');
+	const allStaticElements = !itemsFiltered.some((item) => {
+		return (
+			!item.constraints ||
+			item.constraints.canMove ||
+			item.constraints.canRotate ||
+			item.constraints.canResize
+		);
+	});
+	const showAddTextButton = !currentTemplateArea || currentTemplateArea.canAddText;
+	const showUploadButton =
+		!currentTemplateArea ||
+		(currentTemplateArea.canAddImage && currentTemplateArea.uploadRestrictions.isUserImageAllowed);
+	const showGalleryButton =
+		!currentTemplateArea || (currentTemplateArea.canAddImage && !currentTemplateArea.disableSellerImages);
 
-	// const [copyrightMandatoryCheckbox, setCopyrightMandatoryCheckbox] = useState(getCopyrightMessageAccepted());
-	// const copyrightMessage = eventMessages && eventMessages.find((message) => message.eventID === 8);
+	const supportedFileFormats = getSupportedUploadFileFormats(currentTemplate!.id, actualAreaId).join(', ');
 
-	// const slidesToShow = window.innerWidth <= 1600 ? 3 : 4;
+	const [copyrightMandatoryCheckbox, setCopyrightMandatoryCheckbox] = useState(getCopyrightMessageAccepted());
+	const copyrightMessage = eventMessages && eventMessages.find((message) => message.eventID === 8);
+
+	const slidesToShow = window.innerWidth <= 1600 ? 3 : 4;
 
 	useEffect(() => {
 		if (templates.length > 0 && !currentTemplate) setTemplate(templates[0].id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [templates]);
 
-	// useEffect(() => {
-	// 	const area = filteredAreas.filter((a) => a.id === actualAreaId);
-	// 	if (area && area.length > 0) setCamera(area[0].cameraLocationID as string);
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [actualAreaId]);
+	useEffect(() => {
+		const area = filteredAreas.filter((a) => a.id === actualAreaId);
+		if (area && area.length > 0) setCamera(area[0].cameraLocationID as string);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [actualAreaId]);
 
 	useEffect(() => {
 		if (finalVisibleAreas.length > 0 && actualAreaId === 0) setActualAreaId(finalVisibleAreas[0].id);
@@ -318,18 +320,18 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	// 	else return common || image;
 	// };
 
-	// const handleAddTextClick = () => {
-	// 	showDialog(
-	// 		'add-text',
-	// 		<AddTextDialog
-	// 			onClose={() => closeDialog('add-text')}
-	// 			onConfirm={(item) => {
-	// 				addItemText(item, actualAreaId);
-	// 				closeDialog('add-text');
-	// 			}}
-	// 		/>
-	// 	);
-	// };
+	const handleAddTextClick = () => {
+		showDialog(
+			'add-text',
+			<AddTextDialog
+				onClose={() => closeDialog('add-text')}
+				onConfirm={(item) => {
+					addItemText(item, actualAreaId);
+					closeDialog('add-text');
+				}}
+			/>
+		);
+	};
 
 	// const handleAddImageFromGalleryClick = async () => {
 	// 	showDialog(
@@ -448,17 +450,17 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	// 	}
 	// };
 
-	// const SelectOption = (props: JSX.IntrinsicAttributes & OptionProps<any, boolean, GroupBase<any>>) => {
-	// 	return <OptionContainer {...props}>{<span>{T._d(props.data.name)}</span>}</OptionContainer>;
-	// };
+	const SelectOption = (props: JSX.IntrinsicAttributes & OptionProps<any, boolean, GroupBase<any>>) => {
+		return <OptionContainer {...props}>{<span>{props.data.name}</span>}</OptionContainer>;
+	};
 
-	// const SelectSingleValue = (props: JSX.IntrinsicAttributes & SingleValueProps<any, boolean, GroupBase<any>>) => {
-	// 	return <SingleValueContainer {...props}>{<span>{T._d(props.data.name)}</span>}</SingleValueContainer>;
-	// };
+	const SelectSingleValue = (props: JSX.IntrinsicAttributes & SingleValueProps<any, boolean, GroupBase<any>>) => {
+		return <SingleValueContainer {...props}>{<span>{props.data.name}</span>}</SingleValueContainer>;
+	};
 
 	return (
 		<>
-		<h1>Personalize</h1>
+		<h3>Personalize</h3>
 			{/* {!moveElements && (
 				<DesignerContainer isMobile={isMobile}>
 					{/* Templates */}
@@ -477,9 +479,27 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 							))}
 						</TemplatesContainer>
 					)}
+						
 
+								}
+								
 					{/* Areas */}
-					{/* {!isMobile && finalVisibleAreas.length > 1 && (
+
+						<TemplatesContainer>
+							{templates.map((template) => (
+								<Template
+									key={template.id}
+									selected={currentTemplate === template}
+									onClick={() => {
+										setTemplate(template.id);
+									}}
+								>
+									{template.name}
+								</Template>
+							))}
+						</TemplatesContainer>
+
+					{/* {!isMobile && finalVisibleAreas.length > 1 && ( */}
 						<CarouselContainer
 							slidesToScroll={1}
 							speed={50}
@@ -519,26 +539,16 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 									selected={actualAreaId === area.id}
 									onClick={() => setActualAreaId(area.id)}
 								>
-									{T._d(area.name)}
-								</Area>
-							))}
-						</CarouselContainer>
-					)} */}
-
-							{finalVisibleAreas.map((area) => (
-								<Area
-									key={area.id}
-									selected={actualAreaId === area.id}
-									onClick={() => setActualAreaId(area.id)}
-								>
 									{(area.name)}
 								</Area>
 							))}
-							
+						</CarouselContainer>
+					{/* )} */}
 
-					{/* {isMobile && translatedTemplates.length > 1 && (
+
+					{/* {isMobile && translatedTemplates.length > 1 && ( */}
 						<SelectContainer>
-							<span>{T._('Templates', 'Composer')}</span>
+							{/* <span>{T._('Templates', 'Composer')}</span> */}
 							<Select
 								styles={{
 									container: (base) => ({
@@ -557,10 +567,10 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 								onChange={(template: any) => setTemplate(template.id)}
 							/>
 						</SelectContainer>
-					)}
-					{isMobile && translatedAreas.length > 1 && (
+					{/* )} */}
+					{/* {isMobile && translatedAreas.length > 1 && ( */}
 						<SelectContainer>
-							<span>{T._('Customizable Areas', 'Composer')}</span>
+							{/* <span>{T._('Customizable Areas', 'Composer')}</span> */}
 							<Select
 								styles={{
 									container: (base) => ({
@@ -579,13 +589,10 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 								onChange={(area: any) => setActualAreaId(area.id)}
 							/>
 						</SelectContainer>
-					)} */}
+					{/* )} */}
 
-					{/* {itemsFiltered.length === 0 && !(showAddTextButton || showUploadButton || showGalleryButton) && (
-						<Center>{T._('No customizable items', 'Composer')}</Center>
-					)}
-
-					{itemsFiltered.map((item) => {
+					{
+					/* {itemsFiltered.map((item) => {
 						if (item.type === 0 && isItemEditable(item, currentTemplateArea))
 							return (
 								<ItemText
@@ -593,99 +600,111 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 									handleItemPropChange={handleItemPropChange}
 									item={item as TextItem}
 								/>
-							);
-						else if (item.type === 1 && isItemEditable(item, currentTemplateArea))
-							return (
-								<ItemImage
-									uploadImgDisabled={
+							)
+							
+						// else if (item.type === 1 && isItemEditable(item, currentTemplateArea))
+						// 	return (
+						// 		<ItemImage
+						// 			uploadImgDisabled={
+						// 				copyrightMessage && copyrightMessage.additionalData.enabled
+						// 					? !copyrightMandatoryCheckbox
+						// 					: false
+						// 			}
+						// 			key={item.guid}
+						// 			handleItemPropChange={handleItemPropChange}
+						// 			item={item as ImageItem}
+						// 			currentTemplateArea={currentTemplateArea!}
+						// 		/>
+						// 	);
+
+						return null;
+					})} */
+					}
+
+					{/* {itemsFiltered.length === 0 && !(showAddTextButton || showUploadButton || showGalleryButton) && (
+						<Center>{T._('No customizable items', 'Composer')}</Center>
+					)} */}
+
+
+					<UploadButtons>
+						{showAddTextButton && (
+							<Button isFullWidth onClick={handleAddTextClick}>
+								<Icon>
+									<Add />
+								</Icon>
+								<span>Add text</span>
+							</Button>
+						)}
+
+						{/* {showGalleryButton && (
+							<Button isFullWidth onClick={handleAddImageFromGalleryClick}>
+								<Icon>
+									<Add />
+								</Icon>
+								<span>{T._('Add clipart', 'Composer')}</span>
+							</Button>
+						)} */}
+
+						{/* {showUploadButton && (
+							<>
+								<Button
+									disabled={
 										copyrightMessage && copyrightMessage.additionalData.enabled
 											? !copyrightMandatoryCheckbox
 											: false
 									}
-									key={item.guid}
-									handleItemPropChange={handleItemPropChange}
-									item={item as ImageItem}
-									currentTemplateArea={currentTemplateArea!}
-								/>
-							);
-
-						return null;
-					})}
-
-					{(showAddTextButton || showUploadButton || showGalleryButton) && (
-						<UploadButtons>
-							{showAddTextButton && (
-								<Button isFullWidth onClick={handleAddTextClick}>
+									isFullWidth
+									onClick={() => handleUploadImageClick(addItemImage, createImage)}
+								>
 									<Icon>
 										<Add />
 									</Icon>
-									<span>{T._('Add text', 'Composer')}</span>
-								</Button>
-							)}
-
-							{showGalleryButton && (
-								<Button isFullWidth onClick={handleAddImageFromGalleryClick}>
-									<Icon>
-										<Add />
-									</Icon>
-									<span>{T._('Add clipart', 'Composer')}</span>
-								</Button>
-							)}
-
-							{showUploadButton && (
-								<>
-									<Button
-										disabled={
-											copyrightMessage && copyrightMessage.additionalData.enabled
-												? !copyrightMandatoryCheckbox
-												: false
-										}
-										isFullWidth
-										onClick={() => handleUploadImageClick(addItemImage, createImage)}
-									>
-										<Icon>
-											<Add />
-										</Icon>
+									<span>
 										<span>
-											<span>
-												{itemsFiltered.some(
-													(item) =>
-														item.type === 1 && isItemEditable(item, currentTemplateArea)
-												)
-													? T._('Upload another image', 'Composer')
-													: T._('Upload Images', 'Composer')}{' '}
-											</span>
+											{itemsFiltered.some(
+												(item) =>
+													item.type === 1 && isItemEditable(item, currentTemplateArea)
+											)
+												? T._('Upload another image', 'Composer')
+												: T._('Upload Images', 'Composer')}{' '}
 										</span>
-									</Button>
-								</>
-							)}
-							<SupportedFormatsList>
-								{T._('Supported file formats:', 'Composer') + ' ' + supportedFileFormats}
-							</SupportedFormatsList>
+									</span>
+								</Button>
+							</>
+						)} */}
+						{/* <SupportedFormatsList>
+							{T._('Supported file formats:', 'Composer') + ' ' + supportedFileFormats}
+						</SupportedFormatsList> */}
 
-							{copyrightMessage && copyrightMessage.visible && (
-								<CopyrightMessage>
-									<div dangerouslySetInnerHTML={{ __html: copyrightMessage.description }} />
-									{copyrightMessage && copyrightMessage.additionalData.enabled && (
-										<CopyrightMandatoryMessageContainer>
-											<CopyrightCheckbox
-												type='checkbox'
-												defaultChecked={copyrightMandatoryCheckbox}
-												onClick={() => {
-													setCopyrightMessageAccepted(!copyrightMandatoryCheckbox);
-													setCopyrightMandatoryCheckbox(!copyrightMandatoryCheckbox);
-												}}
-											/>
-											<CopyrightMandatoryMessage
-												dangerouslySetInnerHTML={{
-													__html: copyrightMessage.additionalData.message
-												}}
-											/>
-										</CopyrightMandatoryMessageContainer>
-									)}
-								</CopyrightMessage>
-							)}
-						</UploadButtons>
+						{/* {copyrightMessage && copyrightMessage.visible && (
+							<CopyrightMessage>
+								<div dangerouslySetInnerHTML={{ __html: copyrightMessage.description }} />
+								{copyrightMessage && copyrightMessage.additionalData.enabled && (
+									<CopyrightMandatoryMessageContainer>
+										<CopyrightCheckbox
+											type='checkbox'
+											defaultChecked={copyrightMandatoryCheckbox}
+											onClick={() => {
+												setCopyrightMessageAccepted(!copyrightMandatoryCheckbox);
+												setCopyrightMandatoryCheckbox(!copyrightMandatoryCheckbox);
+											}}
+										/>
+										<CopyrightMandatoryMessage
+											dangerouslySetInnerHTML={{
+												__html: copyrightMessage.additionalData.message
+											}}
+										/>
+									</CopyrightMandatoryMessageContainer>
+								)}
+							</CopyrightMessage>
+						)} */}
+					</UploadButtons>
+
+
+					{/* 
+			
+					{(showAddTextButton || showUploadButton || showGalleryButton) && (
+						
 					)}
 					{itemsFiltered.length > 0 && !allStaticElements && (
 						<MoveElementButton isFullWidth outline onClick={() => setMoveElements(true)}>
