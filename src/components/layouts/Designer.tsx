@@ -159,7 +159,8 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	// const [forceUpdate, setForceUpdate] = useState(false);
 	// const { setIsLoading, isMobile } = useStore();
 
-
+    console.log( showDialog, closeDialog );
+	
 
 	const {
 		currentTemplate,
@@ -321,6 +322,8 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	// };
 
 	const handleAddTextClick = () => {
+		console.log('add button press');
+		
 		showDialog(
 			'add-text',
 			<AddTextDialog
@@ -567,10 +570,8 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 								onChange={(template: any) => setTemplate(template.id)}
 							/>
 						</SelectContainer>
-					{/* )} */}
-					{/* {isMobile && translatedAreas.length > 1 && ( */}
-						<SelectContainer>
-							{/* <span>{T._('Customizable Areas', 'Composer')}</span> */}
+					
+						{/* <SelectContainer>
 							<Select
 								styles={{
 									container: (base) => ({
@@ -589,7 +590,7 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 								onChange={(area: any) => setActualAreaId(area.id)}
 							/>
 						</SelectContainer>
-					{/* )} */}
+					 */}
 
 					{
 					/* {itemsFiltered.map((item) => {

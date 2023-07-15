@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react"
-// import { Dialog } from "./Dialogs"
+import { Dialog } from "./Dialogs"
 import ItemText from '../widgets/ItemText';
 import { useZakeke } from 'zakeke-configurator-react';
 // import { T } from '../../Helpers';
@@ -67,20 +67,18 @@ const AddTextDialog: FC<{ onClose: () => void, onConfirm: (item: EditTextItem) =
         setItem(newItem);
     }
 
-     return <>
-     {/* // <Dialog */}
-    {/* //     title={"Add text"}
-    //     buttons={[
-    //         { label: "Confirm", onClick: () => onConfirm(item) },
-    //     ]}
-    // > */}
+     return <Dialog 
+         title={"Add text"}
+         buttons={[
+             { label: "Confirm", onClick: () => onConfirm(item) },
+         ]}
+     >
         <ItemText
             item={item}
             handleItemPropChange={handleItemPropChange}
             hideRemoveButton={true} />
 
-    {/* // </Dialog> */}
-    </>
+    </Dialog>
 }
 
 export default AddTextDialog;

@@ -10,25 +10,27 @@ import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
 import MenuTriggerButton from "./MenuTriggerButton";
 import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
 import Designer from "./layouts/Designer";
-import {GroupItem, GroupIcon} from "./layouts/LayoutStyled"
+import { GroupItem, GroupIcon } from "./layouts/LayoutStyled";
 
 // const Container = styled.div`
 // overflow: auto;
-// width: 100%;  
+// width: 100%;
 // ${!selectedTrayPreviewOpenButton
 //     ? css`
 //         height: 230px;
 //       `
 //     : css`
 //         height: 70px;
-//       `}   
+//       `}
 // `;
 
 interface TrayPreviewOpenButton3DProps {
-  trayPreviewOpenButton3DFunc: (data:any) => void;
+  trayPreviewOpenButton3DFunc: (data: any) => void;
 }
 
-const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewOpenButton3DFunc}) => {
+const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
+  trayPreviewOpenButton3DFunc,
+}) => {
   const {
     isSceneLoading,
     loadComposition,
@@ -49,15 +51,13 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     setItemText,
     defaultColor,
     fonts,
-    addItemText
+    addItemText,
   } = useZakeke();
-
 
   // Keep saved the ID and not the refereces, they will change on each update
   const [selectedGroupId, selectGroup] = useState<number | null>(null);
   const [selectedStepId, selectStep] = useState<number | null>(null);
   const [selectedAttributeId, selectAttribute] = useState<number | null>(null);
-
 
   const [selectedColorName, selectColorName] = useState<any | null>(null);
 
@@ -73,8 +73,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   >(null);
 
   // Update tray preview open button
-  const [selectedTrayPreviewOpenButton, selectTrayPreviewOpenButton] = useState<boolean>(false);
-
+  const [selectedTrayPreviewOpenButton, selectTrayPreviewOpenButton] =
+    useState<boolean>(false);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -85,8 +85,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     ? selectedGroup.steps.find((step) => step.id === selectedStepId)
     : null;
 
-
-  const [selectedPersonalize, setSelectedPersonalize] = useState<any | null>(false); 
+  const [selectedPersonalize, setSelectedPersonalize] = useState<any | null>(
+    false
+  );
 
   // Attributes can be in both groups and steps, so show the attributes of step or in a group based on selection
   const attributes = useMemo(
@@ -97,12 +98,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     (attribute) => attribute.id === selectedAttributeId
   );
 
-  
-
-  let indexToRemove = groups.findIndex(obj => obj.id === -1); 
+  let indexToRemove = groups.findIndex((obj) => obj.id === -1);
 
   if (indexToRemove !== -1) {
-    groups.splice(indexToRemove, 1)
+    groups.splice(indexToRemove, 1);
   }
 
   useEffect(() => {
@@ -122,8 +121,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-       console.log('items',items, 'groups', groups, 'product', product);
-      
+      console.log("items", items, "groups", groups, "product", product);
+
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
@@ -134,33 +133,31 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
     if (groups.length > 0) {
       var groupRec: string[] = [];
       groups.map((group) => {
-          groupRec.push(group.name)
-        });
+        groupRec.push(group.name);
+      });
       selectGroupList(groupRec);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGroup, groups]);
 
   // useEffect(() => {
-	// 	const textItems = items.filter((item) => item.type === 0) // as TextItem[];
-	// 	//const newItems = textItems.filter((item) => !prevItems.some((prevItem) => prevItem.guid === item.guid));
-	// 	// newItems.forEach((item) => {
-	// 	// 	if (item.isTemplateElement) setItemText(item.guid, T._d(item.text));
-	// 	// });
-	// 	// setPrevItems(textItems);
-  
+  // 	const textItems = items.filter((item) => item.type === 0) // as TextItem[];
+  // 	//const newItems = textItems.filter((item) => !prevItems.some((prevItem) => prevItem.guid === item.guid));
+  // 	// newItems.forEach((item) => {
+  // 	// 	if (item.isTemplateElement) setItemText(item.guid, T._d(item.text));
+  // 	// });
+  // 	// setPrevItems(textItems);
+
   //   textItems.map((item) => {
   //     setItemText(item.guid,'first tezzt')
-  //   })  
+  //   })
 
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [items]);
-
+  // 	// eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [items]);
 
   // Select attribute first time
   useEffect(() => {
-    if (!selectedAttribute && attributes.length > 0)  
-    
+    if (!selectedAttribute && attributes.length > 0)
       selectAttribute(attributes[0].id);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -171,24 +168,22 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
       const camera = selectedGroup.cameraLocationId;
       if (camera) setCamera(camera);
 
-  //     console.log(items[0]?.guid,groups);
-      
-  //     // push text into zakeke component 
-  //   const item  = {
-  //     // guid: items[0]?.guid,
-  //     text: 'heheheheheheh',
-  //     // text: T._("Text", "Composer"),
-  //     // fillColor: defaultColor,
-  //     fontFamily: fonts[0].name,
-  //     // fontSize: 48,
-  //     // fontWeight: 'normal normal',
-  //     // isTextOnPath: false,
-  //     // constraints: null,
-  // }
+      //     console.log(items[0]?.guid,groups);
 
-  //    addItemText(item, 345656)
+      //     // push text into zakeke component
+      //   const item  = {
+      //     // guid: items[0]?.guid,
+      //     text: 'heheheheheheh',
+      //     // text: T._("Text", "Composer"),
+      //     // fillColor: defaultColor,
+      //     fontFamily: fonts[0].name,
+      //     // fontSize: 48,
+      //     // fontWeight: 'normal normal',
+      //     // isTextOnPath: false,
+      //     // constraints: null,
+      // }
 
-
+      //    addItemText(item, 345656)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -212,13 +207,13 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // -- -- -- options
 
   const handleLeftClick = () => {
-    selectColorName('');
+    selectColorName("");
     setCurrentIndex((currentIndex - 1 + groups.length) % groups.length);
     selectGroup(groups[(currentIndex - 1 + groups.length) % groups.length].id);
   };
 
   const handleRightClick = () => {
-    selectColorName('');
+    selectColorName("");
     setCurrentIndex((currentIndex + 1) % groups.length);
     selectGroup(groups[(currentIndex + 1) % groups.length].id);
   };
@@ -233,7 +228,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
 
   const trayPreviewOpenButton = () => {
     selectTrayPreviewOpenButton(!selectedTrayPreviewOpenButton);
-    
+
     //trayPreviewOpenButton3DFunc(selectedTrayPreviewOpenButton);
     trayPreviewOpenButton3DFunc(selectedTrayPreviewOpenButton);
   };
@@ -266,7 +261,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // Styling for height: 230px;
   // const Container = styled.div`
   //   overflow: auto;
-  //   width: 100%;    
+  //   width: 100%;
   //   ${!selectedTrayPreviewOpenButton
   //   ? css`
   //       height: 230px;
@@ -277,11 +272,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
   // `;
 
   const containerStyles = {
-    overflow: 'auto',
-    width: '100%',
-    height: !selectedTrayPreviewOpenButton ? '230px' : '70px',
+    overflow: "auto",
+    width: "100%",
+    height: !selectedTrayPreviewOpenButton ? "230px" : "70px",
   };
-
 
   return (
     <>
@@ -298,28 +292,29 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
         )}
       </div>
 
-      {!isTrayOpen ? <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>
-        <div
-          className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
-          onClick={zoomIn}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-            <path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z M 18 9 L 18 12 L 15 12 L 15 14 L 18 14 L 18 17 L 20 17 L 20 14 L 23 14 L 23 12 L 20 12 L 20 9 Z"></path>
-          </svg>
-        </div>
+      {!isTrayOpen ? (
+        <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>
+          <div
+            className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
+            onClick={zoomIn}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z M 18 9 L 18 12 L 15 12 L 15 14 L 18 14 L 18 17 L 20 17 L 20 14 L 23 14 L 23 12 L 20 12 L 20 9 Z"></path>
+            </svg>
+          </div>
 
-        <div
-          className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomOutIcon-sc-1nws045-20 gIdUDj gwevdV"
-          onClick={zoomOut}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-            <path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z M 15 12 L 15 14 L 23 14 L 23 12 Z"></path>
-          </svg>
+          <div
+            className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomOutIcon-sc-1nws045-20 gIdUDj gwevdV"
+            onClick={zoomOut}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z M 15 12 L 15 14 L 23 14 L 23 12 Z"></path>
+            </svg>
+          </div>
         </div>
-      </div>
-      : 
-      ""
-      }    
+      ) : (
+        ""
+      )}
 
       {/* <button style={{background: 'pink', width: '100px', height: '100px'}}
            onClick={() => {console.log(getPDF())
@@ -327,22 +322,34 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
           
         </button> */}
       {/* <GroupItem   */}
+
       {/* Personalize A */}
-
-      <div className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-           style={{position: 'absolute', top: "17%", left: "62%" }}
-           onClick={() => setSelectedPersonalize(!selectedPersonalize)} 
+      <div
+        className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
+        style={{ position: "absolute", top: "17%", left: "62%" }}
+        
       >
-        
-        {selectedPersonalize ? <Designer /> : ""}
-
-        <div className="personalize" style={{display: 'flex',  flexDirection: 'column', padding: '14px', borderRadius: '48px', 
-                                             backgroundColor: '#FEFE8A'}}>
-         <GroupIcon src ="font-solid.svg" /> 
-         <span>Personaliza</span>
+        <div
+          className="personalize"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "14px",
+            borderRadius: "48px",
+            backgroundColor: "#FEFE8A",
+          }}
+          onClick={() => setSelectedPersonalize(!selectedPersonalize)}
+        >
+          <GroupIcon src="font-solid.svg" />
+          <span>Personaliza</span>
+         
         </div>
-        
+
+        {selectedPersonalize ? <Designer /> : ""}
       </div>
+
+      
+
 
       <div className="animate-wrapper-0">
         <div style={containerStyles}>
@@ -501,11 +508,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({trayPreviewO
               )}
 
             {!selectedTrayPreviewOpenButton && (
-              <div style={{
-              }}>
+              <div style={{}}>
                 <List>
                   {attributes &&
-                    !isTrayOpen &&                
+                    !isTrayOpen &&
                     attributes.map((attribute) => {
                       return (
                         <ListItem

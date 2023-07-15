@@ -11,9 +11,6 @@ const dialogsPortal = document.getElementById('dialogs-portal')!;
 export const dialogContext = React.createContext({ dialogId: '' });
 
 
-
-
-
 export function useDialogManager() {
     
     const [dialogs, setDialogs] = useState<{ id: string; dialog: React.ReactElement }[]>([]);
@@ -27,17 +24,6 @@ export function useDialogManager() {
           prevDialogs.filter((dialog) => dialog.id !== id)
         );
       };
-
-      
-    // const addDialog = (id: string, dialog: React.ReactElement) => {
-    //     setDialogs((prevDialogs) => [...prevDialogs, { id, dialog }]);
-    //   };
-    
-    //   const removeDialog = (id: string) => {
-    //     setDialogs((prevDialogs) =>
-    //       prevDialogs.filter((dialog) => dialog.id !== id)
-    //     );
-    //   };
 
 	// const { addDialog, removeDialog } = useStore();
 	const { dialogId } = useContext(dialogContext);
@@ -194,6 +180,8 @@ interface DialogProps {
 
 
 export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
+	console.log('coming in');
+	
 	const Window = props.windowDecorator || DialogWindow;
 	// const { removeDialog, isMobile } = useStore();
 
