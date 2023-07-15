@@ -1,3 +1,6 @@
+import { EditTextItem } from '../widgets/ItemText';
+import { EditImageItem } from '../widgets/ItemImage';
+import { DialogWindow } from '../dialog/Dialogs';
 import styled from 'styled-components/macro';
 
 export const GroupItem = styled.div`
@@ -90,4 +93,10 @@ export const Center = styled.div`
 	text-align: center;
 	font-size: 18px;
 	padding: 30px;
+`;
+
+export const CustomQuotationConfirmMessage = styled(DialogWindow)`
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;

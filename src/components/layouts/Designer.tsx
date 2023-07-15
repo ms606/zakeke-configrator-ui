@@ -322,7 +322,7 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 	// };
 
 	const handleAddTextClick = () => {
-		console.log('add button press');
+		console.log('opening dialog', showDialog,actualAreaId);
 		
 		showDialog(
 			'add-text',

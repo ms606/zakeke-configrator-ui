@@ -11,7 +11,9 @@ import MenuTriggerButton from "./MenuTriggerButton";
 import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
 import Designer from "./layouts/Designer";
 import { GroupItem, GroupIcon } from "./layouts/LayoutStyled";
+import { createPortal } from 'react-dom';
 
+const dialogsPortal = document.getElementById('dialogs-portal')!;
 // const Container = styled.div`
 // overflow: auto;
 // width: 100%;
@@ -103,6 +105,11 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   if (indexToRemove !== -1) {
     groups.splice(indexToRemove, 1);
   }
+  
+  const dialogsPortal = document.getElementById('dialogs-portal');
+
+       
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -120,6 +127,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
   // Open the first group and the first step when loaded
   useEffect(() => {
+
+ 
+
     if (!selectedGroup && groups.length > 0) {
       console.log("items", items, "groups", groups, "product", product);
 
@@ -271,6 +281,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   //     `}
   // `;
 
+
+
+
   const containerStyles = {
     overflow: "auto",
     width: "100%",
@@ -278,7 +291,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   };
 
   return (
-    <>
+    <>    
       <div className="top-nav">
         {width > 568 ? (
           <div className="body-3" id="product-info">
@@ -291,9 +304,19 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
           </div>
         )}
       </div>
+{/* 
+      {
+      /////// testing 
+        createPortal(<div className="modal"  
+        style={{ zIndex: '25', position: 'absolute',
+          top: '12%' }}>
+        <h1>I'm a modal dialog</h1>
+        </div>, document.body)
+        //////// testing 
+      } */}
 
-      {!isTrayOpen ? (
-        <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>
+      {!isTrayOpen ? (        
+        <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>          
           <div
             className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
             onClick={zoomIn}

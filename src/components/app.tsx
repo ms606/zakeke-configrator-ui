@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState} from 'react';
 import styled from 'styled-components';
 import { ZakekeEnvironment, ZakekeViewer, ZakekeProvider } from 'zakeke-configurator-react';
 import Selector from './selector';
+import { DialogsRenderer } from './dialog/Dialogs';
 
 // const Layout = styled.div`
 //     display: grid;
@@ -46,6 +47,7 @@ const App: FunctionComponent<{}> = () => {
             </div>
             <Selector trayPreviewOpenButton3DFunc={trayPreviewOpenButton3DFunc}/>   
         </Layout>
+        <DialogsRenderer />
       </div>         
      </div>
      </ZakekeProvider>;
