@@ -10,27 +10,38 @@ const dialogsPortal = document.getElementById('dialogs-portal')!;
 
 export const dialogContext = React.createContext({ dialogId: '' });
 
-
 export function useDialogManager() {
-    
-    const [dialogs, setDialogs] = useState<{ id: string; dialog: React.ReactElement }[]>([]);
+    console.log('Inside Dialog Manger');
 
-    const addDialog = (id: string, dialog: React.ReactElement) => {
+	const [dialogs, setDialogs] = useState<{ id: string; dialog: React.ReactElement }[]>([]);
+
+    const addDialog = (id: string, dialog: React.ReactElement) => {		 
+		//console.log('setting dialogue', id, 'id', dialog, 'dialog', createPortal, 'gsddg', dialogsPortal);		
+		//window.localStorage.setItem('key', JSON.stringify({ id, dialog }));
+
+			/////// testing 
+		{createPortal(
+		<div className="modal"  
+			style={{ zIndex: '25', position: 'absolute', top: '12%' }}>
+			<h1>I'm a modal inside a create portal</h1>
+		</div>, document.body!)}
+	//////// testing 
+		
         setDialogs((prevDialogs) => [...prevDialogs, { id, dialog }]);
-      };
+    };
     
-      const removeDialog = (id: string) => {
+    const removeDialog = (id: string) => {
         setDialogs((prevDialogs) =>
           prevDialogs.filter((dialog) => dialog.id !== id)
-        );
-      };
+       );
+    };
 
 	// const { addDialog, removeDialog } = useStore();
 	const { dialogId } = useContext(dialogContext);
 
 	const showDialog = (key: string, dialog: ReactElement) => addDialog(key, dialog);
 	const closeDialog = (key: string) => removeDialog(key);
-
+			
 	return {
 		currentDialogId: dialogId,
 		showDialog,
@@ -246,17 +257,61 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
 
 export const DialogsRenderer: FunctionComponent<{}> = (props) => {
 	//const { dialogs } = useStore();
-    const [dialogs, setDialogs] = useState<{ id: string; dialog: React.ReactElement }[]>([]);
+	//const [dialogs, setDialogs] = useState<{ id: string; dialog: React.ReactElement }[]>([]);
+	let dialog1:string | null = window.localStorage.getItem("key");
+	let dialogs: { id: string; dialog: React.ReactElement }[] = [];
+	if (dialog1 !== null) {
+		dialogs = JSON.parse(dialog1)
+	  } 
+
+	//   type DialogObject = {
+	// 	id: string;
+	// 	dialog: {
+	// 	  key: null;
+	// 	  ref: null;
+	// 	  props: {};
+	// 	  _owner: null;
+	// 	  _store: {};
+	// 	};
+	//   };
+
+
+
+	// let myObjectArray: DialogObject[] =[];
+	//    myObjectArray.push({
+	// 					"id": "add-text",
+	// 					"dialog": {
+	// 						"key": null,
+	// 						"ref": null,
+	// 						"props": {},
+	// 						"_owner": null,
+	// 						"_store": {}
+	// 					}
+	// 				})
+	//   addToDialogs(dialogs)
+
+	//   console.log(dialogs);
+
 	return (
 		<>
-			{createPortal(
-				dialogs.map((x) => (
+		  { /////// testing 
+			//  createPortal(<div className="modal"  
+			//  style={{ zIndex: '25', position: 'absolute',
+			//  top: '12%' }}>
+			//  <h1>I'm a modal dialog 22222</h1>
+			//  </div>, document.body)
+			//////// testing 
+			}
+
+
+		{/* {dialogs !== null && createPortal (
+				myObjectArray.map((x:any) => (
 					<dialogContext.Provider key={x.id} value={{ dialogId: x.id }}>
 						{x.dialog}
 					</dialogContext.Provider>
 				)),
 				dialogsPortal,
-			)}
+			)}  */}
 		</>
 	);
 };
