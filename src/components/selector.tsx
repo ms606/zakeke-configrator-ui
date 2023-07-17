@@ -350,7 +350,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       <div
         className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
         style={{ position: "absolute", top: "17%", left: "62%" }}
-        
       >
         <div
           className="personalize"
@@ -359,13 +358,12 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
             flexDirection: "column",
             padding: "14px",
             borderRadius: "48px",
-            backgroundColor: "#FEFE8A",
+            backgroundColor: "#94CDD3",
           }}
           onClick={() => setSelectedPersonalize(!selectedPersonalize)}
         >
           <GroupIcon src="font-solid.svg" />
-          <span>Personaliza</span>
-         
+          <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Personaliza</span>
         </div>
 
         {selectedPersonalize ? <Designer /> : ""}
@@ -468,29 +466,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
             </div>
 
             <MenuTriggerButton width={width} toggleTray={toggleTray} />
-            {/* {width > 568 ? (
-            <button className="tray-trigger-open-button" onClick={toggleTray}>
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                viewBox="0 0 24 24"
-                role="img"
-                width="24px"
-                height="24px"
-                fill="none"
-                id="tray-trigger-button-icon"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  d="M21 5.25H3M21 12H3m18 6.75H3"
-                ></path>
-              </svg>
-              <span style={{ marginLeft: "3px" }}>Menu</span>
-            </button>
-          ) : (
-            ""
-          )} */}
+            
           </div>
 
           <br />

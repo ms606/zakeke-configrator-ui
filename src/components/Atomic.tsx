@@ -25,7 +25,7 @@ export const Icon = styled.div<{ hoverable?: boolean }>`
 	svg {
 		fill: currentColor;
 		width: 100%;
-		height: 100%;
+		height: 100%;we
 	}
 `;
 
@@ -40,7 +40,13 @@ export const TextArea = styled.textarea`
 	font-family: 'Montserrat', sans-serif;
 	outline: none;
 	resize: none;
+	placeholder: 'Input your text here';
 
+	&::placeholder {
+		color: #999999;
+		font-style: italic;
+		placeholder: 'Input your text here';
+	  }
 	&:hover {
 		border: 1px black solid;
 	}

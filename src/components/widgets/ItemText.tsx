@@ -10,9 +10,6 @@ import { debounce } from 'lodash';
 import type { PropChangeHandler } from "../layouts/Designer";
 
 import { ReactComponent as CloseIcon } from '../../assets/icons/times-solid.svg'
-// import { ReactComponent as BoldIcon } from '../../assets/icons/bold-solid.svg'
-// import { ReactComponent as ItalicSolid } from '../../assets/icons/italic-solid.svg'
-// import { ReactComponent as CurveIcon } from '../../assets/icons/bezier-curve-solid.svg'
 import { FormControl } from "./FormControl";
 import ColorPicker from "./colorpicker";
 
@@ -178,6 +175,7 @@ const ItemText: FC<{ item: EditTextItem, handleItemPropChange: PropChangeHandler
                 rightComponent={!hideRemoveButton && item.constraints!.canDelete && <Icon onClick={() => removeItem(item.guid)}><CloseIcon /></Icon>}>
 
                 <TextArea
+                    placeholder="Input your text here" 
                     value={isUpperCase ? item.text.toUpperCase() : item.text}
                     onChange={handleChange}
                     maxLength={!item.constraints ? null : (item.constraints.maxNrChars || null)}
@@ -204,31 +202,8 @@ const ItemText: FC<{ item: EditTextItem, handleItemPropChange: PropChangeHandler
                         onChange={(font: any) => handleItemPropChange(item, 'font-family', font.name)}
                     />
                 </FormControl>}
-                <TextButtonsContainer>
-                    {(!constraints || constraints.canChangeFontWeight) && <FormControl label="style">
-                        <Columns columns={2}>
-                            <Button
-                                outline
-                                selected={isBold}
-                                onClick={() => handleItemPropChange(item, 'font-bold', !isBold)}>
-                                {/* <Icon><BoldIcon /></Icon> */}
-                            </Button>
-                            <Button
-                                outline
-                                selected={isItalic}
-                                onClick={() => handleItemPropChange(item, 'font-italic', !isItalic)}>
-                                {/* <Icon><ItalicSolid /></Icon> */}
-                            </Button>
-                        </Columns>
-                    </FormControl>}
-                    {(!constraints || constraints.canChangeTextPathMode) && <FormControl label="Curved">
-                        <Button
-                            outline
-                            selected={hasCurvedText}
-                            onClick={() => handleItemPropChange(item, 'text-path', !hasCurvedText)}>
-                            {/* <Icon><CurveIcon /></Icon> */}
-                        </Button>
-                    </FormControl>}
+                <TextButtonsContainer>                    
+                    
                 </TextButtonsContainer>
             </TextToolsContainer>
 

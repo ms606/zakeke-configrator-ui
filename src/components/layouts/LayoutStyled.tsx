@@ -2,6 +2,7 @@ import { EditTextItem } from '../widgets/ItemText';
 import { EditImageItem } from '../widgets/ItemImage';
 import { DialogWindow } from '../dialog/Dialogs';
 import styled from 'styled-components/macro';
+import { Icon } from '../Atomic';
 
 export const GroupItem = styled.div`
 display: flex;
@@ -99,4 +100,57 @@ export const CustomQuotationConfirmMessage = styled(DialogWindow)`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+`;
+
+
+export const ZoomInIcon = styled(Icon)`
+	position: absolute;
+	left: 20px;
+	top: calc(30%);
+	width: 32px;
+	height: 32px;
+	z-index: 3;
+`;
+
+export const ZoomOutIcon = styled(Icon)`
+	position: absolute;
+	left: 20px;
+	top: calc(30% + 50px);
+	width: 32px;
+	height: 32px;
+	z-index: 3;
+`;
+
+
+export const SupportedFormatsList = styled.span`
+	font-size: 16px;
+	font-style: italic;
+	text-align: center;
+	color: #313c46;
+	padding-top: 5px;
+`;
+
+export const ZakekeDesignerContainer = styled.div<{ isMobile?: boolean }>`
+	height: 100%;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+	${(props) =>
+		props.isMobile &&
+		`
+       position:fixed;
+        inset:0;
+        z-index:13;
+    `}
+`;
+
+export const IconsAndDesignerContainer = styled.div`
+	position: absolute;
+	left: 0;
+	top: calc(50% - 30px);
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
 `;

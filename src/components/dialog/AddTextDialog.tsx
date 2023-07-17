@@ -16,6 +16,7 @@ interface EditTextItem {
     fontSize: number,
     isTextOnPath: boolean;
     constraints: { [key: string]: any } | null,
+    placeholder: string
 }
 
 const AddTextDialog: FC<{ onClose: () => void, onConfirm: (item: EditTextItem) => void }> = ({ onClose, onConfirm }) => {
@@ -26,13 +27,14 @@ const AddTextDialog: FC<{ onClose: () => void, onConfirm: (item: EditTextItem) =
     const [item, setItem] = useState<EditTextItem>({
         guid: '',
         name: '',
-        text: "Text",
+        text: "",
         fillColor: defaultColor,
         fontFamily: fonts[0].name,
         fontSize: 48,
         fontWeight: 'normal normal',
         isTextOnPath: false,
-        constraints: null,
+        constraints: null,  
+        placeholder: 'Input your text here'
     })
 
     const handleItemPropChange: PropChangeHandler = (item, prop, value) => {
@@ -64,6 +66,8 @@ const AddTextDialog: FC<{ onClose: () => void, onConfirm: (item: EditTextItem) =
             case 'text-path':
                 newItem.isTextOnPath = value as boolean;
                 break;
+            case 'placeholder':    
+                newItem.placeholder = value as string;
         }
 
         setItem(newItem);
