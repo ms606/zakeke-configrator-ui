@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react"
 import styled from "styled-components";
 import { Dialog, DialogWindow } from "./Dialogs"
 import { useZakeke } from 'zakeke-configurator-react';
+import { TailSpin } from 'react-loader-spinner';
 
 const CustomWindow = styled(DialogWindow)`
     flex-basis: 350px;
@@ -47,7 +48,7 @@ const ImageItem = styled.li`
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border: 1px #f4f4f4 solid;
+    border: 1px black solid;
     padding: 10px;
     cursor: pointer;
 
@@ -72,6 +73,13 @@ const ImageItem = styled.li`
 const LoaderContainer = styled.div`
     display: flex;
     justify-content: center;
+`;
+
+const CenteredLoader = styled(TailSpin)`
+    margin: auto;
+    display: block;
+    width: 48px;
+    height: 48px;
 `;
 
 const BackTitle = styled.div`
@@ -160,6 +168,13 @@ const ImagesGalleryDialog: FC<{ onClose: () => void, onImageSelected: (image: an
     return <Dialog
         windowDecorator={CustomWindow}
         title={"Image gallery"}>
+        {isLoading && <LoaderContainer>
+            <CenteredLoader
+                color="#000000"
+                height={48}
+                width={48}
+            />
+        </LoaderContainer>}
 
         {!isLoading && <>
             {!selectedMacroCategory && <CategoriesList>{macroCategories.map(macroCategory => {

@@ -75,7 +75,12 @@ const DesignerContainer = styled.div<{ isMobile?: boolean }>`
 	user-select: none;
 	width: 100%;
 	padding: 30px 30px 70px 30px;
-  background-color: #fff;
+  background-color: rgb(235, 237, 242);
+  height: 520px;
+  overflow-y: auto;
+  font-family: Inter, sans-serif;
+  border-radius: 23px;
+
 	${(props) =>
 		props.isMobile &&
 		`
@@ -107,7 +112,18 @@ const Area = styled.div<{ selected?: boolean }>`
 	border-bottom: 5px solid transparent;
 	cursor: pointer;
 	padding: 0px 5px;
-    text-align: center;
+  text-align: center;
+
+  margin: 0;
+  margin-bottom: 18px;
+  color: black;
+  font-size: 130%;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  word-spacing: 1px;
+  text-shadow: 0px 2px 13px rgba(0, 0, 10, .8);
+  
 
 	&:hover {
 		border-bottom: 5px solid #c4c4c4;
@@ -121,6 +137,8 @@ const Area = styled.div<{ selected?: boolean }>`
 `;
 
 const OptionContainer = styled(components.Option)`
+  padding: 31px;
+  border: 1px solid black;
 	background-color: white !important;
 	span {
 		color: black;
@@ -131,6 +149,7 @@ const OptionContainer = styled(components.Option)`
 `;
 
 const SingleValueContainer = styled(components.SingleValue)`
+  border: 1px solid black;
 	span {
 		color: black;
 	}

@@ -16,11 +16,12 @@ interface EditTextItem {
     fontSize: number,
     isTextOnPath: boolean;
     constraints: { [key: string]: any } | null,
-    placeholder: string
+    placeholder: string,
+    backgroundColor: string
 }
 
 const AddTextDialog: FC<{ onClose: () => void, onConfirm: (item: EditTextItem) => void }> = ({ onClose, onConfirm }) => {
-    console.log('inside add text to dialog');
+    // console.log('inside add text to dialog');
     
     const { fonts, defaultColor } = useZakeke();
 
@@ -34,7 +35,8 @@ const AddTextDialog: FC<{ onClose: () => void, onConfirm: (item: EditTextItem) =
         fontWeight: 'normal normal',
         isTextOnPath: false,
         constraints: null,  
-        placeholder: 'Input your text here'
+        placeholder: 'Input your text here',
+        backgroundColor: 'rgb(235, 237, 242)'
     })
 
     const handleItemPropChange: PropChangeHandler = (item, prop, value) => {

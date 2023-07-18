@@ -349,29 +349,19 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       {/* Personalize A */}
       <div
         className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-        style={{ position: "absolute", top: "17%", left: "62%" }}
+        style={{ position: "absolute", top: "4%", left: "70%" , cursor: "pointer"}}
       >
         <div
-          className="personalize"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "14px",
-            borderRadius: "48px",
-            backgroundColor: "#94CDD3",
-          }}
+          className="button-53"
           onClick={() => setSelectedPersonalize(!selectedPersonalize)}
         >
           <GroupIcon src="font-solid.svg" />
           <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Personaliza</span>
         </div>
-
         {selectedPersonalize ? <Designer /> : ""}
       </div>
 
-      
-
-
+    
       <div className="animate-wrapper-0">
         <div style={containerStyles}>
           <div className="tray-header">

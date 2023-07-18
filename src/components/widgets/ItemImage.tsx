@@ -51,7 +51,7 @@ const ImageAndButtonsContainer = styled.div`
 `;
 
 const ImagePreview = styled.div`
-    border: 1px #f4f4f4 solid;
+    border: 1px black solid;
     padding: 4px;
     height: 130px;
     img{

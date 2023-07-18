@@ -33,11 +33,11 @@ export const TextArea = styled.textarea`
 	background-color: transparent;
 	padding: 10px 20px;
 	color: #414042;
-	font-size: 14px;
-	border: 1px #f4f4f4 solid;
+	font-size: 15px;
+	border: 1px black solid;
 	width: 100%;
 	min-height: 100px;
-	font-family: 'Montserrat', sans-serif;
+	font-family: Inter, sans-serif;
 	outline: none;
 	resize: none;
 	placeholder: 'Input your text here';
@@ -101,6 +101,7 @@ export const Button = styled.button<{
 	text-transform: ${(props) => (props.uppercase ? 'uppercase' : 'none')};
 	border: ${(props) => (props.outline ? '1px solid lightgray' : '1px solid #313c46')};
 	cursor: ${(props) => (!props.disabled ? 'pointer' : 'auto')};
+	border-radius: 30px;
 
   ${(props) =>
 		props.selected &&
@@ -197,4 +198,23 @@ export const ArrowRightIconStyled = styled(Icon)`
 
 export const TooltipContent = styled.div`
     padding: 10px;
+`;
+
+
+export const ZoomInIcon = styled(Icon)`
+	position: absolute;
+	left: 20px;
+	top: calc(30%);
+	width: 32px;
+	height: 32px;
+	z-index: 3;
+`;
+
+export const ZoomOutIcon = styled(Icon)`
+	position: absolute;
+	left: 20px;
+	top: calc(30% + 50px);
+	width: 32px;
+	height: 32px;
+	z-index: 3;
 `;

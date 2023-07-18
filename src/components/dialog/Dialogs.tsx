@@ -47,7 +47,7 @@ const DialogOverlay = styled.div`
 
 const DialogWindowContainer = styled.div`
 	padding: 20px;
-	background-color: white;
+	background-color: rgb(235, 237, 242);;
 	border-radius: 5px;
 	flex-basis: 600px;
 	display: flex;
