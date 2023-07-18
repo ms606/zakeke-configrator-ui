@@ -198,10 +198,19 @@
    max-width: 460px;
    position: relative;
    cursor: pointer;
-   transform: rotate(-2deg);
+   /* transform: rotate(-2deg); */
    user-select: none;
    -webkit-user-select: none;
    touch-action: manipulation;
+
+   background: linear-gradient(
+    to right,
+    #00277f 33%,
+    #fcd20e 33%,
+    #fcd20e 66%,
+    #cf0922 0
+  );
+  
  }
  
  .button-53:focus {
