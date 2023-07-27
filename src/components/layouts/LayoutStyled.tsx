@@ -131,8 +131,8 @@ export const SupportedFormatsList = styled.span`
 `;
 
 export const ZakekeDesignerContainer = styled.div<{ isMobile?: boolean }>`
-	height: 100%;
-	width: 100%;
+	height: 50vh;
+	width: 20vw;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -153,4 +153,5 @@ export const IconsAndDesignerContainer = styled.div`
 	z-index: 2;
 	display: flex;
 	flex-direction: column;
+	
 `;

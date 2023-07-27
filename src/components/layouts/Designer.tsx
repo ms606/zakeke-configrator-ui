@@ -75,11 +75,11 @@ const DesignerContainer = styled.div<{ isMobile?: boolean }>`
 	user-select: none;
 	width: 100%;
 	padding: 30px 30px 70px 30px;
-  background-color: rgb(235, 237, 242);
-  height: 520px;
-  overflow-y: auto;
-  font-family: Inter, sans-serif;
-  border-radius: 23px;
+	background-color: rgb(235, 237, 242);
+	height: 520px;
+	overflow-y: auto;
+	font-family: Inter, sans-serif;
+	border-radius: 23px;
 
 	${(props) =>
 		props.isMobile &&
@@ -109,22 +109,20 @@ const Area = styled.div<{ selected?: boolean }>`
 	align-items: left;
 	min-height: 47px;
 	min-width: 70px;
+	width: 150px;
 	border-bottom: 5px solid transparent;
 	cursor: pointer;
 	padding: 0px 5px;
-  text-align: center;
-
-  margin: 0;
-  margin-bottom: 18px;
-  color: black;
-  font-size: 130%;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0px;
-  word-spacing: 1px;
-  text-shadow: 0px 2px 13px rgba(0, 0, 10, .8);
-  
-
+	text-align: center;
+	margin: 0;
+	margin-bottom: 18px;
+	color: black;
+	font-size: 130%;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 0px;
+	word-spacing: 1px;
+	text-shadow: 0px 2px 13px rgba(0, 0, 10, .8);
 	&:hover {
 		border-bottom: 5px solid #c4c4c4;
 	}
@@ -533,7 +531,7 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 									selected={actualAreaId === area.id}
 									onClick={() => setActualAreaId(area.id)}
 								>
-									{area.name}
+								 {area.name}
 								</Area>
 							))}
 						</CarouselContainer>
@@ -703,7 +701,10 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 			)}
 			{moveElements && (
 				<ZakekeDesignerContainer isMobile={isMobile} className='zakeke-container'>
-					<ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
+          <div style={{height: '50vh', width: '20vw'}}  >
+          <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
+          </div>
+					
 					<IconsAndDesignerContainer>
 						<ZoomIconIn hoverable onClick={() => customizerRef.current.zoomIn()}>
 							<SearchPlusSolid />

@@ -296,7 +296,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         {width > 568 ? (
           <div className="body-3" id="product-info">
             <span>{productName}</span>
-            <span>${price}</span>
+            <span>LEI {price}</span>
           </div>
         ) : (
           <div className="body-3" id="product-info">
@@ -355,7 +355,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
           className="button-53"
           onClick={() => setSelectedPersonalize(!selectedPersonalize)}
         >
-          <GroupIcon src="font-solid.svg" />
+          
           <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px'}}>Personaliza</span>
         </div>
         {selectedPersonalize ? <Designer /> : ""}
