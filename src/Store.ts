@@ -47,7 +47,8 @@ const useStore = create<Store>((set) => ({
 	isDraftEditor: new URLSearchParams(window.location.href).get('isDraftEditor') ? true : false,
 	isEditorMode: new URLSearchParams(window.location.href).get('editorMode') ? true : false,
 
-	isMobile: window.innerWidth <= MOBILE_BREAKPOINT,
+	// isMobile: window.innerWidth <= MOBILE_BREAKPOINT,
+	isMobile: true,
 	setIsMobile: (isMobile: boolean) => {
 		set({
 			isMobile,

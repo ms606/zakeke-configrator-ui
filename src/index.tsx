@@ -8,7 +8,6 @@ import { DialogsRenderer } from './components/dialog/Dialogs';
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <DialogsRenderer />
   </React.StrictMode>,
   document.getElementById('root')
 );
