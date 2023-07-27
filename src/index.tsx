@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/app';
 import * as serviceWorker from './serviceWorker';
+import { DialogsRenderer } from './components/dialog/Dialogs';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <DialogsRenderer />
   </React.StrictMode>,
   document.getElementById('root')
 );

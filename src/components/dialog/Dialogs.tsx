@@ -12,10 +12,11 @@ export const dialogContext = React.createContext({ dialogId: '' });
 
 export function useDialogManager() {
 	const { addDialog, removeDialog } = useStore();
-	console.log(addDialog,'addDialog');
+	console.log(addDialog,'addDialog', removeDialog, 'removeDialog');
 	
 	const { dialogId } = useContext(dialogContext);
-
+	console.log(dialogId, 'dialogID');
+	
 	const showDialog = (key: string, dialog: ReactElement) => addDialog(key, dialog);
 	const closeDialog = (key: string) => removeDialog(key);
 
@@ -172,6 +173,7 @@ export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref)
 	const { removeDialog, isMobile } = useStore();
 	const { dialogId } = useContext(dialogContext);
 	const onClose = props.onClose || (() => removeDialog(dialogId));
+	console.log(removeDialog, 'removeDialog');
 	return (
 		<DialogOverlay>
 			{React.createElement(
@@ -240,7 +242,7 @@ export const BasicDialogWindow = styled(DialogWindow)`
 export const MessageDialog: FunctionComponent<{ message: string } & DialogProps> = ({ message, ...props }) => {
 	const { closeDialog } = useDialogManager();
 	const { dialogId } = useContext(dialogContext);
-
+	
 	return (
 		<Dialog
 			windowDecorator={BasicDialogWindow}

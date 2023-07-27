@@ -170,7 +170,7 @@ const CopyrightCheckbox = styled.input`
 
 const CopyrightMandatoryMessage = styled.div``;
 
-const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
+const Designer: FC<{ onCloseClick?: () => void, togglePersonalize?:() => void }> = ({ onCloseClick,togglePersonalize }) => {
 	const { showDialog, closeDialog } = useDialogManager();
 	const [forceUpdate, setForceUpdate] = useState(false);
 	const { setIsLoading, isMobile } = useStore();
@@ -696,7 +696,7 @@ const Designer: FC<{ onCloseClick?: () => void }> = ({ onCloseClick }) => {
 							<span>{'Move elements'} </span>
 						</MoveElementButton>
 					)}
-					{isMobile && <CloseEditorButton onClick={onCloseClick}>{'OK'}</CloseEditorButton>}
+					{isMobile && <CloseEditorButton onClick={togglePersonalize}>{'OK'}</CloseEditorButton>}
 				</DesignerContainer>
 			)}
 			{moveElements && (
