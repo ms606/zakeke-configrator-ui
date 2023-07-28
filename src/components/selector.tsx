@@ -59,7 +59,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
   const { setIsLoading, isMobile } = useStore();
 
-
   // Keep saved the ID and not the refereces, they will change on each update
   const [selectedGroupId, selectGroup] = useState<number | null>(null);
   const [selectedStepId, selectStep] = useState<number | null>(null);
@@ -131,9 +130,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
   // Open the first group and the first step when loaded
   useEffect(() => {
-
- 
-
     if (!selectedGroup && groups.length > 0) {
       console.log("items", items, "groups", groups, "product", product);
 
@@ -289,12 +285,11 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   setSelectedPersonalize(!selectedPersonalize)
  }
 
-
-  const containerStyles = {
-    overflow: "auto",
-    width: "100%",
-    height: !selectedTrayPreviewOpenButton ? "230px" : "70px",
-  };
+ const containerStyles = {
+  overflow: "auto",
+  width: "100%",
+  height: !selectedTrayPreviewOpenButton ? "230px" : "70px",
+ };
 
   return (
     <>    
@@ -356,7 +351,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       {!isMobile && 
         <div
         className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-        style={{ position: "absolute", top: "4%", left: "70%" , cursor: "pointer", marginLeft: '20px'}}
+        style={{ position: "absolute", top: "4%", left: "80%" , cursor: "pointer", marginLeft: '20px'}}
       >
         <div
           className="button-53"
@@ -369,16 +364,15 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       </div>
       }
 
-      {!isMobile && 
+      {isMobile && 
         <div
         className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-        style={{ position: "absolute", top: "4%", left: "90%" , cursor: "pointer", marginLeft: '20px'}}
+        style={{ position: "absolute", top: "4%", left: "63%" , cursor: "pointer"}}
       >
         <div
           className="button-53"
           onClick={() => setSelectedPersonalize(!selectedPersonalize)}
         >
-          
           <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px'}}>Personaliza</span>
         </div>
         {selectedPersonalize ? <Designer togglePersonalize={togglePersonalize} /> : ""}

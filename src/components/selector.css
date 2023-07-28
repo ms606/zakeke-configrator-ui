@@ -222,12 +222,17 @@
 
 @media screen and (min-width: 768px) {
   .button-53 {
-    font-size: 24px;
+    font-size: 18px;
     min-width: 196px;
   }
 }
 
 @media screen and (min-width: 568px){
+  .button-53 {
+    font-size: 18px;
+    min-width: 196px;
+  }
+  
   .tray-trigger-preview-button {
     border-radius: 100%;
     border: 1px solid rgb(229, 229, 229);
@@ -235,6 +240,12 @@
 }
 
 @media screen and (max-width: 568px){
+
+  .button-53 {
+    font-size: 12px;
+    min-width: 116px;
+  }
+
   .tray-header-1 {
     max-width: 250px;
   }  
