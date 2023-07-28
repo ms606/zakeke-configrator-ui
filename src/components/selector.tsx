@@ -12,6 +12,7 @@ import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
 import Designer from "./layouts/Designer";
 import { GroupItem, GroupIcon } from "./layouts/LayoutStyled";
 import { createPortal } from 'react-dom';
+import useStore from '../Store';
 
 const dialogsPortal = document.getElementById('dialogs-portal')!;
 // const Container = styled.div`
@@ -55,6 +56,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     fonts,
     addItemText,
   } = useZakeke();
+
+  const { setIsLoading, isMobile } = useStore();
+
 
   // Keep saved the ID and not the refereces, they will change on each update
   const [selectedGroupId, selectGroup] = useState<number | null>(null);
@@ -349,7 +353,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       {/* <GroupItem   */}
 
       {/* Personalize A */}
-      <div
+      {!isMobile && 
+        <div
         className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
         style={{ position: "absolute", top: "4%", left: "70%" , cursor: "pointer", marginLeft: '20px'}}
       >
@@ -362,6 +367,24 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         </div>
         {selectedPersonalize ? <Designer togglePersonalize={togglePersonalize} /> : ""}
       </div>
+      }
+
+      {!isMobile && 
+        <div
+        className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
+        style={{ position: "absolute", top: "4%", left: "90%" , cursor: "pointer", marginLeft: '20px'}}
+      >
+        <div
+          className="button-53"
+          onClick={() => setSelectedPersonalize(!selectedPersonalize)}
+        >
+          
+          <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px'}}>Personaliza</span>
+        </div>
+        {selectedPersonalize ? <Designer togglePersonalize={togglePersonalize} /> : ""}
+      </div>
+      }
+      
 
     
       <div className="animate-wrapper-0">
