@@ -94,6 +94,7 @@ export const ListItemImage = styled.img<{ selected?: any }>`
     object-fit: contain;
     margin: 0px 11px;
     border-radius: 100%;
+    border: 1px solid rgb(229, 229, 229);
 `
 
 // top: 0px;

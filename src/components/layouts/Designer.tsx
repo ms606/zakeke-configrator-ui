@@ -104,15 +104,15 @@ const UploadButtons = styled.div`
 
 const Area = styled.div<{ selected?: boolean }>`
 	display: flex;
-	flex-direction: column;
+	flex-direction: center;
 	justify-content: space-around;
 	align-items: left;
 	min-height: 47px;
 	min-width: 70px;
-	width: 150px;
+	width: 100%;
 	border-bottom: 5px solid transparent;
 	cursor: pointer;
-	padding: 0px 5px;
+	padding: 1px 40px;
 	text-align: center;
 	margin: 0;
 	margin-bottom: 18px;
@@ -124,13 +124,13 @@ const Area = styled.div<{ selected?: boolean }>`
 	word-spacing: 1px;
 	text-shadow: 0px 2px 13px rgba(0, 0, 10, .8);
 	&:hover {
-		border-bottom: 5px solid #c4c4c4;
+		border: 5px solid #c4c4c4;
 	}
 
 	${(props) =>
 		props.selected &&
 		`
-       border-bottom: 5px solid #c4c4c4;
+       border: 5px solid #c4c4c4;
     `}
 `;
 
