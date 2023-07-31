@@ -117,7 +117,7 @@ const Area = styled.div<{ selected?: boolean }>`
 	margin: 0;
 	margin-bottom: 18px;
 	color: black;
-	font-size: 130%;
+	font-size: 90%;
 	font-weight: 300;
 	text-transform: uppercase;
 	letter-spacing: 0px;
@@ -148,9 +148,12 @@ const OptionContainer = styled(components.Option)`
 
 const SingleValueContainer = styled(components.SingleValue)`
   border: 1px solid black;
-	span {
-		color: black;
-	}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+	color: black;
+  }
 `;
 
 const CopyrightMessage = styled.div`
