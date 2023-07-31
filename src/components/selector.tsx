@@ -375,7 +375,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       {!isMobile && 
         <div
         className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-        style={{ position: "absolute", top: "4%", right: "2%" , cursor: "pointer", marginLeft: '20px'}}
+        style={{ position: "absolute", top: "4%", right: "2%" , cursor: "pointer", marginLeft: '20px', width: '30vw'}}
       >
         <div
           className="button-53"

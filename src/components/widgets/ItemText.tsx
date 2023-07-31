@@ -189,7 +189,7 @@ const ItemText: FC<{ item: EditTextItem, handleItemPropChange: PropChangeHandler
                             container: base => ({
                                 ...base,
                                 minWidth: 200,
-                            }),
+                            })
                         }}
                         isSearchable={false}
                         options={fonts}
