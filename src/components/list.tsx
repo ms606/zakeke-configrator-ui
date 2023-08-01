@@ -40,6 +40,13 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     &:hover {
         background-color: #ffd966;
     }
+    @media screen and (max-width: 568px) {
+      font: 500 .8rem/1.8 'Inter';
+      margin: 0 7px;
+      padding: 0px 7px;
+      width: 132px;
+      height: 33px;
+    }
 `;
 
 export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any}>`

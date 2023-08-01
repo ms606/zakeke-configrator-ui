@@ -11,10 +11,10 @@ import MenuTriggerButton from "./MenuTriggerButton";
 import ProgressBarLoadingOverlay from "./widgets/ProgressBarLoadingOverlay";
 import Designer from "./layouts/Designer";
 import { GroupItem, GroupIcon } from "./layouts/LayoutStyled";
-import { createPortal } from 'react-dom';
-import useStore from '../Store';
+import { createPortal } from "react-dom";
+import useStore from "../Store";
 
-const dialogsPortal = document.getElementById('dialogs-portal')!;
+const dialogsPortal = document.getElementById("dialogs-portal")!;
 // const Container = styled.div`
 // overflow: auto;
 // width: 100%;
@@ -108,11 +108,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   if (indexToRemove !== -1) {
     groups.splice(indexToRemove, 1);
   }
-  
-  const dialogsPortal = document.getElementById('dialogs-portal');
 
-       
-
+  const dialogsPortal = document.getElementById("dialogs-portal");
 
   useEffect(() => {
     const handleResize = () => {
@@ -131,7 +128,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-
       console.log("items", items, "groups", groups, "product", product);
 
       selectGroup(groups[0].id);
@@ -282,18 +278,18 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   //     `}
   // `;
 
- const togglePersonalize = () => {
-  setSelectedPersonalize(!selectedPersonalize)
- }
+  const togglePersonalize = () => {
+    setSelectedPersonalize(!selectedPersonalize);
+  };
 
- const containerStyles = {
-  overflow: "auto",
-  width: "100%",
-  height: !selectedTrayPreviewOpenButton ? "230px" : "70px",
- };
+  const containerStyles = {
+    overflow: "auto",
+    width: "100%",
+    height: !selectedTrayPreviewOpenButton ? "230px" : "70px",
+  };
 
   return (
-    <>    
+    <>
       <div className="top-nav">
         {width > 568 ? (
           <div className="body-3" id="product-info">
@@ -306,19 +302,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
           </div>
         )}
       </div>
-{/* 
-      {
-      /////// testing 
-        createPortal(<div className="modal"  
-        style={{ zIndex: '25', position: 'absolute',
-          top: '12%' }}>
-        <h1>I'm a modal dialog</h1>
-        </div>, document.body)
-        //////// testing 
-      } */}
 
-      {!isMobile && !isTrayOpen ? (        
-        <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>          
+      {!isMobile && !isTrayOpen ? (
+        <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>
           <div
             className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
             onClick={zoomIn}
@@ -341,9 +327,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         ""
       )}
 
-
-    {isMobile && !isTrayOpen ? (        
-        <div style={{ position: "absolute", top: "20%" }}>          
+      {isMobile && !isTrayOpen ? (
+        <div style={{ position: "absolute", top: "20%" }}>
           <div
             className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
             onClick={zoomIn}
@@ -365,46 +350,78 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       ) : (
         ""
       )}
-
-
-
 
       {/* <GroupItem   */}
 
       {/* Personalize A */}
-      {!isMobile && 
+      {!isMobile && (
         <div
-        className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-        style={{ position: "absolute", top: "4%", right: "2%" , cursor: "pointer", marginLeft: '20px', width: '30vw'}}
-      >
-        <div
-          className="button-53"
-          onClick={() => setSelectedPersonalize(!selectedPersonalize)}
+          className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
+          style={{
+            position: "absolute",
+            top: "4%",
+            right: "2%",
+            cursor: "pointer",
+            marginLeft: "20px",
+            width: "30vw",
+          }}
         >
-          
-          <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px'}}>Personaliza</span>
+          <div
+            className="button-53"
+            onClick={() => setSelectedPersonalize(!selectedPersonalize)}
+          >
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "10px",
+              }}
+            >
+              Personaliza
+            </span>
+          </div>
+          {selectedPersonalize ? (
+            <Designer togglePersonalize={togglePersonalize} />
+          ) : (
+            ""
+          )}
         </div>
-        {selectedPersonalize ? <Designer togglePersonalize={togglePersonalize} /> : ""}
-      </div>
-      }
+      )}
 
-      {isMobile && 
+      {isMobile && (
         <div
-        className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
-        style={{ position: "absolute", top: "4%", left: "63%" , cursor: "pointer"}}
-      >
-        <div
-          className="button-53"
-          onClick={() => setSelectedPersonalize(!selectedPersonalize)}
+          className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
+          style={{
+            position: "absolute",
+            top: "4%",
+            left: "59%",
+            cursor: "pointer",
+          }}
         >
-          <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px'}}>Personaliza</span>
+          <div
+            className="button-53"
+            onClick={() => setSelectedPersonalize(!selectedPersonalize)}
+          >
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "10px",
+              }}
+            >
+              Personaliza
+            </span>
+          </div>
+          {selectedPersonalize ? (
+            <Designer togglePersonalize={togglePersonalize} />
+          ) : (
+            ""
+          )}
         </div>
-        {selectedPersonalize ? <Designer togglePersonalize={togglePersonalize} /> : ""}
-      </div>
-      }
-      
+      )}
 
-    
       <div className="animate-wrapper-0">
         <div style={containerStyles}>
           <div className="tray-header">
@@ -500,7 +517,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
             {/* Closed on request of Paul */}
             {/* <MenuTriggerButton width={width} toggleTray={toggleTray} /> */}
-            
           </div>
 
           <br />

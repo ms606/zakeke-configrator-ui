@@ -193,6 +193,9 @@ button:focus {
     bottom: 50px;
     }  
 
+    .animate-wrapper {
+      height: 174px;
+    }
 
   }
   
