@@ -97,7 +97,7 @@ const App: FunctionComponent<{}> = () => {
                       : { 
                         //width: "56vw", height: "55vh",
                         aspectRatio: "1 / 1",
-                        width: "67%",  position: "absolute", top: "12px", bottom: "0", left: "14%" }
+                        width: "77%",  position: "absolute", top: "12px", bottom: "0", left: "14%" }
                   }
                 >
                   <ZakekeViewer />
