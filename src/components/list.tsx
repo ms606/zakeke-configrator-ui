@@ -90,10 +90,7 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     &:after {
       bottom: -65%;  
     }
-    }
-
-
-    `;
+    }`;
 
 export const ListItemImage = styled.img<{ selected?: any }>`
     width: 40px;
@@ -102,14 +99,10 @@ export const ListItemImage = styled.img<{ selected?: any }>`
     margin: 0px 11px;
     border-radius: 100%;
     border: 1px solid rgb(229, 229, 229);
+    
+    @media screen and (max-width: 568px) {
+      width: 30px;
+      height: 30px;
+      margin: 0px 8px;
+    }
 `
-
-// top: 0px;
-//     border: none;
-//     outline: none;
-//     
-//     overflow: hidden;
-//     position: relative;
-//     width: 40px;
-//     height: 40px;
-//     background-color: transparent;
