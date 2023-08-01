@@ -480,7 +480,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                   <div className="active-marketing-component-name">
                     <span
                       style={{
-                        fontSize: "18px",
+                       
                         whiteSpace: "nowrap",
                         textOverflow: "ellipsis",
                         overflow: "hidden",
