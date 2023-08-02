@@ -2,7 +2,7 @@ import React, { FC, useState } from "react"
 import { Dialog } from "./Dialogs"
 import ItemText from '../widgets/ItemText';
 import { useZakeke } from 'zakeke-configurator-react';
-// import { T } from '../../Helpers';
+import { T } from '../../Helpers';
 
 import type { PropChangeHandler } from "../layouts/Designer";
 
@@ -76,9 +76,9 @@ const AddTextDialog: FC<{ onClose: () => void, onConfirm: (item: EditTextItem) =
     }
 
      return <Dialog 
-         title={"Add text"}
+         title={T._('Add text','Composer')}
          buttons={[
-             { label: "Confirm", onClick: () => onConfirm(item) },
+             { label: T._("Confirm",'Composer'), onClick: () => onConfirm(item) },
          ]}
      >
         <ItemText
