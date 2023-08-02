@@ -12,6 +12,7 @@ import useStore from '../../Store';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import Select, { GroupBase, OptionProps, SingleValueProps, components } from 'react-select';
 import styled from 'styled-components/macro';
+import { T } from '../../Helpers';
 import { ReactComponent as ArrowLeftIcon } from '../../assets/icons/arrow-left-solid.svg';
 import { ReactComponent as ArrowRightIcon } from '../../assets/icons/arrow-right-solid.svg';
 import { ReactComponent as Arrows } from '../../assets/icons/arrows-alt-solid.svg';
@@ -76,7 +77,7 @@ const DesignerContainer = styled.div<{ isMobile?: boolean }>`
 	width: 100%;
 	padding: 30px 30px 70px 30px;
 	background-color: rgb(235, 237, 242);
-	height: 520px;
+	height: 23em;
 	overflow-y: auto;
 	font-family: Inter, sans-serif;
 	border-radius: 23px;
@@ -203,6 +204,7 @@ const Designer: FC<{ onCloseClick?: () => void, togglePersonalize?:() => void }>
 		setCopyrightMessageAccepted,
 		getCopyrightMessageAccepted
 	} = useZakeke();
+	
 	const customizerRef = useRef<any | null>(null);
 	const [selectedCarouselSlide, setSelectedCarouselSlide] = useState<number>(0);
 
@@ -623,7 +625,7 @@ const Designer: FC<{ onCloseClick?: () => void, togglePersonalize?:() => void }>
 									<Icon>
 										<Add />
 									</Icon>
-									<span>{'Add text'}</span>
+									<span>{T._('Add text','Composer')}</span>
 								</Button>
 							)}
 
@@ -632,7 +634,7 @@ const Designer: FC<{ onCloseClick?: () => void, togglePersonalize?:() => void }>
 									<Icon>
 										<Add />
 									</Icon>
-									<span>{'Add clipart'}</span>
+									<span>{T._('Add clipart','Composer')}</span>
 								</Button>
 							)}
 
@@ -656,15 +658,15 @@ const Designer: FC<{ onCloseClick?: () => void, togglePersonalize?:() => void }>
 													(item) =>
 														item.type === 1 && isItemEditable(item, currentTemplateArea)
 												)
-													? 'Upload another image'
-													: 'Upload Images'}{' '}
+													? T._('Upload another image','Composer')
+													: T._('Upload Images','Composer')}{' '}
 											</span>
 										</span>
 									</Button>
 								</>
 							)}
 							<SupportedFormatsList>
-								{'Supported file formats:' + ' ' + supportedFileFormats}
+								{T._('Supported file formats:','Composer') + ' ' + supportedFileFormats}
 							</SupportedFormatsList>
 
 							{copyrightMessage && copyrightMessage.visible && (
@@ -695,8 +697,8 @@ const Designer: FC<{ onCloseClick?: () => void, togglePersonalize?:() => void }>
 						<MoveElementButton isFullWidth outline onClick={() => setMoveElements(true)}>
 							<Icon>
 								<Arrows />
-							</Icon>
-							<span>{'Move elements'} </span>
+							</Icon>							
+							<span>{T._('Move elements','Composer')} </span>
 						</MoveElementButton>
 					)}
 					{isMobile && <CloseEditorButton onClick={togglePersonalize}>{'OK'}</CloseEditorButton>}

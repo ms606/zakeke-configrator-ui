@@ -13,6 +13,7 @@ import Designer from "./layouts/Designer";
 import { GroupItem, GroupIcon } from "./layouts/LayoutStyled";
 import { createPortal } from "react-dom";
 import useStore from "../Store";
+import { T } from '../Helpers';
 
 const dialogsPortal = document.getElementById("dialogs-portal")!;
 // const Container = styled.div`
@@ -128,7 +129,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      console.log("items", items, "groups", groups, "product", product);
+     // console.log("items", items, "groups", groups, "product", product);
 
       selectGroup(groups[0].id);
 
@@ -378,7 +379,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 padding: "10px",
               }}
             >
-              Personaliza
+              {T._('Personalize','Composer')} 
             </span>
           </div>
           {selectedPersonalize ? (
