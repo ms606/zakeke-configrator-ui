@@ -140,9 +140,11 @@ export const ZakekeDesignerContainer = styled.div<{ isMobile?: boolean }>`
 	${(props) =>
 		props.isMobile &&
 		`
-       position:fixed;
+        position:fixed;
         inset:0;
         z-index:13;
+		height: 92%;
+		width: 97%;
     `}
 `;
 
@@ -154,4 +156,117 @@ export const IconsAndDesignerContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	
+`;
+
+export const ItemName = styled.span`
+	font-size: 12px;
+	font-weight: 600;
+`;
+
+
+export const SelectorMobileContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	width: 100%;
+	position: relative;
+	overflow: auto;
+`;
+
+export const StepsMobileContainer = styled.div`
+	border-top: 1px #fff solid;
+	height: 45px;
+`;
+
+export const MobileItemContainer = styled.div<{ selected?: boolean }>`
+	align-items: center;
+	justify-content: center;
+	min-width: 140px;
+	max-width: 140px;
+	width: 140px;
+	height: 140px;
+	min-height: 140px;
+	max-height: 140px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	border-right: 2px #fff solid;
+	position: relative;
+	${(props) => props.selected && `background-color: #f7f7f7;`}
+`;
+
+export const StepsContainer = styled.div`
+	position: relative;
+	padding: 0px 20px 20px 20px;
+
+	@media (max-width: 1024px) {
+		width: 100%;
+		height: 50%;
+		flex-direction: column;
+		position: relative;
+	}
+`;
+
+
+export const MenuItemImage = styled.img<{ isRound?: boolean }>`
+	width: 64px;
+	height: 64px;
+	object-fit: ${(props) => (props.isRound ? 'cover' : 'contain')};
+	margin-bottom: 20px;
+	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
+`;
+
+export const MenuItemImagesWrapper = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	position: relative;
+	top: -10px;
+`;
+
+export const MenuItemImagesImageWrapper = styled.div`
+	width: 35px;
+	height: 35px;
+	&:nth-child(1) {
+		border-right: 1px #ddd dotted;
+		border-bottom: 1px #ddd dotted;
+	}
+
+	&:nth-child(2) {
+		border-bottom: 1px #ddd dotted;
+	}
+
+	&:nth-child(3) {
+		border-right: 1px #ddd dotted;
+	}
+`;
+
+export const MenuItemLabel = styled.span`
+	font-size: 14px;
+	font-weight: 500;
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+`;
+
+export const MenuItemImagesImage = styled.img<{ isRound?: boolean }>`
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	padding: 3px;
+	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
+`;
+
+export const MenuItemIcon = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 40px;
+	margin-bottom: 20px;
+	width: 64px;
+	height: 64px;
 `;

@@ -13,6 +13,8 @@
     "@types/react-dom": "^18.2.4",
     "@types/styled-components": "^5.1.26",
     "cpy-cli": "^4.2.0",
+    "immutable": "^4.3.2",
+    "interfaces": "^0.0.3",
     "lodash": "^4.17.21",
     "nuka-carousel": "^6.0.3",
     "react": "^18.2.0",

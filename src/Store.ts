@@ -1,9 +1,15 @@
-//import { UndoRedoStep } from 'Interfaces';
+// import { UndoRedoStep } from 'interfaces';
 import React from 'react';
 import { create } from 'zustand';
 //import { Notification } from './components/widgets/Notifications';
 
 export const MOBILE_BREAKPOINT = 1024;
+
+export interface UndoRedoStep {
+    type: any;
+    id: any;
+    direction: string;
+}
 
 interface Store {
 	isViewerMode: boolean;
@@ -28,15 +34,17 @@ interface Store {
 	setIsQuoteLoading: (isQuoteLoading: boolean) => void;
 	priceFormatter: Intl.NumberFormat;
 	setPriceFormatter: (priceFormatter: Intl.NumberFormat) => void;
-	// undoStack: UndoRedoStep[] | any[any];
-	// setUndoStack: (callback: (undoStack: UndoRedoStep[] | any[any]) => UndoRedoStep[] | any[any]) => void;
-	// redoStack: UndoRedoStep[] | any[any];
-	// setRedoStack: (callback: (redoStack: UndoRedoStep[] | any[any]) => UndoRedoStep[] | any[any]) => void;
+	undoStack: UndoRedoStep[] | any[any];
+	setUndoStack: (callback: (undoStack: UndoRedoStep[] | any[any]) => UndoRedoStep[] | any[any]) => void;
+	redoStack: UndoRedoStep[] | any[any];
+	setRedoStack: (callback: (redoStack: UndoRedoStep[] | any[any]) => UndoRedoStep[] | any[any]) => void;
 	isUndo: boolean;
 	setIsUndo: (isUndo: boolean) => void;
 	isRedo: boolean;
 	setIsRedo: (isRedo: boolean) => void;
 
+	lastSelectedItem: { type: string; id: number | null };
+	setLastSelectedItem: (lastSelectedItem: { type: string; id: number | null }) => void;
 	// notifications: Notification[];
 	// setNotifications: (notifications: Notification[]) => void;
 	// removeNotification: (id: number) => void;
@@ -108,18 +116,18 @@ const useStore = create<Store>((set) => ({
 			priceFormatter,
 		});
 	},
-	// undoStack: [],
-	// setUndoStack: (callback) => {
-	// 	set((prev) => ({
-	// 		undoStack: callback(prev.undoStack),
-	// 	}));
-	// },
-	// redoStack: [],
-	// setRedoStack: (callback) => {
-	// 	set((prev) => ({
-	// 		redoStack: callback(prev.redoStack),
-	// 	}));
-	// },
+	undoStack: [],
+	setUndoStack: (callback) => {
+		set((prev) => ({
+			undoStack: callback(prev.undoStack),
+		}));
+	},
+	redoStack: [],
+	setRedoStack: (callback) => {
+		set((prev) => ({
+			redoStack: callback(prev.redoStack),
+		}));
+	},
 	isUndo: false,
 	setIsUndo: (isUndo: boolean) => {
 		set({
@@ -132,6 +140,13 @@ const useStore = create<Store>((set) => ({
 			isRedo,
 		});
 	},
+	lastSelectedItem: { type: 'attribute', id: null },
+	setLastSelectedItem: (lastSelectedItem: { type: string; id: number | null }) => {
+		set({
+			lastSelectedItem
+		});
+	},
+
 
 	// notifications: [],
 	// setNotifications: (notifications) => {

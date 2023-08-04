@@ -390,13 +390,16 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         </div>
       )}
 
+      <div className="animate-wrapper-0">
+
+        {/* Personalize A */}
       {isMobile && (
         <div
           className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
           style={{
             position: "absolute",
-            top: "4%",
-            left: "59%",
+            top: "-3%",
+            left: "31%",
             cursor: "pointer",
           }}
         >
@@ -423,7 +426,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         </div>
       )}
 
-      <div className="animate-wrapper-0">
+
         <div style={containerStyles}>
           <div className="tray-header">
             <TrayPreviewOpenButton
