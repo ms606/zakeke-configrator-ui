@@ -1,4 +1,4 @@
-//import { UndoRedoStep } from 'Interfaces';
+import { UndoRedoStep } from 'Interfaces';
 import React from 'react';
 import { create } from 'zustand';
 //import { Notification } from './components/widgets/Notifications';
@@ -28,10 +28,10 @@ interface Store {
 	setIsQuoteLoading: (isQuoteLoading: boolean) => void;
 	priceFormatter: Intl.NumberFormat;
 	setPriceFormatter: (priceFormatter: Intl.NumberFormat) => void;
-	// undoStack: UndoRedoStep[] | any[any];
-	// setUndoStack: (callback: (undoStack: UndoRedoStep[] | any[any]) => UndoRedoStep[] | any[any]) => void;
-	// redoStack: UndoRedoStep[] | any[any];
-	// setRedoStack: (callback: (redoStack: UndoRedoStep[] | any[any]) => UndoRedoStep[] | any[any]) => void;
+	undoStack: UndoRedoStep[] | any[any];
+	setUndoStack: (callback: (undoStack: UndoRedoStep[] | any[any]) => UndoRedoStep[] | any[any]) => void;
+	redoStack: UndoRedoStep[] | any[any];
+	setRedoStack: (callback: (redoStack: UndoRedoStep[] | any[any]) => UndoRedoStep[] | any[any]) => void;
 	isUndo: boolean;
 	setIsUndo: (isUndo: boolean) => void;
 	isRedo: boolean;
@@ -108,18 +108,18 @@ const useStore = create<Store>((set) => ({
 			priceFormatter,
 		});
 	},
-	// undoStack: [],
-	// setUndoStack: (callback) => {
-	// 	set((prev) => ({
-	// 		undoStack: callback(prev.undoStack),
-	// 	}));
-	// },
-	// redoStack: [],
-	// setRedoStack: (callback) => {
-	// 	set((prev) => ({
-	// 		redoStack: callback(prev.redoStack),
-	// 	}));
-	// },
+	undoStack: [],
+	setUndoStack: (callback) => {
+		set((prev) => ({
+			undoStack: callback(prev.undoStack),
+		}));
+	},
+	redoStack: [],
+	setRedoStack: (callback) => {
+		set((prev) => ({
+			redoStack: callback(prev.redoStack),
+		}));
+	},
 	isUndo: false,
 	setIsUndo: (isUndo: boolean) => {
 		set({

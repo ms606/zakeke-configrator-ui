@@ -1,7 +1,7 @@
 //import { UndoRedoStep } from 'Interfaces';
 import _ from 'lodash';
-// import useStore from 'Store';
-// import { Group, Option, SellerSettings, useZakeke } from '@zakeke/zakeke-configurator-react';
+import useStore from './Store';
+import { Group, Option, SellerSettings, useZakeke } from 'zakeke-configurator-react';
 
 let isRegisteringUndoStep = false;
 
@@ -31,98 +31,98 @@ let isRegisteringUndoStep = false;
 // 	return group;
 // };
 
-// export const useDefinitiveGroups = (
-// 	groups: Group[],
-// 	hasCustomizeEnabled: boolean,
-// 	hasDesignsSaved: boolean,
-// 	sellerSettings: SellerSettings | null,
-// ) => {
-// 	const { isEditorMode, isViewerMode, isDraftEditor } = useStore();
-// 	const definitiveGroups: Group[] = [];
+ export const useDefinitiveGroups = (
+	groups: Group[],
+	hasCustomizeEnabled: boolean,
+	hasDesignsSaved: boolean,
+	sellerSettings: SellerSettings | null,
+) => {
+	const { isEditorMode, isViewerMode, isDraftEditor } = useStore();
+	const definitiveGroups: Group[] = [];
 
-// 	const customizeGroup: Group = {
-// 		id: -2,
-// 		guid: '0000-0000-0000-0000',
-// 		name: sellerSettings?.customizeButtonLabel ?? T._('Customize', 'Composer'),
-// 		enabled: hasCustomizeEnabled,
-// 		attributes: [],
-// 		steps: [],
-// 		cameraLocationId: '',
-// 		displayOrder: groups.length - 1,
-// 		direction: 0,
-// 		attributesAlwaysOpened: false,
-// 		imageUrl: sellerSettings?.customizeButtonIconUrl ?? '',
-// 		templateGroups: [],
-// 	};
+	const customizeGroup: Group = {
+		id: -2,
+		guid: '0000-0000-0000-0000',
+		name: sellerSettings?.customizeButtonLabel ?? T._('Customize', 'Composer'),
+		enabled: hasCustomizeEnabled,
+		attributes: [],
+		steps: [],
+		cameraLocationId: '',
+		displayOrder: groups.length - 1,
+		direction: 0,
+		attributesAlwaysOpened: false,
+		imageUrl: sellerSettings?.customizeButtonIconUrl ?? '',
+		templateGroups: [],
+	};
 
-// 	const savedConfigurationsGroup: Group = {
-// 		id: -3,
-// 		name: T._('Saved designs', 'Composer'),
-// 		imageUrl: '../src/assets/icons/saved_designs.svg',
-// 		attributes: [],
-// 		steps: [],
-// 		guid: '',
-// 		enabled: true,
-// 		displayOrder: 0,
-// 		cameraLocationId: null,
-// 		direction: 0,
-// 		attributesAlwaysOpened: false,
-// 		templateGroups: [],
-// 	};
+	const savedConfigurationsGroup: Group = {
+		id: -3,
+		name: T._('Saved designs', 'Composer'),
+		imageUrl: '../src/assets/icons/saved_designs.svg',
+		attributes: [],
+		steps: [],
+		guid: '',
+		enabled: true,
+		displayOrder: 0,
+		cameraLocationId: null,
+		direction: 0,
+		attributesAlwaysOpened: false,
+		templateGroups: [],
+	};
 
-// 	let groupsFiltered = groups.map((group) => {
-// 		return {
-// 			...group,
-// 			templateGroups: group.templateGroups,
-// 			attributes: group.attributes
-// 				.filter((attribute) => attribute.enabled && attribute.options.some((opt) => opt.enabled))
-// 				.map((attribute) => ({
-// 					...attribute,
-// 					options: attribute.options.filter((x) => x.enabled),
-// 				})),
-// 		};
-// 	});
+	let groupsFiltered = groups.map((group) => {
+		return {
+			...group,
+			templateGroups: group.templateGroups,
+			attributes: group.attributes
+				.filter((attribute) => attribute.enabled && attribute.options.some((opt) => opt.enabled))
+				.map((attribute) => ({
+					...attribute,
+					options: attribute.options.filter((x) => x.enabled),
+				})),
+		};
+	});
 
-// 	function filterAttributes(attributes: any[]) {
-// 		let filteredAttributes = _.cloneDeep(attributes);
+	function filterAttributes(attributes: any[]) {
+		let filteredAttributes = _.cloneDeep(attributes);
 
-// 		for (let attribute of filteredAttributes)
-// 			attribute.options = attribute.options.filter((option: Option) => option.enabled);
+		for (let attribute of filteredAttributes)
+			attribute.options = attribute.options.filter((option: Option) => option.enabled);
 
-// 		filteredAttributes = filteredAttributes.filter((attr) => attr.enabled && attr.options.length > 0);
+		filteredAttributes = filteredAttributes.filter((attr) => attr.enabled && attr.options.length > 0);
 
-// 		return filteredAttributes;
-// 	}
+		return filteredAttributes;
+	}
 
-// 	for (const group of groupsFiltered) {
-// 		if (group.enabled) {
-// 			let newGroup = _.cloneDeep(group);
+	for (const group of groupsFiltered) {
+		if (group.enabled) {
+			let newGroup = _.cloneDeep(group);
 
-// 			for (let step of newGroup.steps) {
-// 				step.attributes = filterAttributes(step.attributes);
-// 			}
-// 			newGroup.steps = newGroup.steps.filter(
-// 				(step) => step.attributes.length > 0 || step.templateGroups.length > 0,
-// 			);
-// 			newGroup.attributes = filterAttributes(newGroup.attributes);
-// 			let count = newGroup.steps.reduce(
-// 				(count, step) => (count += step.attributes.length + step.templateGroups.length),
-// 				0,
-// 			);
-// 			count += newGroup.attributes.length + newGroup.templateGroups.length;
+			for (let step of newGroup.steps) {
+				step.attributes = filterAttributes(step.attributes);
+			}
+			newGroup.steps = newGroup.steps.filter(
+				(step) => step.attributes.length > 0 || step.templateGroups.length > 0,
+			);
+			newGroup.attributes = filterAttributes(newGroup.attributes);
+			let count = newGroup.steps.reduce(
+				(count, step) => (count += step.attributes.length + step.templateGroups.length),
+				0,
+			);
+			count += newGroup.attributes.length + newGroup.templateGroups.length;
 
-// 			if (count > 0) definitiveGroups.push(newGroup);
-// 		}
-// 	}
+			if (count > 0) definitiveGroups.push(newGroup);
+		}
+	}
 
-// 	if (hasCustomizeEnabled) {
-// 		definitiveGroups.push(customizeGroup);
-// 	}
-// 	if (hasDesignsSaved && !isEditorMode && !isViewerMode && !isDraftEditor) {
-// 		definitiveGroups.push(savedConfigurationsGroup);
-// 	}
-// 	return definitiveGroups;
-// };
+	if (hasCustomizeEnabled) {
+		definitiveGroups.push(customizeGroup);
+	}
+	if (hasDesignsSaved && !isEditorMode && !isViewerMode && !isDraftEditor) {
+		definitiveGroups.push(savedConfigurationsGroup);
+	}
+	return definitiveGroups;
+};
 
 export interface Translations {
 	statics: Map<string, string>;
@@ -294,13 +294,13 @@ export class T {
 // 	return { fillUndoStack, fillRedoStack, eraseRedoStack };
 // }
 
-// export function useActualGroups() {
-// 	const { groups, isSceneLoading, product, isAreaVisible, draftCompositions, sellerSettings } = useZakeke();
-// 	const shouldCustomizerGroupBeVisible =
-// 		!isSceneLoading && product ? product.areas.some((area) => isAreaVisible(area.id)) : false;
-// 	const hasDesignsSaved = (groups && draftCompositions && draftCompositions.length > 0) ?? false;
+export function useActualGroups() {
+	const { groups, isSceneLoading, product, isAreaVisible, draftCompositions, sellerSettings } = useZakeke();
+	const shouldCustomizerGroupBeVisible =
+		!isSceneLoading && product ? product.areas.some((area) => isAreaVisible(area.id)) : false;
+	const hasDesignsSaved = (groups && draftCompositions && draftCompositions.length > 0) ?? false;
 
-// 	const actualGroups =
-// 		useDefinitiveGroups(groups, shouldCustomizerGroupBeVisible, hasDesignsSaved, sellerSettings) ?? [];
-// 	return actualGroups;
-// }
+	const actualGroups =
+		useDefinitiveGroups(groups, shouldCustomizerGroupBeVisible, hasDesignsSaved, sellerSettings) ?? [];
+	return actualGroups;
+}

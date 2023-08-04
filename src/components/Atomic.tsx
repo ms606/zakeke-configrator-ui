@@ -153,7 +153,7 @@ export const Rows = styled.div<{ rows: number }>`
 
 export const CloseEditorButton = styled.button`
 	position: fixed;
-	bottom: 228px;
+	bottom: 0px;
 	left: 0;
 	width: 100%;
 	padding: 20px;
