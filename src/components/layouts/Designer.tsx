@@ -116,27 +116,34 @@ const Area = styled.div<{ selected?: boolean }>`
   min-height: 47px;
   min-width: 70px;
   width: 100%;
-  border-bottom: 5px solid transparent;
   cursor: pointer;
   padding: 1px 40px;
   text-align: center;
   margin: 0;
   margin-bottom: 18px;
   color: black;
-  font-size: 90%;
+  
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0px;
   word-spacing: 1px;
   text-shadow: 0px 2px 13px rgba(0, 0, 10, 0.8);
+
+  border: 1px solid #297CA3;
+  font-size: 15px;
+  border-radius: 4px;
+  background-color: white;
+  color: #297CA3;
+
+
   &:hover {
-    border: 5px solid #c4c4c4;
+    border: 3px solid #297CA3;
   }
 
   ${(props) =>
     props.selected &&
     `
-       border: 5px solid #c4c4c4;
+	border: 4px solid #297CA3;
     `}
 `;
 

@@ -553,7 +553,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         onClick={() => selectStep(step.id)}
                         selected={selectedStep === step}
                       >
-                        Step: {step.name}
+                        {step.name}
                       </ListItem>
                     );
                   })}

@@ -49,7 +49,7 @@ const LoaderFill = styled.div`
   border-radius: 4px;
   margin: 7px 0px;
   width: ${({ completed }) => completed && `${completed}%`};
-  background-color: ${({ bgColor, isCompleted }) => (bgColor && isCompleted ? '#008556' : bgColor)};
+  background-color: '#008556';
   border-radius: 'inherit';
 `;
 
