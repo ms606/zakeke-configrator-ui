@@ -226,6 +226,7 @@
   .button-53 {
     font-size: 18px;
     min-width: 196px;
+    padding: 6px 5px;
   }
 }
 
@@ -233,6 +234,7 @@
   .button-53 {
     font-size: 18px;
     min-width: 196px;
+    padding: 6px 4px;
   }
   
   .tray-trigger-preview-button {
@@ -246,6 +248,10 @@
   .button-53 {
     font-size: 12px;
     min-width: 116px;
+  }
+
+  .tray-header {
+    top: 3rem;
   }
 
   .tray-header-1 {
