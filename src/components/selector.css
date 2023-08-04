@@ -250,6 +250,10 @@
     min-width: 116px;
   }
 
+  .tray-header {
+    top: 3rem;
+  }
+
   .tray-header-1 {
     max-width: 250px;
   }

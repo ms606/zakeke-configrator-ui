@@ -395,10 +395,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         {/* Personalize A */}
       {isMobile && (
         <div
-          className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
+          className="LayoutStyled__GroupItem-sc-1nws045-2"
           style={{
             position: "absolute",
-            top: "-3%",
+            top: "3%",
             left: "31%",
             cursor: "pointer",
           }}

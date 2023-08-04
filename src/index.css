@@ -173,6 +173,7 @@ button:focus {
 
     .animate-wrapper {
       height: 151px;
+      padding-top: 10px;
     }
 
   }
