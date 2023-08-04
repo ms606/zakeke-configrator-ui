@@ -28,14 +28,19 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     text-align: center;
     justify-content: center;
     padding: 0px 10px;
-    border: 1px #DDD solid;
+    
     cursor: pointer;
     margin: 0 10px;
-    border-radius: 50px;
     width: 152px;
     height: 36px;
     border-color: ${props => props.selected ? 'black' : '#DDD'};
     white-space: nowrap;
+
+    border: 1px solid #297CA3;
+    border-radius: 4px;
+    background-color: white;
+    color: #297CA3;
+
     &:hover {
         background-color: #ffd966;
     }
@@ -79,7 +84,7 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     content: "${props => { return props.selected ? props.selectedColor : ''
                         }}";
     position: absolute;
-    bottom: 6%;
+    bottom: 2em;
     // transform: translateY(38px);
     /* Additional styling for the :before pseudo-element can be added here */
     }
