@@ -40,20 +40,7 @@ html,body {
 .active-marketing-component-name {
   font-size: 18px;
   font-weight: 500;
-  /* transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 1;
-  transform: translateX(0); */
 }
-
-/* .slide-out {
-  opacity: 0;
-  transform: translateX(100%);
-}
-
-.slide-in {
-  opacity: 0;
-  transform: translateX(-100%);
-} */
 
 .personalize {
   background-color: white;
@@ -185,7 +172,7 @@ button:focus {
     }  
 
     .animate-wrapper {
-      height: 174px;
+      height: 151px;
     }
 
   }
