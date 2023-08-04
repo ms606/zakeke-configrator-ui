@@ -286,7 +286,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const containerStyles = {
     overflow: "auto",
     width: "100%",
-    height: !selectedTrayPreviewOpenButton ? "15rem" : "70px",
+    height: !selectedTrayPreviewOpenButton ? "13rem" : "70px",
   };
 
   return (
