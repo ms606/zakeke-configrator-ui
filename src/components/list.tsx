@@ -5,7 +5,7 @@ export const List = styled.ul`
     padding: 0;
     display: flex;
     align-items: center;
-    margin-bottom: 24px; 
+    margin-bottom: 17px; 
     border-radius: 50px;
     white-space: nowrap;
     justify-content: center;
@@ -17,10 +17,8 @@ export const List = styled.ul`
         position: relative;
         left: 60vw;
         }
-
 `;
-
-    
+  
 export const ListItem = styled.li<{ selected?: boolean }>`
     display: flex;
     flex-direction: column;    
@@ -80,7 +78,7 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     content: "${props => { return props.selected ? props.selectedColor : ''
                         }}";
     position: absolute;
-    bottom: 20%;
+    bottom: 6%;
     // transform: translateY(38px);
     /* Additional styling for the :before pseudo-element can be added here */
     }
