@@ -1,37 +1,44 @@
-//import { UndoRedoStep } from 'Interfaces';
+//import { UndoRedoStep } from 'interfaces';
 import _ from 'lodash';
 import useStore from './Store';
 import { Group, Option, SellerSettings, useZakeke } from 'zakeke-configurator-react';
 
+
+export interface UndoRedoStep {
+    type: any;
+    id: any;
+    direction: string;
+}
+
 let isRegisteringUndoStep = false;
 
-// export const quitFullscreen = (element: HTMLElement) => {
-// 	const exitFullscreen =
-// 		document.exitFullscreen ||
-// 		(document as any).webkitExitFullscreen ||
-// 		(document as any).msExitFullscreen ||
-// 		(document as any).mozCancelFullScreen;
-// 	if (exitFullscreen) exitFullscreen.call(document as any);
-// };
+export const quitFullscreen = (element: HTMLElement) => {
+	const exitFullscreen =
+		document.exitFullscreen ||
+		(document as any).webkitExitFullscreen ||
+		(document as any).msExitFullscreen ||
+		(document as any).mozCancelFullScreen;
+	if (exitFullscreen) exitFullscreen.call(document as any);
+};
 
-// export const launchFullscreen = (element: HTMLElement) => {
-// 	const requestFullScreen =
-// 		element.requestFullscreen ||
-// 		(element as any).webkitRequestFullscreen ||
-// 		(element as any).msRequestFullscreen ||
-// 		(element as any).mozRequestFullScreen;
+export const launchFullscreen = (element: HTMLElement) => {
+	const requestFullScreen =
+		element.requestFullscreen ||
+		(element as any).webkitRequestFullscreen ||
+		(element as any).msRequestFullscreen ||
+		(element as any).mozRequestFullScreen;
 
-// 	if (requestFullScreen) requestFullScreen.call(element);
-// };
+	if (requestFullScreen) requestFullScreen.call(element);
+};
 
-// export const swap = (group: Group[], i: number, j: number) => {
-// 	let temp = group[i];
-// 	group[i] = group[j];
-// 	group[j] = temp;
-// 	return group;
-// };
+export const swap = (group: Group[], i: number, j: number) => {
+	let temp = group[i];
+	group[i] = group[j];
+	group[j] = temp;
+	return group;
+};
 
- export const useDefinitiveGroups = (
+export const useDefinitiveGroups = (
 	groups: Group[],
 	hasCustomizeEnabled: boolean,
 	hasDesignsSaved: boolean,
@@ -158,141 +165,141 @@ export class T {
 	}
 }
 
-// export const range = (actualIndex: number, maxItems: number, array: any) => {
-// 	let result = [];
-// 	if (actualIndex <= maxItems) {
-// 		for (let i = 0; i < maxItems; i++) {
-// 			result.push(array[i]);
-// 		}
-// 	} else {
-// 		let difference = actualIndex - maxItems;
-// 		for (let k = difference; k < actualIndex; k++) {
-// 			result.push(array[k]);
-// 		}
-// 	}
-// 	return result;
-// };
+export const range = (actualIndex: number, maxItems: number, array: any) => {
+	let result = [];
+	if (actualIndex <= maxItems) {
+		for (let i = 0; i < maxItems; i++) {
+			result.push(array[i]);
+		}
+	} else {
+		let difference = actualIndex - maxItems;
+		for (let k = difference; k < actualIndex; k++) {
+			result.push(array[k]);
+		}
+	}
+	return result;
+};
 
-// export function formatString(str: string, ...args: string[]) {
-// 	return args.reduce((prev, current, idx) => prev.replace(`{${idx}}`, current), str);
-// }
+export function formatString(str: string, ...args: string[]) {
+	return args.reduce((prev, current, idx) => prev.replace(`{${idx}}`, current), str);
+}
 
-// export function findGroup(groups: Group[], groupId: number | null) {
-// 	for (let group of groups) if (group.id === groupId) return group;
+export function findGroup(groups: Group[], groupId: number | null) {
+	for (let group of groups) if (group.id === groupId) return group;
 
-// 	return null;
-// }
+	return null;
+}
 
-// export function findStep(groups: Group[], stepId: number | null) {
-// 	for (let group of groups) {
-// 		for (let step of group.steps) if (step.id === stepId) return step;
-// 	}
+export function findStep(groups: Group[], stepId: number | null) {
+	for (let group of groups) {
+		for (let step of group.steps) if (step.id === stepId) return step;
+	}
 
-// 	return null;
-// }
+	return null;
+}
 
-// export function findAttribute(groups: Group[], attributeId: number | null) {
-// 	for (let group of groups) {
-// 		for (let attr of group.attributes) if (attr.id === attributeId) return attr;
+export function findAttribute(groups: Group[], attributeId: number | null) {
+	for (let group of groups) {
+		for (let attr of group.attributes) if (attr.id === attributeId) return attr;
 
-// 		for (let step of group.steps) for (let attr of step.attributes) if (attr.id === attributeId) return attr;
-// 	}
-// 	return null;
-// }
+		for (let step of group.steps) for (let attr of step.attributes) if (attr.id === attributeId) return attr;
+	}
+	return null;
+}
 
-// export function useUndoRegister() {
-// 	const { isUndo, setUndoStack } = useStore();
+export function useUndoRegister() {
+	const { isUndo, setUndoStack } = useStore();
 
-// 	function startRegisterUndoAction(isRegistering: boolean) {
-// 		if (!isUndo) {
-// 			setUndoStack((undoStack) => {
-// 				let complexStep: { type: string; id: number }[] = [];
-// 				let undoTypesStackRec = [...undoStack];
+	function startRegisterUndoAction(isRegistering: boolean) {
+		if (!isUndo) {
+			setUndoStack((undoStack) => {
+				let complexStep: { type: string; id: number }[] = [];
+				let undoTypesStackRec = [...undoStack];
 
-// 				if (isRegistering) {
-// 					if (!isRegisteringUndoStep) {
-// 						undoTypesStackRec.push(complexStep);
-// 					}
-// 				} else {
-// 					if (undoTypesStackRec.length > 0 && undoTypesStackRec[undoTypesStackRec.length - 1].length === 0)
-// 						undoTypesStackRec.pop();
-// 				}
+				if (isRegistering) {
+					if (!isRegisteringUndoStep) {
+						undoTypesStackRec.push(complexStep);
+					}
+				} else {
+					if (undoTypesStackRec.length > 0 && undoTypesStackRec[undoTypesStackRec.length - 1].length === 0)
+						undoTypesStackRec.pop();
+				}
 
-// 				return undoTypesStackRec;
-// 			});
-// 		}
+				return undoTypesStackRec;
+			});
+		}
 
-// 		return (isRegisteringUndoStep = isRegistering);
-// 	}
+		return (isRegisteringUndoStep = isRegistering);
+	}
 
-// 	const startRegistering = () => {
-// 		const current = isRegisteringUndoStep;
-// 		if (!current) startRegisterUndoAction(true);
+	const startRegistering = () => {
+		const current = isRegisteringUndoStep;
+		if (!current) startRegisterUndoAction(true);
 
-// 		return current;
-// 	};
+		return current;
+	};
 
-// 	const endRegistering = (current: boolean) => {
-// 		if (!current) startRegisterUndoAction(false);
-// 	};
+	const endRegistering = (current: boolean) => {
+		if (!current) startRegisterUndoAction(false);
+	};
 
-// 	return { startRegistering, endRegistering };
-// }
+	return { startRegistering, endRegistering };
+}
 
-// export function useUndoRedoActions() {
-// 	const { isUndo, setUndoStack, isRedo, setRedoStack } = useStore();
+export function useUndoRedoActions() {
+	const { isUndo, setUndoStack, isRedo, setRedoStack } = useStore();
 
-// 	const fillUndoStack = (undoStep: UndoRedoStep) => {
-// 		if (!isUndo) {
-// 			setUndoStack((undoStack) => {
-// 				let tempUndoStack = [...undoStack];
-// 				let actions = Array.isArray(undoStep) ? undoStep : [undoStep];
-// 				const stepOrder = ['group', 'step', 'attribute', 'option'];
+	const fillUndoStack = (undoStep: UndoRedoStep) => {
+		if (!isUndo) {
+			setUndoStack((undoStack) => {
+				let tempUndoStack = [...undoStack];
+				let actions = Array.isArray(undoStep) ? undoStep : [undoStep];
+				const stepOrder = ['group', 'step', 'attribute', 'option'];
 
-// 				if (isRegisteringUndoStep) {
-// 					let undoStep = tempUndoStack.pop() ?? [];
-// 					// When passing multiple undo of the same type we need to keep the first that was passed because it's the oldest
-// 					for (const action of actions)
-// 						if (
-// 							undoStep.findIndex(
-// 								(x: UndoRedoStep) => x.type === action.type && x.direction === action.direction,
-// 							) === -1
-// 						)
-// 							undoStep = [...undoStep, action];
+				if (isRegisteringUndoStep) {
+					let undoStep = tempUndoStack.pop() ?? [];
+					// When passing multiple undo of the same type we need to keep the first that was passed because it's the oldest
+					for (const action of actions)
+						if (
+							undoStep.findIndex(
+								(x: UndoRedoStep) => x.type === action.type && x.direction === action.direction,
+							) === -1
+						)
+							undoStep = [...undoStep, action];
 
-// 					// Keep step actions sorted
-// 					undoStep = undoStep.sort((a: UndoRedoStep, b: UndoRedoStep) =>
-// 						stepOrder.indexOf(a.type) < stepOrder.indexOf(b.type) ? -1 : 1,
-// 					);
+					// Keep step actions sorted
+					undoStep = undoStep.sort((a: UndoRedoStep, b: UndoRedoStep) =>
+						stepOrder.indexOf(a.type) < stepOrder.indexOf(b.type) ? -1 : 1,
+					);
 
-// 					tempUndoStack.push(undoStep);
-// 				} else {
-// 					// Keep step actions sorted
-// 					actions = actions.sort((a, b) => (stepOrder.indexOf(a.type) < stepOrder.indexOf(b.type) ? -1 : 1));
+					tempUndoStack.push(undoStep);
+				} else {
+					// Keep step actions sorted
+					actions = actions.sort((a, b) => (stepOrder.indexOf(a.type) < stepOrder.indexOf(b.type) ? -1 : 1));
 
-// 					tempUndoStack = [...tempUndoStack, actions];
-// 				}
-// 				return tempUndoStack;
-// 			});
-// 		}
-// 	};
+					tempUndoStack = [...tempUndoStack, actions];
+				}
+				return tempUndoStack;
+			});
+		}
+	};
 
-// 	const fillRedoStack = (redoStep: UndoRedoStep | any) => {
-// 		if (!isRedo) {
-// 			setRedoStack((redoStack) => {
-// 				let tempRedoStack = [...redoStack];
-// 				if (redoStep && redoStep.length > 0) tempRedoStack.push(redoStep);
-// 				return tempRedoStack;
-// 			});
-// 		}
-// 	};
+	const fillRedoStack = (redoStep: UndoRedoStep | any) => {
+		if (!isRedo) {
+			setRedoStack((redoStack) => {
+				let tempRedoStack = [...redoStack];
+				if (redoStep && redoStep.length > 0) tempRedoStack.push(redoStep);
+				return tempRedoStack;
+			});
+		}
+	};
 
-// 	const eraseRedoStack = () => {
-// 		if (!isUndo && !isRedo) setRedoStack(() => []);
-// 	};
+	const eraseRedoStack = () => {
+		if (!isUndo && !isRedo) setRedoStack(() => []);
+	};
 
-// 	return { fillUndoStack, fillRedoStack, eraseRedoStack };
-// }
+	return { fillUndoStack, fillRedoStack, eraseRedoStack };
+}
 
 export function useActualGroups() {
 	const { groups, isSceneLoading, product, isAreaVisible, draftCompositions, sellerSettings } = useZakeke();

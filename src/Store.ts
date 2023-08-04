@@ -1,9 +1,15 @@
-import { UndoRedoStep } from 'Interfaces';
+// import { UndoRedoStep } from 'interfaces';
 import React from 'react';
 import { create } from 'zustand';
 //import { Notification } from './components/widgets/Notifications';
 
 export const MOBILE_BREAKPOINT = 1024;
+
+export interface UndoRedoStep {
+    type: any;
+    id: any;
+    direction: string;
+}
 
 interface Store {
 	isViewerMode: boolean;
@@ -37,6 +43,8 @@ interface Store {
 	isRedo: boolean;
 	setIsRedo: (isRedo: boolean) => void;
 
+	lastSelectedItem: { type: string; id: number | null };
+	setLastSelectedItem: (lastSelectedItem: { type: string; id: number | null }) => void;
 	// notifications: Notification[];
 	// setNotifications: (notifications: Notification[]) => void;
 	// removeNotification: (id: number) => void;
@@ -132,6 +140,13 @@ const useStore = create<Store>((set) => ({
 			isRedo,
 		});
 	},
+	lastSelectedItem: { type: 'attribute', id: null },
+	setLastSelectedItem: (lastSelectedItem: { type: string; id: number | null }) => {
+		set({
+			lastSelectedItem
+		});
+	},
+
 
 	// notifications: [],
 	// setNotifications: (notifications) => {
