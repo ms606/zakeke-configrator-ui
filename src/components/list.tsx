@@ -84,9 +84,7 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     content: "${props => { return props.selected ? props.selectedColor : ''
                         }}";
     position: absolute;
-    bottom: 2em;
-    // transform: translateY(38px);
-    /* Additional styling for the :before pseudo-element can be added here */
+    bottom: 8%;
     }
     
     
