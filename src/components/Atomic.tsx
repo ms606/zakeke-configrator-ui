@@ -113,7 +113,7 @@ export const Button = styled.button<{
 		!props.disabled &&
 		`
       &:hover {
-        background-color: ${props.outline ? 'white' : props.primary ? '#4b6074' : '#313c46'};
+        background-color: ${props.outline ? 'white' : props.primary ? '#297ca3' : '#297ca3'};
         border: ${props.outline ? '1px solid black' : '1px solid #4b6074'};
         color: ${props.outline ? 'black' : 'white'};
       }
