@@ -14,6 +14,7 @@ import { GroupItem, GroupIcon } from "./layouts/LayoutStyled";
 import { createPortal } from "react-dom";
 import useStore from "../Store";
 import { T } from '../Helpers';
+import Footer from "./layouts/Footer";
 
 const dialogsPortal = document.getElementById("dialogs-portal")!;
 // const Container = styled.div`
@@ -103,6 +104,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const selectedAttribute = attributes.find(
     (attribute) => attribute.id === selectedAttributeId
   );
+
+  console.log(groups,'for checking others');
+  
 
   let indexToRemove = groups.findIndex((obj) => obj.id === -1);
 
@@ -391,7 +395,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       )}
 
       <div className="animate-wrapper-0">
-
         {/* Personalize A */}
       {isMobile && (
         <div
@@ -518,6 +521,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 </svg>
               </button>
             </div>
+            <Footer />
 
             {/* Closed on request of Paul */}
             {/* <MenuTriggerButton width={width} toggleTray={toggleTray} /> */}
@@ -607,7 +611,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
               </div>
             )}
           </div>
+
         </div>
+
       </div>
     </>
   );

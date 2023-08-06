@@ -5,7 +5,7 @@ const Tray = ({ groupNameList, toggleFunc, UpdateGroupId }) => {
   //  const [isOpen, setIsOpen] = useState(false);
 
   const handleMultipleClicks = (event) => {
-    console.log(event.target.id);
+   // console.log(event.target.id);
     UpdateGroupId(event.target.id);
     toggleFunc();
   };

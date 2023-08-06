@@ -270,3 +270,71 @@ export const MenuItemIcon = styled.div`
 	width: 64px;
 	height: 64px;
 `;
+
+
+export const ExtensionFieldsContainer = styled.div`
+	margin: 0px auto;
+	display: flex;
+	flex-direction: row;
+`;
+
+export const ExtensionFieldItem = styled.div`
+	border-right: 1px solid black;
+	padding: 0px 5px;
+	text-align: right;
+`;
+
+export const QuantityContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 70px;
+	background-color: white;
+	padding-left: 10px;
+	color: #313c46;
+	grid-gap: 10px;
+	/* min-width: 150px; */
+	/* input{
+		min-width: 100px;
+	} */
+`;
+
+export const FooterContainer = styled.div`
+	background-color: transparent;
+	display: flex;
+	flex-direction: row;
+	height: 70px;
+	padding-top: 0px;
+	margin-right: 15em;
+`;
+export const FooterRightElementsContainer = styled.div`
+	background: transparent;
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	height: 70px;
+	min-height: 70px;
+	background-color: transparent;
+	flex-direction: row;
+	grid-gap: 10px;
+	align-items: center;
+	padding: 0px 0px 0px 15em;
+	font-size: 14px;
+	@media (max-width: 1024px) {
+		min-height: 70px;
+	}
+`;
+
+export const PriceContainer = styled.div<{ isMobile?: boolean }>`
+	font-size: 20px;
+	font-weight: 600;
+	color: #313c46;
+	margin-right: 20px;
+	${(props) =>
+		props.isMobile &&
+		`
+    margin-right: 0px;
+    color:white;`};
+`;
+
