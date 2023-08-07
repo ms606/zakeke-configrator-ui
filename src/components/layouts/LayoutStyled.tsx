@@ -306,11 +306,12 @@ export const FooterContainer = styled.div`
 	height: 70px;
 	padding-top: 0px;
 	margin-right: 15em;
+	width: 26px;
 `;
 export const FooterRightElementsContainer = styled.div`
 	background: transparent;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: start;
 	width: 100%;
 	height: 70px;
 	min-height: 70px;
@@ -318,8 +319,9 @@ export const FooterRightElementsContainer = styled.div`
 	flex-direction: column;
 	grid-gap: 10px;
 	align-items: center;
-	padding: 0px 0px 0px 15em;
+	padding: 0px 0px 0px 0em;
 	font-size: 14px;
+	width: 26px;
 	@media (max-width: 1024px) {
 		min-height: 70px;
 	}
