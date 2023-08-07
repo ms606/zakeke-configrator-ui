@@ -232,10 +232,6 @@
 }
 
 @media screen and (min-width: 568px){
-  .body-3 {
-    font: var(--podium-cds-typography-body3-small);
-  }
-
   .button-53 {
     font-size: 18px;
     min-width: 196px;
@@ -249,7 +245,10 @@
 }
 
 @media screen and (max-width: 568px){
-
+  .body-3 {
+    font: var(--podium-cds-typography-body3-small);
+  }
+  
   .button-53 {
     font-size: 12px;
     min-width: 116px;
