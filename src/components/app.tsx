@@ -124,8 +124,8 @@ const App: FunctionComponent<{}> = () => {
                   className="ThreeDRenderer"
                   style={
                     selectedTrayPreviewOpenButton3D
-                      ? { width: "60vw", height: "60vh" }
-                      : { width: "70vw", height: "70vh" }
+                      ? { width: "63vw", height: "67vh" }
+                      : { width: "74vw", height: "76vh" }
                   }
                 >
                   <ZakekeViewer />

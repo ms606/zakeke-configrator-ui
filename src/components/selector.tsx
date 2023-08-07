@@ -13,7 +13,7 @@ import Designer from "./layouts/Designer";
 import { GroupItem, GroupIcon } from "./layouts/LayoutStyled";
 import { createPortal } from "react-dom";
 import useStore from "../Store";
-import { T } from '../Helpers';
+import { T } from "../Helpers";
 import Footer from "./layouts/Footer";
 
 const dialogsPortal = document.getElementById("dialogs-portal")!;
@@ -105,8 +105,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     (attribute) => attribute.id === selectedAttributeId
   );
 
-  console.log(groups,'for checking others');
-  
+  //console.log(groups,'for checking others');
 
   let indexToRemove = groups.findIndex((obj) => obj.id === -1);
 
@@ -133,7 +132,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-     // console.log("items", items, "groups", groups, "product", product);
+      // console.log("items", items, "groups", groups, "product", product);
 
       selectGroup(groups[0].id);
 
@@ -296,16 +295,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   return (
     <>
       <div className="top-nav">
-        {width > 568 ? (
-          <div className="body-3" id="product-info">
-            <span>{productName}</span>
-            <span>LEI {price}</span>
-          </div>
-        ) : (
-          <div className="body-3" id="product-info">
-            {" "}
-          </div>
-        )}
+        <div className="body-3" id="product-info">
+          <span>{productName}</span>
+          <span>LEI {price}</span>
+        </div>
       </div>
 
       {!isMobile && !isTrayOpen ? (
@@ -333,7 +326,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       )}
 
       {isMobile && !isTrayOpen ? (
-        <div style={{ position: "absolute", top: "20%" }}>
+        <div style={{ position: "absolute", top: "30%" }}>
           <div
             className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
             onClick={zoomIn}
@@ -383,7 +376,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 padding: "10px",
               }}
             >
-              {T._('Personalize','Composer')} 
+              {T._("Personalize", "Composer")}
             </span>
           </div>
           {selectedPersonalize ? (
@@ -396,39 +389,52 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
       <div className="animate-wrapper-0">
         {/* Personalize A */}
-      {isMobile && (
-        <div
-          className="LayoutStyled__GroupItem-sc-1nws045-2"
-          style={{
-            position: "absolute",
-            top: "3%",
-            left: "31%",
-            cursor: "pointer",
-          }}
-        >
+        {isMobile && (
           <div
-            className="button-53"
-            onClick={() => setSelectedPersonalize(!selectedPersonalize)}
+            className="LayoutStyled__GroupItem-sc-1nws045-2"
+            style={{
+              position: "absolute",
+              top: "3%",
+              left: "31%",
+              cursor: "pointer",
+            }}
           >
-            <span
+            <div
+              className="button-53"
+              onClick={() => setSelectedPersonalize(!selectedPersonalize)}
+            >
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "7px 5px",
+                }}
+              >
+                Personaliza
+              </span>
+            </div>
+
+            <div
+              className="LayoutStyled__GroupItem-sc-1nws045-2"
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "10px",
+                position: "absolute",
+                top: "-121%",
+                left: "-26%",
+                cursor: "pointer",
+                padding: "7px 5px",
               }}
             >
-              Personaliza
-            </span>
-          </div>
-          {selectedPersonalize ? (
-            <Designer togglePersonalize={togglePersonalize} />
-          ) : (
-            ""
-          )}
-        </div>
-      )}
+              {isMobile && <Footer />}
+            </div>
 
+            {selectedPersonalize ? (
+              <Designer togglePersonalize={togglePersonalize} />
+            ) : (
+              ""
+            )}
+          </div>
+        )}
 
         <div style={containerStyles}>
           <div className="tray-header">
@@ -487,7 +493,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                   <div className="active-marketing-component-name">
                     <span
                       style={{
-                       
                         whiteSpace: "nowrap",
                         textOverflow: "ellipsis",
                         overflow: "hidden",
@@ -521,7 +526,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 </svg>
               </button>
             </div>
-            <Footer />
+            {!isMobile && <Footer />}
 
             {/* Closed on request of Paul */}
             {/* <MenuTriggerButton width={width} toggleTray={toggleTray} /> */}
@@ -565,7 +570,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
               )}
 
             {!selectedTrayPreviewOpenButton && (
-              <div style={{}}>
+              <div style={{ width: "100%" }}>
                 <List>
                   {attributes &&
                     !isTrayOpen &&
@@ -611,9 +616,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
               </div>
             )}
           </div>
-
         </div>
-
       </div>
     </>
   );
