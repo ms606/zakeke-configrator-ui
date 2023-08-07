@@ -38,8 +38,8 @@ export const ListItem = styled.li<{ selected?: boolean }>`
 
     border: 1px solid #297CA3;
     border-radius: 4px;
-    background-color: white;
-    color: #297CA3;
+    background-color: ${props => props.selected ? '#297ca3' : 'white'};
+    color: ${props => props.selected ? 'white' : '#297ca3' };
 
     &:hover {
         background-color: #ffd966;
