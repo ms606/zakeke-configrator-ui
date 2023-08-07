@@ -207,7 +207,6 @@ export const StepsContainer = styled.div`
 	}
 `;
 
-
 export const MenuItemImage = styled.img<{ isRound?: boolean }>`
 	width: 64px;
 	height: 64px;
@@ -316,7 +315,7 @@ export const FooterRightElementsContainer = styled.div`
 	height: 70px;
 	min-height: 70px;
 	background-color: transparent;
-	flex-direction: row;
+	flex-direction: column;
 	grid-gap: 10px;
 	align-items: center;
 	padding: 0px 0px 0px 15em;

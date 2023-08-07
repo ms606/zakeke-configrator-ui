@@ -3,6 +3,7 @@
     --podium-cds-typography-body1-strong: 500 1rem/1.5 'Inter';
     --podium-cds-typography-body2: 400 .875rem/1.5 'Inter';
     --podium-cds-typography-body3: 800 1.4rem/1.5 'Inter';
+    --podium-cds-typography-body3-small: 100 1rem/3.5 'Inter';
   }
 
   body {
@@ -231,6 +232,10 @@
 }
 
 @media screen and (min-width: 568px){
+  .body-3 {
+    font: var(--podium-cds-typography-body3-small);
+  }
+
   .button-53 {
     font-size: 18px;
     min-width: 196px;
@@ -244,6 +249,9 @@
 }
 
 @media screen and (max-width: 568px){
+  .body-3 {
+    font: var(--podium-cds-typography-body3-small);
+  }
 
   .button-53 {
     font-size: 12px;

@@ -274,16 +274,16 @@ const Footer = () => {
 						)} */}
 
 						{/* Price */}
-						{price !== null && price > 0 && (!sellerSettings || !sellerSettings.hidePrice) && (
+						{/* {price !== null && price > 0 && (!sellerSettings || !sellerSettings.hidePrice) && (
 							<PriceContainer>
-								{/* {!isOutOfStock && priceFormatter.format(price)} */}
+							
 								{sellerSettings && sellerSettings.priceInfoText && (
 									<PriceInfoTextContainer
 										dangerouslySetInnerHTML={{ __html: sellerSettings.priceInfoText }}
 									/>
 								)}
 							</PriceContainer>
-						)}
+						)} */}
 
 						{/* PDF preview */}
 						<Button key={'pdf'} onClick={() => handlePdfClick()}>
