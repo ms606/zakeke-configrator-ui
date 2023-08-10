@@ -116,7 +116,7 @@ const App: FunctionComponent<{}> = () => {
                   display: "grid",
                   alignItems: "center",
                   justifyContent: "center",
-                  gridArea: "1 / 2 / 12 / 1",
+                  // gridArea: "1 / 2 / 12 / 1",
                   backgroundColor: "rgb(249 246 248)",
                 }}
               >
@@ -125,7 +125,7 @@ const App: FunctionComponent<{}> = () => {
                   style={
                     selectedTrayPreviewOpenButton3D
                       ? { width: "63vw", height: "67vh" }
-                      : { width: "74vw", height: "76vh" }
+                      : { width: "63vw", height: "65vh", marginTop: "26px" }
                   }
                 >
                   <ZakekeViewer />
