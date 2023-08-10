@@ -246,7 +246,16 @@
 
 @media screen and (max-width: 568px){
   .body-3 {
-    font: var(--podium-cds-typography-body3-small);
+    font: var(--podium-cds-typography-body3-small);    
+    font-size: 13px;
+    width: 88px;
+    letter-spacing: -1px;
+    line-height: 2;
+  }
+
+  #product-info {
+    padding: 0;
+    margin: 0;
   }
   
   .button-53 {
