@@ -127,7 +127,6 @@ const Area = styled.div<{ selected?: boolean }>`
   text-transform: uppercase;
   letter-spacing: 0px;
   word-spacing: 1px;
-  text-shadow: 0px 2px 13px rgba(0, 0, 10, 0.8);
 
   border: 1px solid #297CA3;
   font-size: 15px;
