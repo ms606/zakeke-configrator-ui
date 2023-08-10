@@ -219,3 +219,7 @@ export const ZoomOutIcon = styled(Icon)`
 	height: 32px;
 	z-index: 3;
 `;
+
+export const AddToCartButton = styled(Button)`
+	min-width: 200px;
+`;

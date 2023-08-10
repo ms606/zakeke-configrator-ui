@@ -1,5 +1,5 @@
 import { useZakeke } from 'zakeke-configurator-react';
-import { Button, Icon, TooltipContent } from '../Atomic';
+import {AddToCartButton, Button, Icon, TooltipContent } from '../Atomic';
 import SaveDesignsDraftDialog from '../dialog/SaveDesignsDraftDialog';
 import { T } from '../../Helpers';
 import { TailSpin } from 'react-loader-spinner';
@@ -69,7 +69,9 @@ const Footer = () => {
 
 	const { showDialog, closeDialog } = useDialogManager();
 
-	// const handleAddToCart = () => {
+	 const handleAddToCart = () => {
+		console.log('adding to cart');
+		
 	// 	const cartMessage = eventMessages?.find((message) => message.eventID === 4);
 
 	// 	if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode)
@@ -136,7 +138,7 @@ const Footer = () => {
 	// 	else {
 	// 		addToCart([], undefined, useLegacyScreenshot);
 	// 	}
-	// };
+	 };
 
 	const showError = (error: string) => {
 		showDialog('error', <ErrorDialog error={error} onCloseClick={() => closeDialog('error')} />);
@@ -216,9 +218,9 @@ const Footer = () => {
 	// 			<QuotationFormDialog getQuoteRule={rule} onFormSubmit={handleSubmitRequestQuote} />
 	// 		);
 	// };
-
+	const isOutOfStock = false;
 	const isBuyVisibleForQuoteRule = product?.quoteRule ? product.quoteRule.allowAddToCart : true;
-	//const isAddToCartDisabled = isOutOfStock || isAddToCartLoading;
+	const isAddToCartDisabled = isOutOfStock || isAddToCartLoading;
 
 	return (
 		<FooterContainer>
@@ -324,18 +326,19 @@ const Footer = () => {
 						)} */}
 
 						{/* Add to cart */}
-						{/* {isBuyVisibleForQuoteRule && !isViewerMode && (
+						{/* {isBuyVisibleForQuoteRule && !isViewerMode && ( */}
 							<AddToCartButton
 								ref={addToCartButtonRef}
-								onPointerEnter={() => {
-									if (isAddToCartDisabled) openOutOfStockTooltip(addToCartButtonRef.current!, 'top', 'top');
-								}}
-								onPointerLeave={() => {
-									closeOutOfStockTooltip();
-								}}
+								//onPointerEnter={() => {
+								// 	if (isAddToCartDisabled) openOutOfStockTooltip(addToCartButtonRef.current!, 'top', 'top');
+								// }}
+								// onPointerLeave={() => {
+								// 	closeOutOfStockTooltip();
+								// }}
 								disabled={isAddToCartDisabled}
 								primary
-								onClick={!isAddToCartDisabled ? () => handleAddToCart() : () => null}
+								//onClick={!isAddToCartDisabled ? () => handleAddToCart() : () => null}
+								onClick={() => handleAddToCart()}
 							>
 								{isAddToCartLoading && <TailSpin color='#FFFFFF' height='25px' />}
 								{!isAddToCartLoading && !isOutOfStock && (
@@ -347,7 +350,7 @@ const Footer = () => {
 								)}
 								{!isAddToCartLoading && isOutOfStock && <span>{T._('OUT OF STOCK', 'Composer')}</span>}
 							</AddToCartButton>
-						)} */}
+						{/* )} */}
 					</FooterRightElementsContainer>
 				</>
 			{/* )} */}
