@@ -15,6 +15,7 @@ import { createPortal } from "react-dom";
 import useStore from "../Store";
 import { T } from "../Helpers";
 import Footer from "./layouts/Footer";
+import FooterMobile from "./layouts/FooterMobile";
 
 const dialogsPortal = document.getElementById("dialogs-portal")!;
 // const Container = styled.div`
@@ -426,7 +427,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 height: "51px"
               }}
             >
-              {isMobile && <Footer />}
+              {!isMobile && <Footer />}
+              {isMobile && <FooterMobile />}
             </div>
 
             {selectedPersonalize ? (

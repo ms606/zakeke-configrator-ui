@@ -307,7 +307,12 @@ export const FooterContainer = styled.div`
 	padding-top: 0px;
 	margin-right: 15em;
 	width: 26px;
+	@media screen and (max-width: 568) {
+		height: 70px;
+	}
 `;
+
+
 export const FooterRightElementsContainer = styled.div`
 	background: transparent;
 	display: flex;
@@ -339,3 +344,17 @@ export const PriceContainer = styled.div<{ isMobile?: boolean }>`
     color:white;`};
 `;
 
+export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
+	height: 40px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	background-color: #fff;
+	font-size: 12px;
+	margin-top: 4px;
+	border-top: 1px #fff solid;
+	grid-template-areas: 'back pdf save share cart'; 
+	${(props) => props.isQuoteEnable && `
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-areas: 'back pdf save share cart quote' 
+	`};
+`;

@@ -197,11 +197,6 @@ export const ArrowRightIconStyled = styled(Icon)`
 	font-size: 22px;
 `;
 
-export const TooltipContent = styled.div`
-    padding: 10px;
-`;
-
-
 export const ZoomInIcon = styled(Icon)`
 	position: absolute;
 	left: 20px;
@@ -223,3 +218,8 @@ export const ZoomOutIcon = styled(Icon)`
 export const AddToCartButton = styled(Button)`
 	min-width: 200px;
 `;
+
+export const TooltipContent = styled.div`
+	padding: 10px;
+`;
+
