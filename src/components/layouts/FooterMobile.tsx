@@ -212,7 +212,7 @@ const FooterMobile = () => {
 	// const handleShareClick = async () => {
 	// 	setCameraByName('buy_screenshot_camera', false, false);
 	// 	showDialog('share', <ShareDialog />);
-	// };
+	// };					
 	const handleSaveClick = async () => {
 		showDialog('save', <SaveDesignsDraftDialog onCloseClick={() => closeDialog('save')} />);
 	};
@@ -353,14 +353,14 @@ const FooterMobile = () => {
 							backgroundColor='#313c46'
 							onClick={!isAddToCartDisabled ? () => handleAddToCart() : () => null}
 						>
-							{!isOutOfStock &&
+							{/* {!isOutOfStock &&
 								price !== null &&
 								price > 0 &&
 								(!sellerSettings || !sellerSettings.hidePrice) && (
 									<PriceContainer isMobile={isMobile}>{priceFormatter.format(price)}</PriceContainer>
-								)}
+								)} */}
 
-							{isOutOfStock && T._('OUT OF STOCK', 'Composer')}
+							{/* {isOutOfStock && T._('OUT OF STOCK', 'Composer')} */}
 
 							{!isOutOfStock &&
 								!isAddToCartLoading &&
