@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Made by Tyler Brooks: Tyler Brooks -->
-<svg width="950px" height="800px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="950px" height="950px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <clipPath id="clip-shoppingcart">
-      <rect width="40" height="40"/>
+      <rect width="80" height="80"/>
     </clipPath>
   </defs>
   <g id="shoppingcart" clip-path="url(#clip-shoppingcart)">
