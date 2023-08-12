@@ -421,7 +421,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
               style={{
                 position: "absolute",
                 top: "-2%",
-                left: "12em",
+                left: "10em",
                 cursor: "pointer",
                 width: "64px",
                 height: "51px"
