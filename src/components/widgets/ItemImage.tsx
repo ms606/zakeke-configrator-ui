@@ -52,7 +52,7 @@ const ImageAndButtonsContainer = styled.div`
 `;
 
 const ImagePreview = styled.div`
-    border: 1px #f4f4f4 solid;
+    border: 5px #f4f4f4 solid;
     padding: 4px;
     height: 130px;
     img{
@@ -99,7 +99,7 @@ const ItemImage: FC<{ item: ImageItem, handleItemPropChange: any, currentTemplat
         <ImageAndButtonsContainer>
             <ImagePreview><img src={item.url} alt="" /></ImagePreview>
             <ButtonsContainer>
-                {showUploadButton && <Button disabled={uploadImgDisabled} isFullWidth onClick={handleChangeClick}>{T._("Upload", "Composer")}</Button>}
+                {showUploadButton && <Button disabled={uploadImgDisabled} isFullWidth onClick={handleChangeClick}>{T._("Incarcă", "Composer")}</Button>}
                 {showGalleryButton && <Button isFullWidth onClick={handleGalleryClick}>{T._("Gallery", "Composer")}</Button>}
             </ButtonsContainer>
             <input type="file" ref={input => inputHtml = input!} onChange={handleInputChange} />

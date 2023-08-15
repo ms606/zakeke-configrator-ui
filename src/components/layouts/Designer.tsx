@@ -704,7 +704,7 @@ const Designer: FC<{
                   <Icon>
                     <Add />
                   </Icon>
-                  <span>{T._("Add text", "Composer")}</span>
+                  <span>{T._("Adaugă Text", "Composer")}</span>
                 </Button>
               )}
 
@@ -713,7 +713,7 @@ const Designer: FC<{
                   <Icon>
                     <Add />
                   </Icon>
-                  <span>{T._("Add clipart", "Composer")}</span>
+                  <span>{T._("Adaugă Logo", "Composer")}</span>
                 </Button>
               )}
 
@@ -742,7 +742,7 @@ const Designer: FC<{
                             isItemEditable(item, currentTemplateArea)
                         )
                           ? T._("Upload another image", "Composer")
-                          : T._("Upload Images", "Composer")}{" "}
+                          : T._("Incarcati Imagini", "Composer")}{" "}
                       </span>
                     </span>
                   </Button>
