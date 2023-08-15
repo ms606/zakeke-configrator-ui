@@ -4,10 +4,12 @@ import {
   ZakekeEnvironment,
   ZakekeViewer,
   ZakekeProvider,
+  useZakeke
 } from "zakeke-configurator-react";
 import Selector from "./selector";
 import { DialogsRenderer } from "./dialog/Dialogs";
 import useStore from "../Store";
+import LoadingOverlay from "./widgets/LoadingOverlay";
 
 // const Layout = styled.div`
 //     display: grid;
@@ -38,6 +40,12 @@ const MobileContainer = styled.div`
 const zakekeEnvironment = new ZakekeEnvironment();
 
 const App: FunctionComponent<{}> = () => {
+ 
+  const {
+		isSceneLoading,
+		isAssetsLoading,
+	} = useZakeke();
+
   const {
     isLoading,
     setPriceFormatter,
@@ -46,7 +54,7 @@ const App: FunctionComponent<{}> = () => {
     setSelectedStepId,
     isMobile,
     selectedGroupId,
-    setIsMobile,
+    setIsMobile
   } = useStore();
 
   const [resize, setResize] = useState(false);
@@ -136,6 +144,8 @@ const App: FunctionComponent<{}> = () => {
               />
             </Layout>
           )}
+
+          {/* {(isLoading || isSceneLoading || isAssetsLoading) && <LoadingOverlay />} */}
           <DialogsRenderer />
         </div>
       </div>

@@ -72,72 +72,73 @@ const Footer = () => {
 	 const handleAddToCart = () => {
 		console.log('adding to cart');
 		
-	// 	const cartMessage = eventMessages?.find((message) => message.eventID === 4);
+		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
 
-	// 	if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode)
-	// 		showDialog(
-	// 			'question',
-	// 			<QuestionDialog
-	// 				alignButtons='center'
-	// 				eventMessage={cartMessage?.description}
-	// 				buttonNoLabel={T._('Cancel', 'Composer')}
-	// 				buttonYesLabel={T._('Add to cart', 'Composer')}
-	// 				onYesClick={() => {
-	// 					if (nftSettings && nftSettings.isNFTEnabled && !isDraftEditor)
-	// 						showDialog(
-	// 							'nft',
-	// 							<NftDialog
-	// 								nftTitle={T._(
-	// 									"You're purchasing a customized product together with an NFT.",
-	// 									'Composer'
-	// 								)}
-	// 								nftMessage={T._(
-	// 									'To confirm and mint your NFT you need an active wallet compatible with Ethereum. Confirm and add your email and wallet address.',
-	// 									'Composer'
-	// 								)}
-	// 								price={nftSettings.priceToAdd + price}
-	// 								buttonNoLabel={T._('Skip and continue', 'Composer')}
-	// 								buttonYesLabel={T._('Confirm and Purchase', 'Composer')}
-	// 								onYesClick={(nftForm: NftForm) => {
-	// 									closeDialog('nft');
-	// 									addToCart([], undefined, useLegacyScreenshot, nftForm);
-	// 								}}
-	// 								onNoClick={() => {
-	// 									closeDialog('nft');
-	// 									addToCart([], undefined, useLegacyScreenshot);
-	// 								}}
-	// 							/>
-	// 						);
-	// 					else addToCart([], undefined, useLegacyScreenshot);
-	// 					closeDialog('question');
-	// 				}}
-	// 			/>
-	// 		);
-	// 	else if (nftSettings && nftSettings.isNFTEnabled && !isDraftEditor)
-	// 		showDialog(
-	// 			'nft',
-	// 			<NftDialog
-	// 				nftTitle={T._("You're purchasing a customized product together with an NFT.", 'Composer')}
-	// 				nftMessage={T._(
-	// 					'To confirm and mint your NFT you need an active wallet compatible with Ethereum. Confirm and add your email and wallet address.',
-	// 					'Composer'
-	// 				)}
-	// 				price={nftSettings.priceToAdd + price}
-	// 				buttonNoLabel={T._('Skip and continue', 'Composer')}
-	// 				buttonYesLabel={T._('Confirm and Purchase', 'Composer')}
-	// 				onYesClick={(nftForm: NftForm) => {
-	// 					closeDialog('nft');
-	// 					addToCart([], undefined, useLegacyScreenshot, nftForm);
-	// 				}}
-	// 				onNoClick={() => {
-	// 					closeDialog('nft');
-	// 					addToCart([], undefined, useLegacyScreenshot);
-	// 				}}
-	// 			/>
-	// 		);
-	// 	else {
-	// 		addToCart([], undefined, useLegacyScreenshot);
-	// 	}
+		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode)
+			showDialog(
+				'question',
+				<QuestionDialog
+					alignButtons='center'
+					eventMessage={cartMessage?.description}
+					buttonNoLabel={T._('Cancel', 'Composer')}
+					buttonYesLabel={T._('Add to cart', 'Composer')}
+					onYesClick={() => {
+						// if (nftSettings && nftSettings.isNFTEnabled && !isDraftEditor)
+						// 	showDialog(
+						// 		'nft',
+						// 		<NftDialog
+						// 			nftTitle={T._(
+						// 				"You're purchasing a customized product together with an NFT.",
+						// 				'Composer'
+						// 			)}
+						// 			nftMessage={T._(
+						// 				'To confirm and mint your NFT you need an active wallet compatible with Ethereum. Confirm and add your email and wallet address.',
+						// 				'Composer'
+						// 			)}
+						// 			price={nftSettings.priceToAdd + price}
+						// 			buttonNoLabel={T._('Skip and continue', 'Composer')}
+						// 			buttonYesLabel={T._('Confirm and Purchase', 'Composer')}
+						// 			onYesClick={(nftForm: NftForm) => {
+						// 				closeDialog('nft');
+						// 				addToCart([], undefined, useLegacyScreenshot, nftForm);
+						// 			}}
+						// 			onNoClick={() => {
+						// 				closeDialog('nft');
+						// 				addToCart([], undefined, useLegacyScreenshot);
+						// 			}}
+						// 		/>
+						// 	);
+						//else 
+						addToCart([], undefined, useLegacyScreenshot);
+						closeDialog('question');
+					}}
+				/>
+			);
+		// else if (nftSettings && nftSettings.isNFTEnabled && !isDraftEditor)
+		// 	showDialog(
+		// 		'nft',
+		// 		<NftDialog
+		// 			nftTitle={T._("You're purchasing a customized product together with an NFT.", 'Composer')}
+		// 			nftMessage={T._(
+		// 				'To confirm and mint your NFT you need an active wallet compatible with Ethereum. Confirm and add your email and wallet address.',
+		// 				'Composer'
+		// 			)}
+		// 			price={nftSettings.priceToAdd + price}
+		// 			buttonNoLabel={T._('Skip and continue', 'Composer')}
+		// 			buttonYesLabel={T._('Confirm and Purchase', 'Composer')}
+		// 			onYesClick={(nftForm: NftForm) => {
+		// 				closeDialog('nft');
+		// 				addToCart([], undefined, useLegacyScreenshot, nftForm);
+		// 			}}
+		// 			onNoClick={() => {
+		// 				closeDialog('nft');
+		// 				addToCart([], undefined, useLegacyScreenshot);
+		// 			}}
+		// 		/>
+		// 	);
+		else {
+			addToCart([], undefined, useLegacyScreenshot);
+		}
 	 };
 
 	const showError = (error: string) => {
