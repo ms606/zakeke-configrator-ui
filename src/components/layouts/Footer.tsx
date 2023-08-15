@@ -24,7 +24,8 @@ import {
 //import NumericInput from './NumericInput';
 //import NftDialog, { NftForm } from 'components/dialogs/NftDialog';
 //import useDropdown from 'hooks/useDropdown';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import LoadingOverlay from "../widgets/LoadingOverlay";
 
 const PriceInfoTextContainer = styled.div`
 	font-size: 14px;
@@ -37,7 +38,8 @@ const OutOfStockTooltipContent = styled(TooltipContent)`
 const Footer = () => {
 	//const [openOutOfStockTooltip, closeOutOfStockTooltip, isOutOfStockTooltipVisible, Dropdown] = useDropdown();
 	const addToCartButtonRef = useRef<HTMLButtonElement>(null);
-
+    const [pdfIsLoading, setPdfIsLoading] = useState<Boolean>(false);
+	 
 	const {
 		useLegacyScreenshot,
 		setCameraByName,
@@ -157,12 +159,14 @@ const Footer = () => {
 	const handlePdfClick = async () => {
 		try {
 			setIsLoading(true);
+			setPdfIsLoading(true);
 			const url = await getPDF();
 			showDialog('pdf', <PdfDialog url={url} onCloseClick={() => closeDialog('pdf')} />);
 		} catch (ex) {
 			console.error(ex);
 			showError(T._('Failed PDF generation', 'Composer'));
 		} finally {
+			setPdfIsLoading(false);
 			setIsLoading(false);
 		}
 	};
@@ -227,6 +231,9 @@ const Footer = () => {
 		<FooterContainer>
 			{/* {T.translations?.statics && ( */}
 				<>
+				{pdfIsLoading && 
+				<LoadingOverlay />}
+
 					{product && product.quantityRule && (
 						<QuantityContainer>
 							<label>{T._d('Quantity')}</label>
