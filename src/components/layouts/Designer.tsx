@@ -224,6 +224,9 @@ const Designer: FC<{
 
   const filteredAreas =
     product?.areas.filter((area) => isAreaVisible(area.id)) ?? [];
+
+    //console.log(product, 'fa', isAreaVisible);
+    
   let finalVisibleAreas: ProductArea[] = [];
 
   const [moveElements, setMoveElements] = useState(false);
@@ -231,6 +234,7 @@ const Designer: FC<{
   let translatedTemplates = templates.map((template) => {
     return { id: template.id, name: template.name, areas: template.areas };
   });
+
   let translatedCurrentTemplate = {
     id: currentTemplate?.id,
     name: currentTemplate?.name ?? "",

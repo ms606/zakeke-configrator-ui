@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Dialog, DialogWindow } from "./Dialogs"
 import { useZakeke } from 'zakeke-configurator-react';
 import { TailSpin } from 'react-loader-spinner';
+import { T } from "../../Helpers";
 
 const CustomWindow = styled(DialogWindow)`
     flex-basis: 350px;
@@ -95,6 +96,7 @@ const BackTitle = styled.div`
     }
 `;
 
+
 interface ImageMacroCategory {
     macroCategoryID: number | null;
     name: string;
@@ -167,7 +169,7 @@ const ImagesGalleryDialog: FC<{ onClose: () => void, onImageSelected: (image: an
 
     return <Dialog
         windowDecorator={CustomWindow}
-        title={"Image gallery"}>
+        title={T._("Image gallery", "Composer")}>
         {isLoading && <LoaderContainer>
             <CenteredLoader
                 color="#000000"
@@ -186,7 +188,7 @@ const ImagesGalleryDialog: FC<{ onClose: () => void, onImageSelected: (image: an
             </CategoriesList>}
 
             {selectedMacroCategory && !selectedCategory && <>
-                <BackTitle onClick={() => setSelectedMacroCategory(null)}>{"Return to macro categories"}</BackTitle>
+                <BackTitle onClick={() => setSelectedMacroCategory(null)}>{T._("Return to macro categories", "Composer")}</BackTitle>
 
                 <CategoriesList>
                     {selectedMacroCategory.categories.map(category => {
@@ -196,7 +198,7 @@ const ImagesGalleryDialog: FC<{ onClose: () => void, onImageSelected: (image: an
             </>}
 
             {selectedMacroCategory && selectedCategory && images && <>
-                <BackTitle onClick={() => setSelectedCategory(null)}>{"Return to categories"}</BackTitle>
+                <BackTitle onClick={() => setSelectedCategory(null)}>{T._("Return to categories", "Composer")}</BackTitle>
 
                 <ImagesList>
                     {images.map(image => {

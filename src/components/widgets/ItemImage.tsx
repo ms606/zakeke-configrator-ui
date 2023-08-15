@@ -2,9 +2,10 @@ import React, {FC} from "react";
 import styled from "styled-components";
 import { TemplateArea, useZakeke } from 'zakeke-configurator-react';
 import { Button, Icon } from '../Atomic';
-//import { T } from '../../Helpers';
-//import { ReactComponent as CloseIcon } from '../../assets/icons/times-solid.svg'
+import { T } from '../../Helpers';
+import { ReactComponent as CloseIcon } from '../../assets/icons/times-solid.svg';
 import { FormControl } from "./FormControl";
+
 
 export interface EditImageItem {
     guid: string,
@@ -51,7 +52,7 @@ const ImageAndButtonsContainer = styled.div`
 `;
 
 const ImagePreview = styled.div`
-    border: 1px black solid;
+    border: 1px #f4f4f4 solid;
     padding: 4px;
     height: 130px;
     img{
@@ -93,13 +94,13 @@ const ItemImage: FC<{ item: ImageItem, handleItemPropChange: any, currentTemplat
     const showGalleryButton = (!currentTemplateArea || !currentTemplateArea.disableSellerImages) && canEdit;    
 
     return <FormControl
-        label={item.name}
-        rightComponent={constraints!.canDelete && <Icon onClick={() => removeItem(item.guid)}></Icon>}>
+        label={item.name || T._("Image", "Composer")}
+        rightComponent={constraints!.canDelete && <Icon onClick={() => removeItem(item.guid)}><CloseIcon /></Icon>}>
         <ImageAndButtonsContainer>
             <ImagePreview><img src={item.url} alt="" /></ImagePreview>
             <ButtonsContainer>
-                {showUploadButton && <Button disabled={uploadImgDisabled} isFullWidth onClick={handleChangeClick}>{"Upload"}</Button>}
-                {showGalleryButton && <Button isFullWidth onClick={handleGalleryClick}>{"Gallery"}</Button>}
+                {showUploadButton && <Button disabled={uploadImgDisabled} isFullWidth onClick={handleChangeClick}>{T._("Upload", "Composer")}</Button>}
+                {showGalleryButton && <Button isFullWidth onClick={handleGalleryClick}>{T._("Gallery", "Composer")}</Button>}
             </ButtonsContainer>
             <input type="file" ref={input => inputHtml = input!} onChange={handleInputChange} />
         </ImageAndButtonsContainer>
