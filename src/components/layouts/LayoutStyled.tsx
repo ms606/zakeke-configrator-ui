@@ -307,6 +307,7 @@ export const FooterContainer = styled.div`
 	padding-top: 0px;
 	margin-right: 15em;
 	width: 26px;
+	padding-right: 5em;
 	@media screen and (max-width: 568) {
 		height: 70px;
 	}
@@ -321,9 +322,9 @@ export const FooterRightElementsContainer = styled.div`
 	height: 70px;
 	min-height: 70px;
 	background-color: transparent;
-	flex-direction: column;
+	flex-direction: row;
 	grid-gap: 10px;
-	align-items: center;
+	align-items: flex-start;
 	padding: 0px 0px 0px 0em;
 	font-size: 14px;
 	width: 26px;
