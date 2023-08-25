@@ -99,7 +99,7 @@ const App: FunctionComponent<{}> = () => {
                       ? { width: "20vw", height: "20vh" }
                       : { 
                         aspectRatio: "1 / 1",
-                        width: "100%",  position: "absolute", top: "2em", bottom: "0", left: "0%" }
+                        width: "95%",  position: "absolute", top: "1em", bottom: "0", left: "2%" }
                   }
                 >
                   <ZakekeViewer />
