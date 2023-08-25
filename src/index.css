@@ -169,6 +169,7 @@ button:focus {
   .animate-wrapper-0 {
     border-radius: 18px 18px 0px 0px;
     bottom: -1em;
+    height: 40%;
     }  
 
     .animate-wrapper {
