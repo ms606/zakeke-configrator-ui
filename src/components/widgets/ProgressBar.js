@@ -1,5 +1,5 @@
 import { useZakeke } from 'zakeke-configurator-react';
-//import { T } from 'Helpers';
+import { T } from '../../Helpers';
 import React, { FC } from 'react';
 import styled from 'styled-components/macro';
 // import { ReactComponent as CheckSolid } from '../../assets/icons/check-circle-solid_1.svg';
@@ -59,7 +59,7 @@ const ProgressBar = ({ bgColor, completed }) => {
   return (
     <div>
       <LoadingLabel>
-        Loading...
+        {T._('Loading')}...
         {/* {isSceneLoading ? T._('Loading your product...', 'Composer') : T._('Loading complete.', 'Composer')} */}
       </LoadingLabel>
       <LoaderContainer>

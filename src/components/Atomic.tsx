@@ -93,7 +93,7 @@ export const Button = styled.button<{
 	justify-content: center;
 	align-items: center;
 	width: ${(props) => (props.isFullWidth ? '100%' : props.outline ? '60px' : props.primary ? '200px' : '60px')};
-	background-color: ${(props) => (props.primary ? '#313c46' : 'white')};
+	background-color: ${(props) => (props.primary ? '#297ca3' : 'white')};
 	color: ${(props) => (props.outline ? 'black' : props.primary ? 'white' : '#297CA3')};
 	min-height: 38px;
 	padding: ${(props) => (props.outline ? '' : '5px 10px 5px 10px')};
@@ -220,7 +220,6 @@ export const AddToCartButton = styled(Button)`
 	background-color: #297ca3;
 	font-family: 'Inter';
 	font-size: 18px;
-
 `;
 
 export const TooltipContent = styled.div`

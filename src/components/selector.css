@@ -185,18 +185,20 @@
   background-color:  var(--colorBtnPrimary); 
   /* -- linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB); */
   /* border: 0; */
-  border-radius: 8px;
+  border-radius: 4px;
   /* box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px; */
   box-sizing: border-box;
   color: #FFFFFF;
   display: flex;
   font-family: Phantomsans, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   justify-content: center;
   line-height: 1em;
   /* max-width: 100%; */
-  width: 140px;
-  padding: 3px;
+  min-height: 27px;
+  /* min-width: 200px; */
+  width: 178px;
+  padding: 2px;
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;

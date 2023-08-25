@@ -33,7 +33,7 @@ const QuantityDialog: FC<{ quantityRule: ProductQuantityRule; onClick?: () => vo
 					step={quantityRule.step != null ? quantityRule.step : undefined}
 				/>
 			</QuantityContainer>
-			<DialogFooterButton primary isFullWidth onClick={onClick}>
+			<DialogFooterButton isFullWidth onClick={onClick}>
 				{T._('Add to cart', 'Composer')}
 			</DialogFooterButton>
 		</Dialog>
