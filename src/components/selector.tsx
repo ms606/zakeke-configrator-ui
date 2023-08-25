@@ -355,11 +355,11 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       {/* Personalize A */}
       {!isMobile && (
         <div
-          className="LayoutStyled__GroupItem-sc-1nws045-2 iHdtWA group-item selected"
+          className="iHdtWA group-item selected"
           style={{
             position: "absolute",
-            top: "4%",
-            right: "2%",
+            top: "5%",
+            right: "1%",
             cursor: "pointer",
             marginLeft: "20px",
             width: "30vw",
@@ -374,7 +374,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "10px",
+                padding: "7px",
               }}
             >
               {T._("Personalizeaza", "Composer")}

@@ -129,7 +129,7 @@ const DialogFooter = styled.div<{
 
 	${DialogFooterButton} + ${DialogFooterButton} {
 		margin-left: ${(props) =>
-			props.noMarginFooterButton ? '0' : props.marginButtons ? props.marginButtons + 'px' : '20px'};
+			props.noMarginFooterButton ? '0' : props.marginButtons ? props.marginButtons + 'px' : '20px'};	
 	}
 `;
 
