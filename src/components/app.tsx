@@ -98,9 +98,8 @@ const App: FunctionComponent<{}> = () => {
                     selectedTrayPreviewOpenButton3D
                       ? { width: "20vw", height: "20vh" }
                       : { 
-                        //width: "56vw", height: "55vh",
                         aspectRatio: "1 / 1",
-                        width: "77%",  position: "absolute", top: "12px", bottom: "0", left: "14%" }
+                        width: "77%",  position: "absolute", top: "2em", bottom: "0", left: "14%" }
                   }
                 >
                   <ZakekeViewer />

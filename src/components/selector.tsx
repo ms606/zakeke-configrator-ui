@@ -296,10 +296,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   return (
     <>
       <div className="top-nav">
-        <div className="body-3" id="product-info">
-          <span>{productName}</span>
-          <span>LEI {price}</span>
-        </div>
+          <div className="body-3" id="product-info">
+            <span>{productName}</span>
+            <span>LEI {price}</span>
+          </div>
       </div>
 
       {!isMobile && !isTrayOpen ? (
