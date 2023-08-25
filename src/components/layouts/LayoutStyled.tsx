@@ -82,7 +82,7 @@ export const SelectContainer = styled.div`
 	padding-bottom: 30px;
 	border-bottom: 1px #ccc dotted;
 	position: relative;
-
+	// width: 100%;
 	span {
 		margin-bottom: 10px;
 		font-size: 16px;
