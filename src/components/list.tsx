@@ -27,8 +27,7 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     align-items: center;
     text-align: center;
     justify-content: center;
-    padding: 0px 10px;
-    
+    padding: 0px 10px;    
     cursor: pointer;
     margin: 0 10px;
     width: 152px;
@@ -52,6 +51,53 @@ export const ListItem = styled.li<{ selected?: boolean }>`
       height: 33px;
     }
 `;
+
+export const ListItemColorNoCarousel = styled.li<{ selected?: boolean, selectedColor?: any}>`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 0px 10px;
+    cursor: pointer;
+    margin: 0 3px;
+    border-radius: 100%;
+    width: 5.5em;
+    height: 5.1em;
+    white-space: nowrap;  
+    font-size: 12px;  
+    background-color: #fff;
+    border-color: ${props => props.selected ? 'black' : '#DDD'};
+    &:hover {
+      
+    };
+    
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 20%;
+        /* Additional styling for the :before pseudo-element can be added here */
+    };
+
+    &:after {
+    content: "${props => { return props.selected ? props.selectedColor : ''
+                        }}";
+    position: absolute;
+    top: 110%;
+    border-bottom: 1px solid #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;    
+    
+    }
+    
+    @media screen and (max-width: 568px) {
+    &:after {
+      top: 73% !important;
+      width: 6.5em;
+      height: 6.1em;    
+      }
+    }`;
+
 
 export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any}>`
     display: flex;
@@ -90,21 +136,36 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     
     @media screen and (max-width: 568px) {
     &:after {
-      bottom: -65%;  
-    }
+     bottom: -65%;  
+     }
     }`;
-
-export const ListItemImage = styled.img<{ selected?: any }>`
-    width: 40px;
-    height: 40px;
+ 
+ export const ListItemImage = styled.img<{ selected?: any }>`
+    width: 4.7em;
+    height: 80px;
     object-fit: contain;
     margin: 0px 11px;
     border-radius: 100%;
     border: 1px solid rgb(229, 229, 229);
     
     @media screen and (max-width: 568px) {
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       margin: 0px 8px;
+    }
+`
+
+export const ListItemImageNoCarousel = styled.img<{ selected?: any }>`
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin: 0px 11px;
+    border-radius: 100%;
+    border: 1px solid rgb(229, 229, 229);
+
+    @media screen and (max-width: 568px) {
+    width: 30px;
+    height: 30px;
+    margin: 0px 8px;
     }
 `
