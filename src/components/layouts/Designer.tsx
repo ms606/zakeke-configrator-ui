@@ -14,7 +14,7 @@ import Select, {
   GroupBase,
   OptionProps,
   SingleValueProps,
-  components,
+  components
 } from "react-select";
 import styled from "styled-components/macro";
 import { T } from "../../Helpers";
@@ -147,11 +147,15 @@ const Area = styled.div<{ selected?: boolean }>`
 `;
 
 const OptionContainer = styled(components.Option)`
-  padding: 31px;
-  border: 1px solid black;
+  // width: 100%;
+  // padding: 31px;
+  border: 1px solid #297ca3;
   background-color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   span {
-    color: black;
+    color: #297ca3;
   }
   &:hover {
     background-color: #ddd !important;
@@ -159,12 +163,13 @@ const OptionContainer = styled(components.Option)`
 `;
 
 const SingleValueContainer = styled(components.SingleValue)`
-  border: 1px solid black;
+  // width: 100%;
+  border: 1px solid none;
   display: flex;
   align-items: center;
   justify-content: center;
   span {
-    color: black;
+    color: #297ca3;
   }
 `;
 
@@ -622,7 +627,7 @@ const Designer: FC<{
                 styles={{
                   container: (base) => ({
                     ...base,
-                    minWidth: 300,
+                    minWidth: 300
                   }),
                 }}
                 isSearchable={false}
@@ -641,12 +646,15 @@ const Designer: FC<{
           )}
           {isMobile && translatedAreas.length > 1 && (
             <SelectContainer>
-              <span>{"Customizable Areas"}</span>
+              <span>{T._("Customizable Areas", "Composer")}</span>
               <Select
                 styles={{
-                  container: (base) => ({
+                  control: (base) => ({
                     ...base,
-                    minWidth: 300,
+                    width: '100% !important',
+                    display: 'flex !important',
+                    alignItems: 'center !important',
+                    justifyContent: 'center !important',
                   }),
                 }}
                 isSearchable={false}

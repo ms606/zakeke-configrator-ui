@@ -59,7 +59,7 @@ const ProgressBar = ({ bgColor, completed }) => {
   return (
     <div>
       <LoadingLabel>
-        {T._('Loading')}...
+        {T._('Loading', "Composer")}...
         {/* {isSceneLoading ? T._('Loading your product...', 'Composer') : T._('Loading complete.', 'Composer')} */}
       </LoadingLabel>
       <LoaderContainer>
