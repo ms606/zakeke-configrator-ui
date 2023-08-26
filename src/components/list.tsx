@@ -14,9 +14,9 @@ export const List = styled.ul`
         width: 100vw;
         margin-bottom: 9px; 
         transform-origin: 50% 50% 0px;
-        transform: translate3d(-186.507px, 0px, 0px) scale(1, 1);
+        // transform: translate3d(-186.507px, 0px, 0px) scale(1, 1);
         position: relative;
-        left: 50vw;
+        // left: 50vw;
         }
 `;
   
