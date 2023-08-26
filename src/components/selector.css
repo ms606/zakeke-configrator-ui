@@ -237,7 +237,7 @@
 }
 .swiper-slide {
   text-align: center;
-  width: 76px !important;
+  width: 60px !important;
 }
 
 .swiper-button-next {
@@ -279,8 +279,10 @@
 @media screen and (min-width: 568px){
   .button-53 {
     font-size: 18px;
-    min-width: 196px;
+    min-width: 196px; 
     padding: 6px 4px;
+    /* width: 132px;
+    height: 33px; */
   }
   
   .tray-trigger-preview-button {
@@ -309,7 +311,8 @@
   
   .button-53 {
     font-size: 12px;
-    min-width: 116px;
+    width: 132px;
+    height: 33px;
   }
 
   .tray-header {
@@ -351,13 +354,13 @@
 
   .slider-frame {
     left: 0em;
-    width: 80vw !important;
-    height: 80px; 
+    width: 92vw !important;
+    height: 80px !important; 
     /* position: absolute; */
   }  
 
   .swiper {
-    bottom: 10%;
+    bottom: 1em;
   }
 
   .swiper-button-next {
@@ -376,6 +379,7 @@
     -webkit-font-size: 12px !important;
     -moz-height: 12px !important;
     align-items: start !important;
+    justify-content: center !important;
   }
   
   .swiper-button-prev::after {
@@ -385,6 +389,7 @@
    -webkit-font-size: 12px !important;
    -moz-height: 12px !important;
    align-items: start !important;
+   justify-content: center !important;
   }
   
 }

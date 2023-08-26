@@ -3,7 +3,7 @@ import "./selector.css";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 import { useZakeke } from "zakeke-configurator-react";
-import { List, ListItem, ListItemImage, ListItemColor } from "./list";
+import { List, ListItem, ListItemImage, ListItemColor, ListItemColorNoCarousel, ListItemImageNoCarousel} from "./list";
 import { PreviewContainer, BlurOverlay } from "./previewContainer";
 import Tray from "./Tray";
 import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
@@ -404,7 +404,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
             style={{
               position: "absolute",
               top: "3%",
-              left: "31%",
+              right: "31%",
               cursor: "pointer",
             }}
           >
@@ -598,6 +598,36 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     })}
                 </List>
 
+                {width > 400 &&
+                  <List>
+                  {!selectedTrayPreviewOpenButton &&
+                    selectedAttribute &&
+                    !isTrayOpen &&
+                    selectedAttribute.options.map((option) => {
+                      return (
+                        <ListItemColor
+                          key={option.id}
+                          onClick={() => selectOption(option.id)}
+                          selected={option.selected}
+                          selectedColor={selectedColorName}
+                        >
+                          {option.imageUrl && (
+                            <ListItemImageNoCarousel
+                              src={option.imageUrl}
+                              onClick={() => selectColorName(option.name)}
+                              selected={option.selected}
+                            />
+                          )}
+
+                          {/* //{option.name} */}
+                        </ListItemColor>
+                      );
+                    })}
+                  {/* {selectedColorName}   */}
+                </List>
+                }           
+
+
                 {/* NUKA CAROUSEL WHICH IS GREATER THAN 16 slides FOR mobile phone */}
 
                 {selectedAttribute &&
@@ -620,7 +650,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                           selectedAttribute &&
                           !isTrayOpen && (
                             <Swiper
-                              spaceBetween={2}
+                              spaceBetween={1}
                               slidesPerView={1}
                               navigation={true}
                               modules={[Navigation]}
@@ -630,7 +660,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                               {selectedAttribute.options.map((option) => (
                                 <>
                                   <SwiperSlide>
-                                    <ListItemColor
+                                    <ListItemColorNoCarousel
                                       key={option.id}
                                       onClick={() => {
                                         selectOption(option.id);
@@ -647,7 +677,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                                           selected={option.selected}
                                         />
                                       )}
-                                    </ListItemColor>
+                                    </ListItemColorNoCarousel>
                                   </SwiperSlide>
                                 </>
                               ))}
@@ -659,34 +689,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                   )}
 
 
-                {width > 400 &&
-                  <List>
-                  {!selectedTrayPreviewOpenButton &&
-                    selectedAttribute &&
-                    !isTrayOpen &&
-                    selectedAttribute.options.map((option) => {
-                      return (
-                        <ListItemColor
-                          key={option.id}
-                          onClick={() => selectOption(option.id)}
-                          selected={option.selected}
-                          selectedColor={selectedColorName}
-                        >
-                          {option.imageUrl && (
-                            <ListItemImage
-                              src={option.imageUrl}
-                              onClick={() => selectColorName(option.name)}
-                              selected={option.selected}
-                            />
-                          )}
-
-                          {/* //{option.name} */}
-                        </ListItemColor>
-                      );
-                    })}
-                  {/* {selectedColorName}   */}
-                </List>
-                }                                          
+                                               
                                         
               </div>
             )}
