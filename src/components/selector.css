@@ -256,6 +256,7 @@
   -webkit-font-size: 12px !important;
   -moz-height: 12px !important;
   align-items: start;
+  right: var(--swiper-navigation-sides-offset, -9px) !important;
 }
 
 .swiper-button-prev::after {
@@ -265,6 +266,7 @@
  -webkit-font-size: 12px !important;
  -moz-height: 12px !important;
  align-items: start;
+ left: var(--swiper-navigation-sides-offset, -9px) !important;
 }
 
 
@@ -366,10 +368,12 @@
 
   .swiper-button-next {
     align-items: center !important;
+    right: var(--swiper-navigation-sides-offset, -9px) !important;
   }
   
   .swiper-button-prev {
     align-items: center !important;
+    left: var(--swiper-navigation-sides-offset, -9px) !important;
   }
 
   .swiper-button-next::after {
@@ -381,6 +385,8 @@
     -moz-height: 12px !important;
     align-items: start !important;
     justify-content: center !important;
+    
+
   }
   
   .swiper-button-prev::after {
@@ -391,6 +397,7 @@
    -moz-height: 12px !important;
    align-items: start !important;
    justify-content: center !important;
+   
   }
   
 }

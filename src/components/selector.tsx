@@ -630,7 +630,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
                 {/* NUKA CAROUSEL WHICH IS GREATER THAN 16 slides FOR mobile phone */}
 
-                {selectedAttribute &&
+                {
                   // selectedAttribute.options.length >= 19 &&
                   width <= 400 && (
                     <div
