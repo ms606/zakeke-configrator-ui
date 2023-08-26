@@ -16,6 +16,14 @@ import useStore from "../Store";
 import { T } from "../Helpers";
 import Footer from "./layouts/Footer";
 import FooterMobile from "./layouts/FooterMobile";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+// import required modules
+import { Navigation } from "swiper/modules";
 
 const dialogsPortal = document.getElementById("dialogs-portal")!;
 // const Container = styled.div`
@@ -296,10 +304,10 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   return (
     <>
       <div className="top-nav">
-          <div className="body-3" id="product-info">
-            <span>{productName}</span>
-            <span>LEI {price}</span>
-          </div>
+        <div className="body-3" id="product-info">
+          <span>{productName}</span>
+          <span>LEI {price}</span>
+        </div>
       </div>
 
       {!isMobile && !isTrayOpen ? (
@@ -424,7 +432,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 left: "11.2em",
                 cursor: "pointer",
                 width: "70px",
-                height: "51px"
+                height: "51px",
               }}
             >
               {!isMobile && <Footer />}
@@ -590,7 +598,69 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     })}
                 </List>
 
-                <List>
+                {/* NUKA CAROUSEL WHICH IS GREATER THAN 16 slides FOR mobile phone */}
+
+                {selectedAttribute &&
+                  // selectedAttribute.options.length >= 19 &&
+                  width <= 400 && (
+                    <div
+                      className="mobileCarousel"
+                      style={{
+                        backgroundColor: "#fff",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "end",
+                        height: "13vh",
+                        width: "90vw",
+                        paddingLeft: "3em",
+                      }}
+                    >
+                      <List>
+                        {!selectedTrayPreviewOpenButton &&
+                          selectedAttribute &&
+                          !isTrayOpen && (
+                            <Swiper
+                              spaceBetween={2}
+                              slidesPerView={1}
+                              navigation={true}
+                              modules={[Navigation]}
+                              //onSlideChange={() => console.log('slide change')}
+                              //onSwiper={(swiper) => console.log(swiper)}
+                            >
+                              {selectedAttribute.options.map((option) => (
+                                <>
+                                  <SwiperSlide>
+                                    <ListItemColor
+                                      key={option.id}
+                                      onClick={() => {
+                                        selectOption(option.id);
+                                      }}
+                                      selected={option.selected}
+                                      selectedColor={selectedColorName}
+                                    >
+                                      {option.imageUrl && (
+                                        <ListItemImage
+                                          src={option.imageUrl}
+                                          onClick={() =>
+                                            selectColorName(option.name)
+                                          }
+                                          selected={option.selected}
+                                        />
+                                      )}
+                                    </ListItemColor>
+                                  </SwiperSlide>
+                                </>
+                              ))}
+                            </Swiper>
+                          )}
+                        {/* {selectedColorName}   */}
+                      </List>
+                    </div>
+                  )}
+
+
+                {width > 400 &&
+                  <List>
                   {!selectedTrayPreviewOpenButton &&
                     selectedAttribute &&
                     !isTrayOpen &&
@@ -616,6 +686,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     })}
                   {/* {selectedColorName}   */}
                 </List>
+                }                                          
+                                        
               </div>
             )}
           </div>

@@ -225,6 +225,49 @@
   background: none;
 }
 
+.swiper {
+  width: 80vw !important;
+  height: 120% !important  ;
+}
+.swiper-container{
+  width: 90vw;
+}
+.swiper-wrapper {
+  width: 80% !important;
+}
+.swiper-slide {
+  text-align: center;
+  width: 76px !important;
+}
+
+.swiper-button-next {
+  align-items: start;
+}
+
+.swiper-button-prev {
+  align-items: start;
+}
+
+.swiper-button-next::after {
+  color:rgb(5, 6, 45) !important;
+  font-size: 10px !important;
+  height: 10px !important;
+  left: 13.1  em !important;  
+  -webkit-font-size: 12px !important;
+  -moz-height: 12px !important;
+  align-items: start;
+}
+
+.swiper-button-prev::after {
+ color: black !important;
+ font-size: 10px !important;
+ height: 10px !important;
+ -webkit-font-size: 12px !important;
+ -moz-height: 12px !important;
+ align-items: start;
+}
+
+
 @media screen and (min-width: 768px) {
   .button-53 {
     font-size: 18px;
@@ -289,6 +332,59 @@
     text-overflow: ellipsis;
     overflow: hidden;
     font-size: 13px;
+  }
+
+  .slider-container {
+    width: 80vw;
+    /* left: 3em; */
+    /* position: absolute; */
+    }
+  
+  .slider-list {
+    width: 136% !important;
+    height: 80px; 
+    text-align: center;
+    /* transform: translateX(calc(-66.6667% - 0px)); */
+    /* position: absolute; */
+    /* justify-content: center; */
+    }
+
+  .slider-frame {
+    left: 0em;
+    width: 80vw !important;
+    height: 80px; 
+    /* position: absolute; */
+  }  
+
+  .swiper {
+    bottom: 10%;
+  }
+
+  .swiper-button-next {
+    align-items: start !important;
+  }
+  
+  .swiper-button-prev {
+    align-items: start !important;
+  }
+
+  .swiper-button-next::after {
+    color:rgb(5, 6, 45) !important;
+    font-size: 10px !important;
+    height: 10px !important;
+    left: 13.1  em !important;  
+    -webkit-font-size: 12px !important;
+    -moz-height: 12px !important;
+    align-items: start !important;
+  }
+  
+  .swiper-button-prev::after {
+   color: black !important;
+   font-size: 10px !important;
+   height: 10px !important;
+   -webkit-font-size: 12px !important;
+   -moz-height: 12px !important;
+   align-items: start !important;
   }
   
 }
