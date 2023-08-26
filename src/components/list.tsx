@@ -66,11 +66,7 @@ export const ListItemColorNoCarousel = styled.li<{ selected?: boolean, selectedC
     height: 5.1em;
     white-space: nowrap;  
     font-size: 12px;  
-    background-color: #fff;
     border-color: ${props => props.selected ? 'black' : '#DDD'};
-    &:hover {
-      
-    };
     
     &:before {
         content: '';
@@ -87,7 +83,6 @@ export const ListItemColorNoCarousel = styled.li<{ selected?: boolean, selectedC
     border-bottom: 1px solid #000;
     font-family: 'Roboto', sans-serif;
     font-size: 13px;    
-    
     }
     
     @media screen and (max-width: 568px) {
