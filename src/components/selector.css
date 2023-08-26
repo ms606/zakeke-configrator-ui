@@ -360,15 +360,15 @@
   }  
 
   .swiper {
-    bottom: 1em;
+    bottom: 12px;
   }
 
   .swiper-button-next {
-    align-items: start !important;
+    align-items: center !important;
   }
   
   .swiper-button-prev {
-    align-items: start !important;
+    align-items: center !important;
   }
 
   .swiper-button-next::after {
