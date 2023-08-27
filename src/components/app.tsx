@@ -9,6 +9,7 @@ import {
 import Selector from "./selector";
 import { DialogsRenderer } from "./dialog/Dialogs";
 import useStore from "../Store";
+import FooterMobile from "./layouts/FooterMobile";
 
 
 // const Layout = styled.div`
@@ -21,12 +22,19 @@ import useStore from "../Store";
 // `
 
 const Layout = styled.div`
-  display: flex; 
-  flex  
-  height: 50%;
-  width: 50%
-  padding: 40px;
-  flex-direction: column;
+  // display: flex; 
+  // flex  
+  // height: 50%;
+  // width: 50%
+  // padding: 40px;
+  // flex-direction: column;
+
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 `;
 
 const MobileContainer = styled.div`
@@ -81,17 +89,11 @@ const App: FunctionComponent<{}> = () => {
   return (
     <ZakekeProvider environment={zakekeEnvironment}>
       <div id="modal-container" className="css-1q5ttm8">
-        <div className="css-1ecy5z8">
+        {/* <div className="css-1ecy5z8"> */}
           {isMobile && (
+            // <>
             <Layout>
-              <div
-                style={{
-                  display: "grid",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "rgb(249 246 248)",
-                }}
-              >
+              <div style={{ backgroundColor: "rgb(249 246 248)"}}>
                 <div
                   className="ThreeDRenderer"
                   style={
@@ -99,17 +101,17 @@ const App: FunctionComponent<{}> = () => {
                       ? { width: "20vw", height: "20vh" }
                       : { 
                         aspectRatio: "1 / 1",
-                        width: "95%",  position: "absolute", top: "1em", bottom: "0", left: "2%" }
-                  }
+                        width: "95%",  position: "absolute", top: "1em", bottom: "0", left: "2%" }}
                 >
-                  <ZakekeViewer />
+                 <ZakekeViewer />
                 </div>
               </div>
-              <Selector
-                trayPreviewOpenButton3DFunc={trayPreviewOpenButton3DFunc}
-              />
+              <Selector trayPreviewOpenButton3DFunc={trayPreviewOpenButton3DFunc} />
+              <FooterMobile />
             </Layout>
+            // </>
           )}
+        {/* </div> */}
 
           {!isMobile && (
             <Layout>
@@ -142,7 +144,7 @@ const App: FunctionComponent<{}> = () => {
           {/* {(isLoading || isSceneLoading || isAssetsLoading) && <LoadingOverlay />} */}
           <DialogsRenderer />
         </div>
-      </div>
+      {/* </div> */}
     </ZakekeProvider>
   );
 };

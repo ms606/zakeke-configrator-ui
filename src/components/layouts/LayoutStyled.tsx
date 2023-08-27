@@ -346,7 +346,8 @@ export const PriceContainer = styled.div<{ isMobile?: boolean }>`
 `;
 
 export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
-	height: 50px;
+	z-index: 0;
+    height: 70px;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	background-color: #fff;
