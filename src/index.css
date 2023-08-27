@@ -168,13 +168,13 @@ button:focus {
 
   .animate-wrapper-0 {
     border-radius: 18px 18px 0px 0px;
-    bottom: -1em;
+    bottom: 3em;
     height: 40%;
     }  
 
-    .animate-wrapper {
-      height: 175px;
-      padding-top: 0px;
+  .animate-wrapper {
+    height: 175px;
+    padding-top: 0px;
     }
 
   }

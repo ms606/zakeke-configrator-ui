@@ -52,13 +52,13 @@ export const ListItem = styled.li<{ selected?: boolean }>`
     }
 `;
 
-export const ListItemColorNoCarousel = styled.li<{ selected?: boolean, selectedColor?: any}>`
+export const ListItemColorWithCarousel = styled.li<{ selected?: boolean, selectedColor?: any}>`
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: center;
-    padding: 0px 10px;
+    padding: 0px 5px;
     cursor: pointer;
     margin: 0 3px;
     border-radius: 100%;
@@ -127,8 +127,7 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     position: absolute;
     bottom: 7%;
     }
-    
-    
+        
     @media screen and (max-width: 568px) {
     &:after {
      bottom: -65%;  

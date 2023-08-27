@@ -93,7 +93,7 @@ const App: FunctionComponent<{}> = () => {
           {isMobile && (
             // <>
             <Layout>
-              <div style={{ backgroundColor: "rgb(249 246 248)"}}>
+              <div style={{ backgroundColor: "rgb(249 246 248)" , width: "100%", border: "0px solid", height: "57%"}}>
                 <div
                   className="ThreeDRenderer"
                   style={
@@ -101,7 +101,8 @@ const App: FunctionComponent<{}> = () => {
                       ? { width: "20vw", height: "20vh" }
                       : { 
                         aspectRatio: "1 / 1",
-                        width: "95%",  position: "absolute", top: "1em", bottom: "0", left: "2%" }}
+                        width: "95%",  position: "absolute", top: "1em", bottom: "0", left: "2%",
+                        backgroundColor: "rgb(249 246 248)" }}
                 >
                  <ZakekeViewer />
                 </div>

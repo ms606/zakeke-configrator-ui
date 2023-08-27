@@ -3,7 +3,7 @@ import "./selector.css";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 import { useZakeke } from "zakeke-configurator-react";
-import { List, ListItem, ListItemImage, ListItemColor, ListItemColorNoCarousel, ListItemImageNoCarousel} from "./list";
+import { List, ListItem, ListItemImage, ListItemColor, ListItemColorWithCarousel, ListItemImageNoCarousel} from "./list";
 import { PreviewContainer, BlurOverlay } from "./previewContainer";
 import Tray from "./Tray";
 import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
@@ -640,7 +640,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "end",
-                        height: "11.5vh",
+                        height: "10.5vh",
                         width: "90vw",
                         paddingLeft: "3em",
                       }}
@@ -660,7 +660,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                               {selectedAttribute.options.map((option) => (
                                 <>
                                   <SwiperSlide>
-                                    <ListItemColorNoCarousel
+                                    <ListItemColorWithCarousel
                                       key={option.id}
                                       onClick={() => {
                                         selectOption(option.id);
@@ -677,7 +677,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                                           selected={option.selected}
                                         />
                                       )}
-                                    </ListItemColorNoCarousel>
+                                    </ListItemColorWithCarousel>
                                   </SwiperSlide>
                                 </>
                               ))}
