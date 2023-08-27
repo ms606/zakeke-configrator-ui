@@ -55,8 +55,8 @@ const FooterMobileIcon = styled.div<{
 
 	svg {
 		fill: ${(props) => props.iconColor && `${props.iconColor}`};
-		width: 32px;
-		height: 32px;
+		width: 27px;
+		height: 27px;
 	}
 
 	${(props) => props.isHidden && `visibility:hidden`};

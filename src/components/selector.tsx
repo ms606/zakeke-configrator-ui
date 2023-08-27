@@ -420,8 +420,23 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                   padding: "7px 5px",
                 }}
               >
-                Personaliza
-              </span>
+                {T._("Personalizeaza", "Composer")}
+              </span>             
+            </div>
+
+
+            <div
+              className="LayoutStyled__GroupItem-sc-1nws045-2"
+              style={{
+                position: "absolute",
+                top: "-25%",
+                left: "10.2em",
+                cursor: "pointer",
+                width: "70px",
+                height: "51px",
+              }}
+            >
+             {isMobile && <FooterMobile />}
             </div>
 
             <div
@@ -435,8 +450,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 height: "51px",
               }}
             >
-              {!isMobile && <Footer />}
-              {/* {isMobile && <FooterMobile />} */}
+             {!isMobile && <Footer />}
             </div>
 
             {selectedPersonalize ? (
