@@ -385,8 +385,6 @@
     -moz-height: 12px !important;
     align-items: start !important;
     justify-content: center !important;
-    
-
   }
   
   .swiper-button-prev::after {
@@ -397,7 +395,6 @@
    -moz-height: 12px !important;
    align-items: start !important;
    justify-content: center !important;
-   
   }
   
 }
