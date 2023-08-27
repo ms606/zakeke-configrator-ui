@@ -640,7 +640,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "end",
-                        height: "10.5vh",
+                        height: "8.5vh",
                         width: "90vw",
                         paddingLeft: "3em",
                       }}
