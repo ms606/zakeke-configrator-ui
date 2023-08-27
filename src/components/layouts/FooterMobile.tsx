@@ -353,12 +353,12 @@ const FooterMobile = () => {
 							backgroundColor='#313c46'
 							onClick={!isAddToCartDisabled ? () => handleAddToCart() : () => null}
 						>
-							{/* {!isOutOfStock &&
+							{!isOutOfStock &&
 								price !== null &&
 								price > 0 &&
 								(!sellerSettings || !sellerSettings.hidePrice) && (
 									<PriceContainer isMobile={isMobile}>{priceFormatter.format(price)}</PriceContainer>
-								)} */}
+								)}
 
 							{/* {isOutOfStock && T._('OUT OF STOCK', 'Composer')} */}
 
