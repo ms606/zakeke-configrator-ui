@@ -108,7 +108,7 @@ const App: FunctionComponent<{}> = () => {
                 </div>
               </div>
               <Selector trayPreviewOpenButton3DFunc={trayPreviewOpenButton3DFunc} />
-              <FooterMobile />
+              {/* <FooterMobile /> */}
             </Layout>
             // </>
           )}
