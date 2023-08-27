@@ -363,7 +363,7 @@
   }  
 
   .swiper {
-    bottom: 2px;
+    bottom: -2px;
   }
 
   .swiper-button-next {
