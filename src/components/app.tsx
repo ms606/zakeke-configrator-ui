@@ -31,7 +31,7 @@ const Layout = styled.div`
 
   position: relative;
   display: grid;
-  grid-template-rows: 1fr auto auto;
+  grid-template-rows: 0fr auto auto;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -101,7 +101,7 @@ const App: FunctionComponent<{}> = () => {
                       ? { width: "20vw", height: "20vh" }
                       : { 
                         aspectRatio: "1 / 1",
-                        width: "95%",  position: "absolute", top: "1em", bottom: "0", left: "2%",
+                        width: "100%",  position: "absolute", top: "0em", bottom: "0", left: "0%",
                         backgroundColor: "rgb(249 246 248)" }}
                 >
                  <ZakekeViewer />
