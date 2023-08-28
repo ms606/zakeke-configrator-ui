@@ -159,7 +159,7 @@ export const CloseEditorButton = styled.button`
 	padding: 20px;
 	color: white;
 	height: 60px;
-	background-color: #313c46;
+	background-color: #297ca3;
 	height: auto;
 	font-weight: bold;
 	z-index: 11;
