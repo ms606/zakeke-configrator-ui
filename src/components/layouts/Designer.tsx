@@ -750,7 +750,7 @@ const Designer: FC<{
                             isItemEditable(item, currentTemplateArea)
                         )
                           ? T._("Upload another image", "Composer")
-                          : T._("Adaugă o Imagine", "Composer")}{" "}
+                          : T._("Upload image", "Composer")}{" "}
                       </span>
                     </span>
                   </Button>
