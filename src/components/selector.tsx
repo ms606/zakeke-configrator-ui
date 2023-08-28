@@ -3,7 +3,14 @@ import "./selector.css";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 import { useZakeke } from "zakeke-configurator-react";
-import { List, ListItem, ListItemImage, ListItemColor, ListItemColorWithCarousel, ListItemImageNoCarousel} from "./list";
+import {
+  List,
+  ListItem,
+  ListItemImage,
+  ListItemColor,
+  ListItemColorWithCarousel,
+  ListItemImageNoCarousel,
+} from "./list";
 import { PreviewContainer, BlurOverlay } from "./previewContainer";
 import Tray from "./Tray";
 import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
@@ -421,40 +428,40 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 }}
               >
                 {T._("Personalizează", "Composer")}
-              </span>             
+              </span>
             </div>
 
-            {isMobile &&     
-            <div
-              className="LayoutStyled__GroupItem-sc-1nws045-2"
-              style={{
-                position: "absolute",
-                top: "-25%",
-                left: "10.2em",
-                cursor: "pointer",
-                width: "70px",
-                height: "51px",
-              }}
-            >
-              <FooterMobile />
-            </div>
-            }
-            
-           {!isMobile &&      
-            <div
-              className="LayoutStyled__GroupItem-sc-1nws045-2"
-              style={{
-                position: "absolute",
-                top: "-42%",
-                left: "11.2em",
-                cursor: "pointer",
-                width: "70px",
-                height: "51px",
-              }}
-            >
-             <Footer />
-            </div>
-            }
+            {isMobile && (
+              <div
+                className="LayoutStyled__GroupItem-sc-1nws045-2"
+                style={{
+                  position: "absolute",
+                  top: "-25%",
+                  left: "10.2em",
+                  cursor: "pointer",
+                  width: "70px",
+                  height: "51px",
+                }}
+              >
+                <FooterMobile />
+              </div>
+            )}
+
+            {!isMobile && (
+              <div
+                className="LayoutStyled__GroupItem-sc-1nws045-2"
+                style={{
+                  position: "absolute",
+                  top: "-42%",
+                  left: "11.2em",
+                  cursor: "pointer",
+                  width: "70px",
+                  height: "51px",
+                }}
+              >
+                <Footer />
+              </div>
+            )}
 
             {selectedPersonalize ? (
               <Designer togglePersonalize={togglePersonalize} />
@@ -600,7 +607,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
             {!selectedTrayPreviewOpenButton && (
               <div style={{ width: "100%" }}>
                 <List>
-                  {attributes &&
+                  {width > 400 &&
+                    attributes &&
                     !isTrayOpen &&
                     attributes.map((attribute) => {
                       return (
@@ -613,37 +621,62 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         </ListItem>
                       );
                     })}
+
+                  {/* Swiper For mobile */}
+                  {width <= 400 && attributes && !isTrayOpen && (
+                    <Swiper
+                      spaceBetween={80}
+                      slidesPerView={2}
+                      navigation={true}
+                      modules={[Navigation]}
+                      //onSlideChange={() => console.log('slide change')}
+                      //onSwiper={(swiper) => console.log(swiper)}
+                    >
+                      {attributes.map((attribute) => {
+                        return (
+                          <SwiperSlide>
+                            <ListItem
+                              key={attribute.id}
+                              onClick={() => selectAttribute(attribute.id)}
+                              selected={selectedAttribute === attribute}
+                            >
+                              {attribute.name}
+                            </ListItem>
+                          </SwiperSlide>
+                        );
+                      })}
+                    </Swiper>
+                  )}
                 </List>
 
-                {width > 400 &&
+                {width > 400 && (
                   <List>
-                  {!selectedTrayPreviewOpenButton &&
-                    selectedAttribute &&
-                    !isTrayOpen &&
-                    selectedAttribute.options.map((option) => {
-                      return (
-                        <ListItemColor
-                          key={option.id}
-                          onClick={() => selectOption(option.id)}
-                          selected={option.selected}
-                          selectedColor={selectedColorName}
-                        >
-                          {option.imageUrl && (
-                            <ListItemImageNoCarousel
-                              src={option.imageUrl}
-                              onClick={() => selectColorName(option.name)}
-                              selected={option.selected}
-                            />
-                          )}
+                    {!selectedTrayPreviewOpenButton &&
+                      selectedAttribute &&
+                      !isTrayOpen &&
+                      selectedAttribute.options.map((option) => {
+                        return (
+                          <ListItemColor
+                            key={option.id}
+                            onClick={() => selectOption(option.id)}
+                            selected={option.selected}
+                            selectedColor={selectedColorName}
+                          >
+                            {option.imageUrl && (
+                              <ListItemImageNoCarousel
+                                src={option.imageUrl}
+                                onClick={() => selectColorName(option.name)}
+                                selected={option.selected}
+                              />
+                            )}
 
-                          {/* //{option.name} */}
-                        </ListItemColor>
-                      );
-                    })}
-                  {/* {selectedColorName}   */}
-                </List>
-                }           
-
+                            {/* //{option.name} */}
+                          </ListItemColor>
+                        );
+                      })}
+                    {/* {selectedColorName}   */}
+                  </List>
+                )}
 
                 {/* NUKA CAROUSEL WHICH IS GREATER THAN 16 slides FOR mobile phone */}
 
@@ -668,7 +701,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                           !isTrayOpen && (
                             <Swiper
                               spaceBetween={1}
-                              slidesPerView={1}
+                              slidesPerView={4}
                               navigation={true}
                               modules={[Navigation]}
                               //onSlideChange={() => console.log('slide change')}
@@ -704,10 +737,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                       </List>
                     </div>
                   )}
-
-
-                                               
-                                        
               </div>
             )}
           </div>
