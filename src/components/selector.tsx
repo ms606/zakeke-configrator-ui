@@ -424,7 +424,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
               </span>             
             </div>
 
-
+            {isMobile &&     
             <div
               className="LayoutStyled__GroupItem-sc-1nws045-2"
               style={{
@@ -436,9 +436,11 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 height: "51px",
               }}
             >
-             {isMobile && <FooterMobile />}
+              <FooterMobile />
             </div>
-
+            }
+            
+           {!isMobile &&      
             <div
               className="LayoutStyled__GroupItem-sc-1nws045-2"
               style={{
@@ -450,8 +452,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 height: "51px",
               }}
             >
-             {!isMobile && <Footer />}
+             <Footer />
             </div>
+            }
 
             {selectedPersonalize ? (
               <Designer togglePersonalize={togglePersonalize} />
