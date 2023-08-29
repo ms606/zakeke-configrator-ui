@@ -19,10 +19,11 @@ import SaveDesignsDraftDialog from '../dialog/SaveDesignsDraftDialog';
 import { TailSpin } from 'react-loader-spinner';
 import { ReactComponent as SaveSolid } from '../../assets/icons/save-solid.svg';
 //import NftDialog, { NftForm } from 'components/dialogs/NftDialog';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 //import useDropdown from 'hooks/useDropdown';
 import { TooltipContent } from '../Atomic';
 import QuantityDialog from '../dialog/QuanityDialog'
+import LoadingOverlay from "../widgets/LoadingOverlay";
 
 const OutOfStockTooltipContent = styled(TooltipContent)`
 	max-width: 400px;
@@ -82,6 +83,7 @@ const FooterMobileIcon = styled.div<{
 const FooterMobile = () => {
 	//const [openOutOfStockTooltip, , isOutOfStockTooltipVisible, Dropdown] = useDropdown();
 	const addToCartButtonRef = useRef<HTMLDivElement>(null);
+    const [pdfIsLoading, setPdfIsLoading] = useState<Boolean>(false);
 
 	const {
 		useLegacyScreenshot,
@@ -219,12 +221,14 @@ const FooterMobile = () => {
 	const handlePdfClick = async () => {
 		try {
 			setIsLoading(true);
+			setPdfIsLoading(true);
 			const url = await getPDF();
 			showDialog('pdf', <PdfDialog url={url} onCloseClick={() => closeDialog('pdf')} />);
 		} catch (ex) {
 			console.log(ex);
 			showError(T._('Failed PDF generation', 'Composer'));
 		} finally {
+			setPdfIsLoading(false);
 			setIsLoading(false);
 		}
 	};
@@ -314,6 +318,9 @@ const FooterMobile = () => {
 
 	return (
 		<>
+		{pdfIsLoading && 
+				<LoadingOverlay />}
+
 			{!isSceneLoading && (
 				<FooterMobileContainer isQuoteEnable={product?.quoteRule !== null}>
 					{/* <FooterMobileIcon gridArea='back' isHidden={selectedGroupId === null} onClick={handleBackClick}>
