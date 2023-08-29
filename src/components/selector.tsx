@@ -164,6 +164,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       });
       selectGroupList(groupRec);
     }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGroup, groups]);
 
@@ -194,23 +195,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     if (selectedGroup) {
       const camera = selectedGroup.cameraLocationId;
       if (camera) setCamera(camera);
-
-      //     console.log(items[0]?.guid,groups);
-
-      //     // push text into zakeke component
-      //   const item  = {
-      //     // guid: items[0]?.guid,
-      //     text: 'heheheheheheh',
-      //     // text: T._("Text", "Composer"),
-      //     // fillColor: defaultColor,
-      //     fontFamily: fonts[0].name,
-      //     // fontSize: 48,
-      //     // fontWeight: 'normal normal',
-      //     // isTextOnPath: false,
-      //     // constraints: null,
-      // }
-
-      //    addItemText(item, 345656)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -541,6 +525,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                       {currentIndex + 1} / {groups.length}
                     </span>
                   </div>
+
                 </div>
               </div>
               <button className="next-customization" onClick={handleRightClick}>
@@ -606,8 +591,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
             {!selectedTrayPreviewOpenButton && (
               <div style={{ width: "100%" }}>
-                <List>
-                  {width > 400 &&
+                <List>                  
+                  {/* {width > 400 &&
                     attributes &&
                     !isTrayOpen &&
                     attributes.map((attribute) => {
@@ -620,14 +605,15 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                           {attribute.name}
                         </ListItem>
                       );
-                    })}
+                    })} */}
 
                   {/* Swiper For mobile */}
-                  {width <= 400 && attributes && !isTrayOpen && (
+                  {width <= 400 && attributes && !isTrayOpen && attributes.length > 3 ? (
                     <Swiper
                       spaceBetween={80}
                       slidesPerView={2}
                       navigation={true}
+                      centeredSlides={true}
                       modules={[Navigation]}
                       //onSlideChange={() => console.log('slide change')}
                       //onSwiper={(swiper) => console.log(swiper)}
@@ -646,7 +632,19 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         );
                       })}
                     </Swiper>
-                  )}
+                  ) : 
+                  (attributes && attributes.map((attribute) => {
+                    return (
+                      <ListItem
+                        key={attribute.id}
+                        onClick={() => selectAttribute(attribute.id)}
+                        selected={selectedAttribute === attribute}
+                      >
+                        {attribute.name}
+                      </ListItem>
+                    );
+                  }))                  
+                  }
                 </List>
 
                 {width > 400 && (
@@ -703,6 +701,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                               spaceBetween={1}
                               slidesPerView={4}
                               navigation={true}
+                              centeredSlides={true}
                               modules={[Navigation]}
                               //onSlideChange={() => console.log('slide change')}
                               //onSwiper={(swiper) => console.log(swiper)}
