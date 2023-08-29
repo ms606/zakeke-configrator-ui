@@ -190,8 +190,7 @@
   box-sizing: border-box;
   color: #FFFFFF;
   display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 18px;
+  font: 500 0.8rem / 1.8 Inter;
   justify-content: center;
   line-height: 1em;
   /* max-width: 100%; */
@@ -329,7 +328,7 @@
   .active-marketing-component-name {
     padding: 0px 15px;
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
+    font-size: 88%;
   }
 
   .active-marketing-component-index {
@@ -337,7 +336,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    font-size: 13px;
+    font-size: 88%;
   }
 
   .slider-container {
