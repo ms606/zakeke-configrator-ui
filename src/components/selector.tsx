@@ -394,8 +394,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
             className="LayoutStyled__GroupItem-sc-1nws045-2"
             style={{
               position: "absolute",
-              top: "3%",
-              right: "32%",
+              top: "4%",
+              right: "33%",
               cursor: "pointer",
             }}
           >
