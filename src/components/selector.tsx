@@ -395,7 +395,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
             style={{
               position: "absolute",
               top: "3%",
-              right: "31%",
+              right: "32%",
               cursor: "pointer",
             }}
           >
@@ -687,7 +687,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         backgroundColor: "#fff",
                         display: "flex",
                         justifyContent: "center",
-                        alignItems: "end",
+                        alignItems: "center",
                         height: "8.5vh",
                         width: "90vw",
                         paddingLeft: "3em",
