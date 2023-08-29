@@ -701,7 +701,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                               spaceBetween={1}
                               slidesPerView={4}
                               navigation={true}
-                              centeredSlides={true}
+                              // centeredSlides={true}
                               modules={[Navigation]}
                               //onSlideChange={() => console.log('slide change')}
                               //onSwiper={(swiper) => console.log(swiper)}
