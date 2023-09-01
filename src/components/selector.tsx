@@ -73,6 +73,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     defaultColor,
     fonts,
     addItemText,
+    publicTranslations
   } = useZakeke();
 
   const { setIsLoading, isMobile } = useStore();
@@ -149,7 +150,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
       // console.log("items", items, "groups", groups, "product", product);
-
+      console.log(publicTranslations,'public translate');
+           
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);

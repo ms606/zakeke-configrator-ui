@@ -222,8 +222,11 @@ const Designer: FC<{
     eventMessages,
     setCopyrightMessageAccepted,
     getCopyrightMessageAccepted,
+    publicTranslations
   } = useZakeke();
 
+  const dynamicVals = publicTranslations?.dynamics;
+  
   const customizerRef = useRef<any | null>(null);
   const [selectedCarouselSlide, setSelectedCarouselSlide] = useState<number>(0);
 
@@ -750,7 +753,8 @@ const Designer: FC<{
                             isItemEditable(item, currentTemplateArea)
                         )
                           ? T._("Upload another image", "Composer")
-                          : T._("Upload image", "Composer")}{" "}
+                          : dynamicVals?.get('Upload image') // T._("Upload image", "Composer")
+                          }{" "}
                       </span>
                     </span>
                   </Button>

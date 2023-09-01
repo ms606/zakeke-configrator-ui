@@ -56,7 +56,8 @@ const Footer = () => {
 		//additionalCustomProperties,
 		saveComposition,
 		createQuote,
-		nftSettings
+		nftSettings, 
+		publicTranslations
 	} = useZakeke();
 
 	const {
@@ -72,9 +73,9 @@ const Footer = () => {
 	const { showDialog, closeDialog } = useDialogManager();
 
 	 const handleAddToCart = () => {
-		console.log('adding to cart');
 		
 		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
+		const staticsVals = publicTranslations?.statics; 
 
 		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode)
 			showDialog(
@@ -83,7 +84,7 @@ const Footer = () => {
 					alignButtons='center'
 					eventMessage={cartMessage?.description}
 					buttonNoLabel={T._('Cancel', 'Composer')}
-					buttonYesLabel={T._('Add to cart', 'Composer')}
+					buttonYesLabel={staticsVals?.get('Add to cart')} 
 					onYesClick={() => {
 						// if (nftSettings && nftSettings.isNFTEnabled && !isDraftEditor)
 						// 	showDialog(

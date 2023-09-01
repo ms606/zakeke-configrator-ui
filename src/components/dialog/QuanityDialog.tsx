@@ -14,7 +14,8 @@ const QuantityDialogWindow = styled(DialogWindow)`
 `;
 
 const QuantityDialog: FC<{ quantityRule: ProductQuantityRule; onClick?: () => void }> = ({ quantityRule, onClick }) => {
-	const { quantity, setQuantity } = useZakeke();
+	const { quantity, setQuantity, publicTranslations } = useZakeke();
+	const staticsVals = publicTranslations?.statics; 
 
 	return (
 		<Dialog windowDecorator={QuantityDialogWindow} alignButtons={'center'}>
@@ -34,7 +35,7 @@ const QuantityDialog: FC<{ quantityRule: ProductQuantityRule; onClick?: () => vo
 				/>
 			</QuantityContainer>
 			<DialogFooterButton isFullWidth onClick={onClick}>
-				{T._('Add to cart', 'Composer')}
+			 {staticsVals?.get('Add to cart')} 
 			</DialogFooterButton>
 		</Dialog>
 	);
