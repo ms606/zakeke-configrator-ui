@@ -224,11 +224,12 @@ export const StepsContainer = styled.div`
 `;
 
 export const MenuItemImage = styled.img<{ isRound?: boolean }>`
-	width: 64px;
-	height: 64px;
+	width: 47px;
+	height: 47px;
 	object-fit: ${(props) => (props.isRound ? 'cover' : 'contain')};
 	margin-bottom: 20px;
 	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
+	border: 1px solid #b3aaaa;
 `;
 
 export const MenuItemImagesWrapper = styled.div`
@@ -363,7 +364,7 @@ export const PriceContainer = styled.div<{ isMobile?: boolean }>`
 
 export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
 	z-index: 0;
-    height: 37px;
+    height: 55px;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	background-color: #fff;
@@ -440,6 +441,7 @@ export const TopRightIcons = styled.div`
 export const ViewerContainer = styled.div`
 	position: relative;
 	min-height: 0;
+	font-family: 'Inter', sans-serif;
 
 	@media (max-width: 1024px) {
 		height: 100%;

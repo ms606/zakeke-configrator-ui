@@ -3,8 +3,8 @@ import { Step, useZakeke } from 'zakeke-configurator-react';
 import { StepsContainer } from "./LayoutStyled";
 import styled from "styled-components";
 import { Icon } from "../Atomic";
-import { ReactComponent as LeftArrow } from '../../assets/icons/arrow-left-solid.svg';
-import { ReactComponent as RightArrow } from '../../assets/icons/arrow-left-solid.svg';
+import { ReactComponent as LeftArrow } from '../../assets/icons/angle-left-solid.svg';
+import { ReactComponent as RightArrow } from '../../assets/icons/angle-right-solid.svg';
 import { range, T } from '../../Helpers';
 import React from "react";
 import useStore from "../../Store";
@@ -78,7 +78,8 @@ const ActualStepName = styled.h4<{ isMobile?: boolean }>`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width:70px;
+        max-width:110px;
+        font-size: 1rem;
     `}
 `;
 

@@ -14,13 +14,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import useStore from '../../Store';
 import { ReactComponent as BarsSolid } from '../../assets/icons/arrow-left-solid.svg';
 import { ReactComponent as DesktopSolid } from '../../assets/icons/arrow-left-solid.svg';
-import { ReactComponent as ExpandSolid } from '../../assets/icons/arrow-left-solid.svg';
+// import { ReactComponent as ExpandSolid } from '../../assets/icons/expand-solid.svg';
 import { ReactComponent as CollapseSolid } from '../../assets/icons/arrow-left-solid.svg';
 import { ReactComponent as ExplodeSolid } from '../../assets/icons/arrow-left-solid.svg';
 
-
-import { ReactComponent as SearchMinusSolid } from '../../assets/icons/arrow-left-solid.svg';
-import { ReactComponent as SearchPlusSolid } from '../../assets/icons/arrow-left-solid.svg';
+import { ReactComponent as SearchMinusSolid } from '../../assets/icons/search-minus-solid.svg';
+import { ReactComponent as SearchPlusSolid } from '../../assets/icons/search-plus-solid.svg';
 import { Dialog, useDialogManager } from '../dialog/Dialogs';
 import {
 	BottomRightIcons,
@@ -103,9 +102,7 @@ const Viewer = () => {
 
 	return (
 		<ViewerContainer ref={ref}>
-			{!isSceneLoading && <ZakekeViewer backgroundColor='#ffffff' />}
-
-			
+			{!isSceneLoading && <ZakekeViewer backgroundColor='#ffffff' />}			
 				<>
 					<ZoomInIcon isMobile={isMobile} key={'zoomin'} hoverable onClick={zoomIn}>
 						<SearchPlusSolid />
@@ -132,7 +129,7 @@ const Viewer = () => {
 							</SecondScreenIcon>
 						)}
 
-						{!IS_IOS && (
+						{/* {!IS_IOS && (
 							<FullscreenIcon
 								className='fullscreen-icon'
 								key={'fullscreen'}
@@ -141,7 +138,7 @@ const Viewer = () => {
 							>
 								<ExpandSolid />
 							</FullscreenIcon>
-						)}
+						)} */}
 					</BottomRightIcons>
 					
 					{sellerSettings?.isCompositionRecapEnabled && (

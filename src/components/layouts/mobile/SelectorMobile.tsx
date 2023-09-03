@@ -269,9 +269,9 @@ const SelectorMobile = () => {
 
 	return (
 		<SelectorMobileContainer>
-			{sellerSettings && sellerSettings.priceInfoText && (
+			{/* {sellerSettings && sellerSettings.priceInfoText && (
 				<PriceInfoTextContainer dangerouslySetInnerHTML={{ __html: sellerSettings.priceInfoText }} />
-			)}
+			)} */}
 
 			{selectedGroup && selectedGroup.id !== -2 && selectedGroup.steps && selectedGroup.steps.length > 0 && (
 				<StepsMobileContainer>

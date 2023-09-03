@@ -3,7 +3,7 @@ import { useZakeke } from 'zakeke-configurator-react';
 import { T } from '../../Helpers';
 import useStore from '../../Store';
 import styled from 'styled-components';
-//import { ReactComponent as AngleLeftSolid } from '../../assets/icons/angle-left-solid.svg';
+import { ReactComponent as AngleLeftSolid } from '../../assets/icons/angle-left-solid.svg';
 import { ReactComponent as QuoteSolid } from '../../assets/icons/dollar-sign-solid.svg';
 import { ReactComponent as PdfSolid } from '../../assets/icons/file-pdf-solid.svg';
 import { ReactComponent as ShareSolid } from '../../assets/icons/share-alt-square-solid.svg';
@@ -234,7 +234,7 @@ const FooterMobile = () => {
 	};
 	const handleBackClick = () => {
 		if (selectedAttributeId) {
-			console.log('selectedAttributeId');
+			// console.log('selectedAttributeId');
 			setSelectedAttributeId(null);
 
 			const selectedCurrentGroup = groups.find((x) => x.id === selectedGroupId);
@@ -248,7 +248,7 @@ const FooterMobile = () => {
 				setSelectedGroupId(null);
 			}
 		} else if (selectedTemplateGroupId) {
-			console.log('selectedTemplateGroupId');
+			// console.log('selectedTemplateGroupId');
 			setSelectedTemplateGroupId(null);
 
 			const selectedCurrentGroup = groups.find((x) => x.id === selectedGroupId);
@@ -323,9 +323,9 @@ const FooterMobile = () => {
 
 			{!isSceneLoading && (
 				<FooterMobileContainer isQuoteEnable={product?.quoteRule !== null}>
-					{/* <FooterMobileIcon gridArea='back' isHidden={selectedGroupId === null} onClick={handleBackClick}>
+					<FooterMobileIcon gridArea='back' isHidden={selectedGroupId === null} onClick={handleBackClick}>
 						<AngleLeftSolid />
-					</FooterMobileIcon> */}
+					</FooterMobileIcon>
 
 					{
 						<FooterMobileIcon gridArea='pdf' onClick={handlePdfClick}>

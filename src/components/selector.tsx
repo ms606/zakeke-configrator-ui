@@ -680,8 +680,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
                 {/* NUKA CAROUSEL WHICH IS GREATER THAN 16 slides FOR mobile phone */}
 
-                {selectedAttribute &&
-                  // selectedAttribute.options.length >= 19 &&
+                {/* {selectedAttribute &&
                   width <= 400 && (
                     <div
                       className="mobileCarousel"
@@ -702,11 +701,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                             <Swiper
                               spaceBetween={1}
                               slidesPerView={4}
-                              navigation={true}
-                              // centeredSlides={true}
+                              navigation={true}                              
                               modules={[Navigation]}
-                              //onSlideChange={() => console.log('slide change')}
-                              //onSwiper={(swiper) => console.log(swiper)}
                             >
                               {selectedAttribute.options.map((option) => (
                                 <>
@@ -734,10 +730,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                               ))}
                             </Swiper>
                           )}
-                        {/* {selectedColorName}   */}
                       </List>
                     </div>
-                  )}
+                  )} */}
               </div>
             )}
           </div>
