@@ -9,6 +9,7 @@ import {
 import Selector from "./selector";
 import { DialogsRenderer } from "./dialog/Dialogs";
 import useStore from "../Store";
+import LayoutMobile from './LayoutMobile';
 import FooterMobile from "./layouts/FooterMobile";
 
 
@@ -89,9 +90,9 @@ const App: FunctionComponent<{}> = () => {
   return (
     <ZakekeProvider environment={zakekeEnvironment}>
       <div id="modal-container" className="css-1q5ttm8">
-        {/* <div className="css-1ecy5z8"> */}
-          {isMobile && (
-            // <>
+
+          {/* {isMobile && <LayoutMobile />} */}
+          {/* {isMobile && (
             <Layout>
               <div style={{ backgroundColor: "rgb(249 246 248)" , width: "100%", border: "0px solid", height: "57%"}}>
                 <div
@@ -107,13 +108,10 @@ const App: FunctionComponent<{}> = () => {
                  <ZakekeViewer />
                 </div>
               </div>
-              <Selector trayPreviewOpenButton3DFunc={trayPreviewOpenButton3DFunc} />
-              {/* <FooterMobile /> */}
-            </Layout>
-            // </>
-          )}
-        {/* </div> */}
-
+              <Selector trayPreviewOpenButton3DFunc={trayPreviewOpenButton3DFunc} />              
+            </Layout>            
+          )} */}
+      
           {!isMobile && (
             <Layout>
               <div

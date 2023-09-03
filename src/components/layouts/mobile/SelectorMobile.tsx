@@ -4,8 +4,8 @@ import { Map } from 'immutable';
 import React, { useEffect, useState } from 'react';
 import useStore from '../../../Store';
 import styled from 'styled-components/macro';
-import savedCompositionsIcon from '../../../assets/icons/saved_designs.svg';
-import star from '../../../assets/icons/star.svg';
+import savedCompositionsIcon from '../../../assets/icons/arrow-left-solid.svg';
+import star from '../../../assets/icons/arrow-left-solid.svg';
 import noImage from '../../../assets/images/no_image.png';
 import Designer from '../Designer';
 import DesignsDraftList from '../DesignsDraftList';
@@ -269,9 +269,9 @@ const SelectorMobile = () => {
 
 	return (
 		<SelectorMobileContainer>
-			{sellerSettings && sellerSettings.priceInfoText && (
+			{/* {sellerSettings && sellerSettings.priceInfoText && (
 				<PriceInfoTextContainer dangerouslySetInnerHTML={{ __html: sellerSettings.priceInfoText }} />
-			)}
+			)} */}
 
 			{selectedGroup && selectedGroup.id !== -2 && selectedGroup.steps && selectedGroup.steps.length > 0 && (
 				<StepsMobileContainer>

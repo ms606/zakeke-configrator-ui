@@ -78,7 +78,8 @@ const ActualStepName = styled.h4<{ isMobile?: boolean }>`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width:70px;
+        max-width:110px;
+        font-size: 1rem;
     `}
 `;
 

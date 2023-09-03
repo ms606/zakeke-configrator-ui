@@ -103,22 +103,38 @@ export const CustomQuotationConfirmMessage = styled(DialogWindow)`
 `;
 
 
-export const ZoomInIcon = styled(Icon)`
+export const ZoomInIcon = styled(Icon)<{ isMobile?: boolean }>`
 	position: absolute;
 	left: 20px;
-	top: calc(30%);
 	width: 32px;
 	height: 32px;
 	z-index: 3;
+	${(props) =>
+		props.isMobile
+			? `
+		top: calc(10%);
+		`
+			: `top: calc(30%);`}
+	@media (max-height: 550px) {
+		top: calc(5%);
+	}
 `;
 
-export const ZoomOutIcon = styled(Icon)`
+export const ZoomOutIcon = styled(Icon)<{ isMobile?: boolean }>`
 	position: absolute;
 	left: 20px;
-	top: calc(30% + 50px);
 	width: 32px;
 	height: 32px;
 	z-index: 3;
+	${(props) =>
+		props.isMobile
+			? `
+		top: calc(10% + 50px);
+		`
+			: `top: calc(30% + 50px);`};
+	@media (max-height: 550px) {
+		top: calc(5% + 40px);
+	}
 `;
 
 
@@ -208,11 +224,12 @@ export const StepsContainer = styled.div`
 `;
 
 export const MenuItemImage = styled.img<{ isRound?: boolean }>`
-	width: 64px;
-	height: 64px;
+	width: 47px;
+	height: 47px;
 	object-fit: ${(props) => (props.isRound ? 'cover' : 'contain')};
 	margin-bottom: 20px;
 	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
+	border: 1px solid #b3aaaa;
 `;
 
 export const MenuItemImagesWrapper = styled.div`
@@ -347,7 +364,7 @@ export const PriceContainer = styled.div<{ isMobile?: boolean }>`
 
 export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
 	z-index: 0;
-    height: 37px;
+    height: 55px;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	background-color: #fff;
@@ -359,4 +376,74 @@ export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-areas: 'back pdf save share cart quote' 
 	`};
+`;
+
+export const BottomRightIcons = styled.div`
+	position: absolute;
+	right: 10px;
+	bottom: 40px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	z-index: 3;
+	gap: 20px;
+	@media (max-height: 550px) {
+		bottom: 20px;
+	}
+`;
+
+
+export const CollapseIcon = styled(Icon)`
+	width: 32px;
+	height: 32px;
+`;
+
+export const ExplodeIcon = styled(Icon)`
+	width: 32px;
+	height: 32px;
+`;
+
+export const FullscreenIcon = styled(Icon)`
+	width: 32px;
+	height: 32px;
+`;
+
+export const SecondScreenIcon = styled(Icon)`
+	width: 32px;
+	height: 32px;
+`;
+
+export const RecapPanelIcon = styled(Icon)`
+	position: absolute;
+	left: 20px;
+	bottom: 40px;
+	width: 32px;
+	height: 32px;
+	z-index: 3;
+	@media (max-height: 550px) {
+		bottom: 20px;
+	}
+`;
+
+export const TopRightIcons = styled.div`
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	z-index: 3;
+	gap: 20px;
+`;
+
+export const ViewerContainer = styled.div`
+	position: relative;
+	min-height: 0;
+	font-family: 'Inter', sans-serif;
+
+	@media (max-width: 1024px) {
+		height: 100%;
+	}
 `;
