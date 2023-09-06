@@ -91,7 +91,7 @@ const App: FunctionComponent<{}> = () => {
     <ZakekeProvider environment={zakekeEnvironment}>
       <div id="modal-container" className="css-1q5ttm8">
 
-          {/* {isMobile && <LayoutMobile />} */}
+          {isMobile && <LayoutMobile />}
           {/* {isMobile && (
             <Layout>
               <div style={{ backgroundColor: "rgb(249 246 248)" , width: "100%", border: "0px solid", height: "57%"}}>
