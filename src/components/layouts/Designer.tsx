@@ -812,7 +812,7 @@ const Designer: FC<{
             </MoveElementButton>
           )}
           {isMobile && (
-            <CloseEditorButton onClick={togglePersonalize}>
+            <CloseEditorButton onClick={onCloseClick}>
               {"OK"}
             </CloseEditorButton>
           )}

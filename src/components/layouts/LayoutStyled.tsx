@@ -195,6 +195,7 @@ export const StepsMobileContainer = styled.div`
 `;
 
 export const MobileItemContainer = styled.div<{ selected?: boolean }>`
+    color: #297ca3;
 	align-items: center;
 	justify-content: center;
 	min-width: 140px;
@@ -229,7 +230,7 @@ export const MenuItemImage = styled.img<{ isRound?: boolean }>`
 	object-fit: ${(props) => (props.isRound ? 'cover' : 'contain')};
 	margin-bottom: 20px;
 	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
-	border: 1px solid #b3aaaa;
+	border: 1px solid rgb(239 233 233);
 `;
 
 export const MenuItemImagesWrapper = styled.div`
@@ -329,7 +330,6 @@ export const FooterContainer = styled.div`
 		height: 70px;
 	}
 `;
-
 
 export const FooterRightElementsContainer = styled.div`
 	background: transparent;
