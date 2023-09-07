@@ -275,7 +275,7 @@ const SelectorMobile = () => {
 
 			{selectedGroup && selectedGroup.id !== -2 && selectedGroup.steps && selectedGroup.steps.length > 0 && (
 				<StepsMobileContainer>
-					{/* <Steps
+					<Steps
 						key={'steps-' + selectedGroup?.id}
 						hasNextGroup={groupIndex !== actualGroups.length - 1}
 						hasPreviousGroup={groupIndex !== 0}
@@ -284,7 +284,7 @@ const SelectorMobile = () => {
 						currentStep={selectedStep}
 						steps={selectedGroup.steps}
 						onStepChange={handleStepChange}
-					/> */}
+					/>
 				</StepsMobileContainer>
 			)}
 			{selectedGroup == null && (
