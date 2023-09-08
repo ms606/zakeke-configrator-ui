@@ -152,7 +152,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
       // console.log("items", items, "groups", groups, "product", product);
-           
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
@@ -260,7 +259,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     });
 
     if (filteredArrayId.length > 0) {
-      console.log(filteredArrayId,'filteredArrayId ê33333333eę' );
       
       const foundItem = filteredArrayId[0];
       const foundItemIndex = groups.indexOf(foundItem);

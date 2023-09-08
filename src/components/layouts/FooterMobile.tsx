@@ -333,17 +333,20 @@ const FooterMobile = () => {
 						</FooterMobileIcon>
 					}
 
-					{!isDraftEditor && !isEditorMode && sellerSettings && sellerSettings.canSaveDraftComposition && (
+					{/* {!isDraftEditor && !isEditorMode && sellerSettings && sellerSettings.canSaveDraftComposition && (
 						<FooterMobileIcon gridArea='save' onClick={handleSaveClick}>
 							<SaveSolid />
 						</FooterMobileIcon>
-					)}
+					)} */}
 
 					{/* {!isEditorMode && sellerSettings && sellerSettings.shareType !== 0 && (
 						<FooterMobileIcon gridArea='share' onClick={handleShareClick}>
 							<ShareSolid />
 						</FooterMobileIcon>
 					)} */}
+					<FooterMobileIcon>
+						<span style={{position: "relative", width: "66vw", fontWeight: "600", fontSize: "80%"}}>{product?.name}</span>
+					</FooterMobileIcon>
 
 					{/* {isBuyVisibleForQuoteRule && !isViewerMode && ( */}
 						<FooterMobileIcon
