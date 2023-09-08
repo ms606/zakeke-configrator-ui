@@ -13,6 +13,8 @@ import { ItemName, SelectorMobileContainer, StepsMobileContainer, Template, Temp
 import Steps from '../Steps';
 import { MenuItem, MobileItemsContainer } from './SelectorMobileComponents';
 import TemplateGroup from '../../TemplateGroup';
+import { PreviewContainer, BlurOverlay } from '../../previewContainer';
+import ProgressBarLoadingOverlay from "../..//widgets/ProgressBarLoadingOverlay";
 
 const PriceInfoTextContainer = styled.div`
 	font-size: 14px;
@@ -28,7 +30,7 @@ const SelectorMobile = () => {
 		setTemplate,
 		sellerSettings,
 		selectOption,
-		draftCompositions
+		draftCompositions,
 	} = useZakeke();
 	const {
 		selectedGroupId,
@@ -185,7 +187,8 @@ const SelectorMobile = () => {
 
 	// auto-selection if there is only 1 group
 	useEffect(() => {
-		if (actualGroups && actualGroups.length === 1 && actualGroups[0].id === -2) return;
+		
+		if (actualGroups && actualGroups.length === 1 && actualGroups[0].id === -2 ) return;
 		else if (actualGroups && actualGroups.length === 1 && !selectedGroupId) setSelectedGroupId(actualGroups[0].id);
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -195,6 +198,7 @@ const SelectorMobile = () => {
 	useEffect(() => {
 		if (selectedGroup && selectedGroup.id !== -2) {
 			if (selectedGroup.steps.length > 0) {
+				
 				if (lastSelectedSteps.get(selectedGroupId!))
 					handleStepSelection(lastSelectedSteps.get(selectedGroupId!)!);
 				else {
@@ -266,6 +270,16 @@ const SelectorMobile = () => {
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isStartRegistering]);
+
+	if (isSceneLoading)
+    return (
+      <PreviewContainer>
+        <BlurOverlay>
+          {/* <span>Loading scene...</span>; */}
+          <ProgressBarLoadingOverlay />
+        </BlurOverlay>
+      </PreviewContainer>
+    );
 
 	return (
 		<SelectorMobileContainer>
