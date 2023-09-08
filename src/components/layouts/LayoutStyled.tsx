@@ -359,7 +359,7 @@ export const PriceContainer = styled.div<{ isMobile?: boolean }>`
 		props.isMobile &&
 		`
     margin-right: 0px;
-    color:white;`};
+    color:rgb(41, 124, 163);`};
 `;
 
 export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
