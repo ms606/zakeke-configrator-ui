@@ -261,13 +261,13 @@ export const MenuItemLabel = styled.span`
 	font-size: 14px;
 	font-weight: 500;
 	position: absolute;
-	bottom: 20px;
+	bottom: 2px;
 	left: 0;
 	right: 0;
 	text-align: center;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
+	// white-space: nowrap;
 `;
 
 export const MenuItemImagesImage = styled.img<{ isRound?: boolean }>`
