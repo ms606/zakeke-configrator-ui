@@ -649,7 +649,8 @@ const Designer: FC<{
           )}
           {isMobile && translatedAreas.length > 1 && (
             <SelectContainer>
-              <span>{T._("Customizable Areas", "Composer")}</span>
+              {/* <span>{T._("Customizable Areas", "Composer")}</span> */}
+              <span>{dynamicVals?.get('Customizable Areas')}</span>              
               <Select
                 styles={{
                   control: (base) => ({
