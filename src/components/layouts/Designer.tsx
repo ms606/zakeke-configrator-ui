@@ -836,7 +836,7 @@ const Designer: FC<{
 							<SearchMinusSolid />
 						</ZoomIconOut> */}
           </IconsAndDesignerContainer>
-          <Button isFullWidth onClick={() => setMoveElements(false)}>
+          <Button isFullWidth primary onClick={() => setMoveElements(false)}>
             <span>{"OK"} </span>
           </Button>
         </ZakekeDesignerContainer>
