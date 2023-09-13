@@ -824,21 +824,22 @@ const Designer: FC<{
           isMobile={isMobile}
           className="zakeke-container"
         >
-          {/* <div style={{height: '50vh', width: '20vw'}}  > */}
+         
           <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
-          {/* </div> */}
-
-          <IconsAndDesignerContainer>
+         
+          {/* <IconsAndDesignerContainer> */}
             {/* <ZoomIconIn hoverable onClick={() => customizerRef.current.zoomIn()}>
 							<SearchPlusSolid />
 						</ZoomIconIn>
 						<ZoomIconOut hoverable onClick={() => customizerRef.current.zoomOut()}>
 							<SearchMinusSolid />
 						</ZoomIconOut> */}
-          </IconsAndDesignerContainer>
-          <Button isFullWidth primary onClick={() => setMoveElements(false)}>
+          {/* </IconsAndDesignerContainer> */}
+         <div style={{position: "relative", top: "32px"}}>
+         <Button isFullWidth primary onClick={() => setMoveElements(false)}>
             <span>{"OK"} </span>
           </Button>
+         </div>   
         </ZakekeDesignerContainer>
       )}
     </>
