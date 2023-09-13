@@ -835,7 +835,7 @@ const Designer: FC<{
 							<SearchMinusSolid />
 						</ZoomIconOut> */}
           {/* </IconsAndDesignerContainer> */}
-         <div style={{position: "relative", top: "29px"}}>
+         <div style={{position: "relative", top: "27px"}}>
          <Button isFullWidth primary onClick={() => setMoveElements(false)}>
             <span>{"OK"} </span>
           </Button>
