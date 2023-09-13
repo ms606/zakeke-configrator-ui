@@ -827,7 +827,6 @@ const Designer: FC<{
          
           <ZakekeDesigner ref={customizerRef} areaId={actualAreaId} />
          
-
           {/* <IconsAndDesignerContainer> */}
             {/* <ZoomIconIn hoverable onClick={() => customizerRef.current.zoomIn()}>
 							<SearchPlusSolid />
@@ -836,9 +835,11 @@ const Designer: FC<{
 							<SearchMinusSolid />
 						</ZoomIconOut> */}
           {/* </IconsAndDesignerContainer> */}
-          <Button isFullWidth primary onClick={() => setMoveElements(false)}>
+         <div style={{position: "relative", top: "32px"}}>
+         <Button isFullWidth primary onClick={() => setMoveElements(false)}>
             <span>{"OK"} </span>
           </Button>
+         </div>   
         </ZakekeDesignerContainer>
       )}
     </>
