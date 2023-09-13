@@ -159,8 +159,8 @@ export const ZakekeDesignerContainer = styled.div<{ isMobile?: boolean }>`
         position:fixed;
         inset:0;
         z-index:13;
-		height: 92%;
-		width: 97%;
+		height: 95%;
+		width: 99%;
     `}
 `;
 
