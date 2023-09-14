@@ -275,6 +275,7 @@ export const MenuItemImagesImage = styled.img<{ isRound?: boolean }>`
 	height: 100%;
 	object-fit: cover;
 	padding: 3px;
+	border: 1px solid rgb(239, 233, 233);
 	border-radius: ${(props) => (props.isRound ? '64px!important' : '0')};
 `;
 
