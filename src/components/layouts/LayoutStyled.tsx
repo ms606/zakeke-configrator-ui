@@ -209,7 +209,7 @@ export const MobileItemContainer = styled.div<{ selected?: boolean }>`
 	flex-direction: column;
 	border-right: 2px #fff solid;
 	position: relative;
-	${(props) => props.selected && `background-color: #f7f7f7;`}
+	${(props) => props.selected && `background-color: rgb(235 227 227);`}
 `;
 
 export const StepsContainer = styled.div`
@@ -258,8 +258,8 @@ export const MenuItemImagesImageWrapper = styled.div`
 `;
 
 export const MenuItemLabel = styled.span`
-	font-size: 14px;
-	font-weight: 500;
+	font-size: 13px;
+	font-weight: 400;
 	position: absolute;
 	bottom: 2px;
 	left: 0;
