@@ -367,7 +367,7 @@ export const FooterMobileContainer = styled.div<{ isQuoteEnable?: boolean }>`
 	z-index: 0;
     height: 55px;
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	background-color: #fff;
 	font-size: 12px;
 	margin-top: 4px;

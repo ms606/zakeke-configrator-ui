@@ -1,8 +1,8 @@
 import { Icon } from "../../Atomic";
 import React, { FC, useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components";
-import { ReactComponent as ArrowLeftIcon } from '../../../assets/icons/arrow-left-solid.svg';
-import { ReactComponent as ArrowRightIcon } from '../../../assets/icons/arrow-right-solid.svg';
+import { ReactComponent as ArrowLeftIcon } from '../../../assets/icons/angle-left-solid.svg';
+import { ReactComponent as ArrowRightIcon } from '../../../assets/icons/angle-right-solid.svg';
 import { 
         MenuItemIcon, 
         MenuItemImage, 
@@ -76,7 +76,7 @@ const ArrowCss = css`
     position: absolute;
     left: 10px;
     bottom: 60px;
-    background-color: #F1F1F1;
+    //background-color: #F1F1F1;
     border-radius: 30px;
     width: 32px;
     height: 32px;
@@ -97,10 +97,14 @@ right: 10px;
 
 const ArrowLeftIconStyled = styled(Icon)`
  font-size: 22px;
+ width: 27px;
+ height: 27px; 
 `;
 
 const ArrowRightIconStyled = styled(Icon)`
  font-size: 22px;
+ width: 27px;
+ height: 27px; 
 `;
 
 

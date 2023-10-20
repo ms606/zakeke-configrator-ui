@@ -153,17 +153,20 @@ export const Rows = styled.div<{ rows: number }>`
 
 export const CloseEditorButton = styled.button`
 	position: fixed;
-	bottom: 0px;
-	left: 0;
-	width: 100%;
-	padding: 20px;
+	bottom: 1em;
+	left: 1em;
+	width: 92%;
+	height: 30px;
+	padding: 10px 10px;
 	color: white;
 	height: 60px;
 	background-color: #297ca3;
 	height: auto;
+	font-size: 13px;
 	font-weight: bold;
 	z-index: 11;
 	justify-content: center;
+	border-radius: 4px;
 `;
 
 const ArrowCss = css`

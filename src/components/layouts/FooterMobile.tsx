@@ -21,7 +21,7 @@ import { ReactComponent as SaveSolid } from '../../assets/icons/save-solid.svg';
 //import NftDialog, { NftForm } from 'components/dialogs/NftDialog';
 import { useRef, useState } from 'react';
 //import useDropdown from 'hooks/useDropdown';
-import { TooltipContent } from '../Atomic';
+import { TooltipContent, AddToCartButton } from '../Atomic';
 import QuantityDialog from '../dialog/QuanityDialog'
 import LoadingOverlay from "../widgets/LoadingOverlay";
 
@@ -344,9 +344,9 @@ const FooterMobile = () => {
 							<ShareSolid />
 						</FooterMobileIcon>
 					)} */}
-					<FooterMobileIcon>
+					{/* <FooterMobileIcon>
 						<span style={{position: "relative", width: "66vw", fontWeight: "600", fontSize: "80%"}}>{product?.name}</span>
-					</FooterMobileIcon>
+					</FooterMobileIcon> */}
 
 					{/* {isBuyVisibleForQuoteRule && !isViewerMode && ( */}
 						<FooterMobileIcon
@@ -363,19 +363,28 @@ const FooterMobile = () => {
 							backgroundColor='#313c46'
 							onClick={!isAddToCartDisabled ? () => handleAddToCart() : () => null}
 						>
-							{!isOutOfStock &&
+							{/* {!isOutOfStock &&
 								price !== null &&
 								price > 0 &&
 								(!sellerSettings || !sellerSettings.hidePrice) && (
 									<PriceContainer isMobile={isMobile}>{priceFormatter.format(price)}</PriceContainer>
-								)}
+								)} */}
 
 							{/* {isOutOfStock && T._('OUT OF STOCK', 'Composer')} */}
+							
+							<AddToCartButton>
 
-							{!isOutOfStock &&
+								<span style={{color: 'white'}}>
+									{isDraftEditor || isEditorMode
+										? T._('Save', 'Composer')
+										: T._('Add to cart', 'Composer')}
+								</span>
+							</AddToCartButton>
+
+							{/* {!isOutOfStock &&
 								!isAddToCartLoading &&
 								(isDraftEditor || isEditorMode ? <SaveSolid /> : <CartSolid />)}
-							{isAddToCartLoading && <TailSpin color='#FFFFFF' height='25px' />}
+							{isAddToCartLoading && <TailSpin color='#FFFFFF' height='25px' />} */}
 						</FooterMobileIcon>
 					{/* )} */}
 					{/* {product?.quoteRule && !isViewerMode && !isDraftEditor && !isEditorMode && (
