@@ -219,6 +219,8 @@ export const ZoomOutIcon = styled(Icon)`
 `;
 
 export const AddToCartButton = styled(Button)`
+	position: relative;
+	right: 10%;
 	min-width: 200px;
 	background-color: #297ca3;
 	font-family: 'Inter';
