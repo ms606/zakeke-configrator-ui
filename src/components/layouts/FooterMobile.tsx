@@ -373,7 +373,6 @@ const FooterMobile = () => {
 							{/* {isOutOfStock && T._('OUT OF STOCK', 'Composer')} */}
 							
 							<AddToCartButton>
-
 								<span style={{color: 'white'}}>
 									{isDraftEditor || isEditorMode
 										? T._('Save', 'Composer')

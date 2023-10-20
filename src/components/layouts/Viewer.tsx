@@ -1,4 +1,4 @@
-import { useZakeke, ZakekeViewer } from 'zakeke-configurator-react';
+import { ProductQuantityRule, useZakeke, ZakekeViewer } from 'zakeke-configurator-react';
 import { Button } from '../Atomic';
 import {
 	findAttribute,
@@ -50,6 +50,7 @@ const Viewer = () => {
 		reset,
 		openSecondScreen,
 		product,
+		price,
 		hasExplodedMode,
 		setExplodedMode
 	} = useZakeke();
@@ -104,6 +105,10 @@ const Viewer = () => {
 		<ViewerContainer ref={ref}>
 			{!isSceneLoading && <ZakekeViewer backgroundColor='#ffffff' />}			
 				<>
+				{<div style={{ position: "absolute", top: "2em", left: "4em", font: ''}}>
+					<div>{product?.name}</div>
+					<div>LEI {price}</div>	
+				</div>}
 					<ZoomInIcon isMobile={isMobile} key={'zoomin'} hoverable onClick={zoomIn}>
 						<SearchPlusSolid />
 					</ZoomInIcon>
