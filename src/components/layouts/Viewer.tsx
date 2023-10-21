@@ -105,7 +105,7 @@ const Viewer = () => {
 		<ViewerContainer ref={ref}>
 			{!isSceneLoading && <ZakekeViewer backgroundColor='#ffffff' />}			
 				<>
-				{<div style={{ position: "absolute", top: "0.52em", left: "4em", fontWeight: "500"}}>
+				{<div style={{ position: "absolute", top: "0.52em", left: "3em", fontWeight: "555"}}>
 					<div>{product?.name}</div>
 					<div>LEI {price}</div>	
 				</div>}
