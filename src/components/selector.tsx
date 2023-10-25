@@ -86,6 +86,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const [selectedAttributeId, selectAttribute] = useState<number | null>(null);
 
   const [selectedColorName, selectColorName] = useState<any | null>(null);
+  const [hasTypeZero, setHasTypeZero] = useState<boolean | null>(null);
+  const [stitchTypeGroup, setStitchTypeGroup] = useState<any | null>(null);
 
   // Get a list of all group names so we can populate on the tray
   const [selectedGroupList, selectGroupList] = useState<any | null>(null);
@@ -105,6 +107,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [width, setWidth] = useState(window.innerWidth);
+  
+ 
 
   const selectedGroup = groups.find((group) => group.id === selectedGroupId);
   const selectedStep = selectedGroup
@@ -118,19 +122,62 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   // Attributes can be in both groups and steps, so show the attributes of step or in a group based on selection
   const attributes = useMemo(
     () => (selectedStep || selectedGroup)?.attributes ?? [],
-    [selectedGroup, selectedStep]
+    [selectedGroup, selectedStep, items]
   );
+
   const selectedAttribute = attributes.find(
     (attribute) => attribute.id === selectedAttributeId
   );
-
-  //console.log(groups,'for checking others');
-
+  
   let indexToRemove = groups.findIndex((obj) => obj.id === -1);
-
   if (indexToRemove !== -1) {
     groups.splice(indexToRemove, 1);
+   
+    // if(hasTypeZero){
+    //   const indexToDel = groups.findIndex((obj) => obj.id == 9368);
+    //   if (groups[indexToDel].id == 9368) {
+    //     groups?.splice(indexToDel,1)
+    //   }
+    // }  
   }
+
+  useEffect(() => {
+
+    
+    if(items) {
+      console.log(currentIndex, hasTypeZero,groups,'hasTypeZero');
+  
+    if (groups[9]?.name === 'ACOPERIRE TIP') { 
+      setStitchTypeGroup(groups[9])
+    };
+
+    if (!hasTypeZero){
+      const indexToDel = groups.findIndex((obj) => obj.id == 9368);
+      groups?.splice(indexToDel,1)
+    }
+
+    if (stitchTypeGroup != null &&  hasTypeZero ){
+      //groups?.push(stitchTypeGroup)
+      const checkToPush = groups.findIndex((obj) => obj.id == 9368);
+        if (groups[checkToPush]?.id !== 9368) {
+          groups.splice(9,0,stitchTypeGroup)
+       //   groups?.splice(indexToDel,1)
+        }
+      //groups.splice(9,0,stitchTypeGroup)
+    }
+   }
+
+   
+    // console.log(currentIndex,groups,'currentIndex');
+    
+    //findIndex((obj) => obj.id == 9368)
+    //const foundItemIndex = groups.findIndex((obj) => obj.id == 9368);
+    //setCurrentIndex(foundItemIndex)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasTypeZero,groups]);
+
+
 
   const dialogsPortal = document.getElementById("dialogs-portal");
 
@@ -146,10 +193,16 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [items]);
 
   // Open the first group and the first step when loaded
   useEffect(() => {
+    
+    if(items?.some(obj => obj.type === 0)){
+      setHasTypeZero(items?.some(obj => obj.type === 0));  
+    }
+    
+    
     if (!selectedGroup && groups.length > 0) {
       // console.log("items", items, "groups", groups, "product", product);
       selectGroup(groups[0].id);
@@ -168,7 +221,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     }
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedGroup, groups]);
+  }, [selectedGroup, groups,items]);
 
   // useEffect(() => {
   // 	const textItems = items.filter((item) => item.type === 0) // as TextItem[];
@@ -279,6 +332,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     height: !selectedTrayPreviewOpenButton ? "13rem" : "70px",
   };
 
+
+
   return (
     <>
       <div className="top-nav">
@@ -372,73 +427,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
       <div className="animate-wrapper-0">
         {/* Personalize A */}
-        {/* {isMobile && (
-          <div
-            className="LayoutStyled__GroupItem-sc-1nws045-2"
-            style={{
-              position: "absolute",
-              top: "4%",
-              right: "33%",
-              cursor: "pointer",
-            }}
-          >
-            <div
-              className="button-53"
-              onClick={() => setSelectedPersonalize(!selectedPersonalize)}
-            >
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "7px 5px",
-                }}
-              >
-                {T._("Personalizează", "Composer")}
-              </span>
-            </div>
-
-            {isMobile && (
-              <div
-                className="LayoutStyled__GroupItem-sc-1nws045-2"
-                style={{
-                  position: "absolute",
-                  top: "-25%",
-                  left: "10.2em",
-                  cursor: "pointer",
-                  width: "70px",
-                  height: "51px",
-                }}
-              >
-                <FooterMobile />
-              </div>
-            )}
-
-            {!isMobile && (
-              <div
-                className="LayoutStyled__GroupItem-sc-1nws045-2"
-                style={{
-                  position: "absolute",
-                  top: "-42%",
-                  left: "11.2em",
-                  cursor: "pointer",
-                  width: "70px",
-                  height: "51px",
-                }}
-              >
-                <Footer />
-              </div>
-            )}
-
-            {selectedPersonalize ? (
-              <Designer togglePersonalize={togglePersonalize} />
-            ) : (
-              ""
-            )}
-          </div>
-        )} */}
-
+        
         <div style={containerStyles}>
+         {/* {groups[currentIndex].name === "MODALITATE IMPRIMARE" && (!hasTypeZero) ? null : ( */}
           <div className="tray-header">
             <TrayPreviewOpenButton
               width={width}
@@ -501,7 +492,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         lineHeight: "28px",
                       }}
                     >
-                      {groups[currentIndex].name}
+                      {groups[currentIndex]?.name}
                     </span>
                     <span className="active-marketing-component-index">
                       {" "}
@@ -534,7 +525,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
             {/* Closed on request of Paul */}
             {/* <MenuTriggerButton width={width} toggleTray={toggleTray} /> */}
           </div>
-
+          {/* )} */}
           <br />
 
           {/* <List>
@@ -544,7 +535,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 }} selected={selectedGroup === group}> {group.id === -1 ? 'Other' : group.name}</ListItem>;
             })}
         </List> */}
-
+       
           <div className={`animate-wrapper${isTrayOpen ? "-2 show" : ""}`}>
             {isTrayOpen && !selectedTrayPreviewOpenButton && (
               <Tray
@@ -658,62 +649,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     {/* {selectedColorName}   */}
                   </List>
                 )}
-
-                {/* NUKA CAROUSEL WHICH IS GREATER THAN 16 slides FOR mobile phone */}
-
-                {/* {selectedAttribute &&
-                  width <= 400 && (
-                    <div
-                      className="mobileCarousel"
-                      style={{
-                        backgroundColor: "#fff",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "8.5vh",
-                        width: "90vw",
-                        paddingLeft: "3em",
-                      }}
-                    >
-                      <List>
-                        {!selectedTrayPreviewOpenButton &&
-                          selectedAttribute &&
-                          !isTrayOpen && (
-                            <Swiper
-                              spaceBetween={1}
-                              slidesPerView={4}
-                              navigation={true}                              
-                              modules={[Navigation]}
-                            >
-                              {selectedAttribute.options.map((option) => (
-                                <>
-                                  <SwiperSlide>
-                                    <ListItemColorWithCarousel
-                                      key={option.id}
-                                      onClick={() => {
-                                        selectOption(option.id);
-                                      }}
-                                      selected={option.selected}
-                                      selectedColor={selectedColorName}
-                                    >
-                                      {option.imageUrl && (
-                                        <ListItemImage
-                                          src={option.imageUrl}
-                                          onClick={() =>
-                                            selectColorName(option.name)
-                                          }
-                                          selected={option.selected}
-                                        />
-                                      )}
-                                    </ListItemColorWithCarousel>
-                                  </SwiperSlide>
-                                </>
-                              ))}
-                            </Swiper>
-                          )}
-                      </List>
-                    </div>
-                  )} */}
               </div>
             )}
           </div>
