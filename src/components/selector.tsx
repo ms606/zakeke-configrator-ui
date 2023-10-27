@@ -1,18 +1,10 @@
-//import 'bootstrap/dist/css/bootstrap.css';
 import "./selector.css";
 import React, { FunctionComponent, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
-import {ReactComponent as SearchPlusSolid} from '../assets/icons/search-plus-solid.svg';
-import {ReactComponent as SearchMinusSolid} from '../assets/icons/search-minus-solid.svg';
+import { ReactComponent as SearchPlusSolid } from "../assets/icons/search-plus-solid.svg";
+import { ReactComponent as SearchMinusSolid } from "../assets/icons/search-minus-solid.svg";
 import { useZakeke } from "zakeke-configurator-react";
-import {
-  List,
-  ListItem,
-  ListItemImage,
-  ListItemColor,
-  ListItemColorWithCarousel,
-  ListItemImageNoCarousel,
-} from "./list";
+import { List, ListItem, ListItemColor, ListItemImageNoCarousel } from "./list";
 import { PreviewContainer, BlurOverlay } from "./previewContainer";
 import Tray from "./Tray";
 import TrayPreviewOpenButton from "./TrayPreviewOpenButton";
@@ -31,8 +23,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-// import required modules
-import { Navigation } from "swiper/modules";
+import { ReactComponent as AngleLeftSolid } from "../assets/icons/angle-left-solid.svg";
+import { ReactComponent as AngleRightSolid } from "../assets/icons/angle-right-solid.svg";
 
 const dialogsPortal = document.getElementById("dialogs-portal")!;
 // const Container = styled.div`
@@ -75,7 +67,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     defaultColor,
     fonts,
     addItemText,
-    publicTranslations
+    publicTranslations,
   } = useZakeke();
 
   const { setIsLoading, isMobile } = useStore();
@@ -86,6 +78,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const [selectedAttributeId, selectAttribute] = useState<number | null>(null);
 
   const [selectedColorName, selectColorName] = useState<any | null>(null);
+  const [hasTypeZero, setHasTypeZero] = useState<boolean | null>(null);
+  const [stitchTypeGroup, setStitchTypeGroup] = useState<any | null>(null);
 
   // Get a list of all group names so we can populate on the tray
   const [selectedGroupList, selectGroupList] = useState<any | null>(null);
@@ -120,17 +114,62 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     () => (selectedStep || selectedGroup)?.attributes ?? [],
     [selectedGroup, selectedStep]
   );
+
   const selectedAttribute = attributes.find(
     (attribute) => attribute.id === selectedAttributeId
   );
 
-  //console.log(groups,'for checking others');
-
   let indexToRemove = groups.findIndex((obj) => obj.id === -1);
-
   if (indexToRemove !== -1) {
     groups.splice(indexToRemove, 1);
   }
+
+  useEffect(() => {
+    // console.log(items,'items');
+
+    if (items) {
+      //let indexToRemove = groups.findIndex((obj) => obj.id === -1);
+      // if (indexToRemove === -1) {
+
+      //   groups.splice(indexToRemove, 1);
+
+      const groupToSave = groups.findIndex(
+        (obj) => obj.name === "ACOPERIRE TIP"
+      );
+      //console.log(currentIndex, hasTypeZero,groups, groupToSave,'stats');
+      if (groups[groupToSave]?.name === "ACOPERIRE TIP") {
+        setStitchTypeGroup(groups[groupToSave]);
+      }
+
+      //  console.log(stitchTypeGroup, hasTypeZero, groups, stitchTypeGroup);
+
+      if (
+        hasTypeZero == false ||
+        items.filter((item) => item.type === 0).length === 0
+      ) {
+        const indexToDel = groups.findIndex(
+          (obj) => obj.name === "ACOPERIRE TIP"
+        );
+        if (indexToDel > 0) groups?.splice(indexToDel, 1);
+      }
+
+      if (
+        stitchTypeGroup != null &&
+        items.filter((item) => item.type === 0).length > 0
+      ) {
+        const checkToPush = groups.findIndex(
+          (obj) => obj.name === "ACOPERIRE TIP"
+        );
+
+        if (groups[checkToPush]?.name != "ACOPERIRE TIP") {
+          groups.splice(9, 0, stitchTypeGroup);
+        }
+      }
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }
+  }, [hasTypeZero, groups, items]);
 
   const dialogsPortal = document.getElementById("dialogs-portal");
 
@@ -146,12 +185,19 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [items]);
 
   // Open the first group and the first step when loaded
   useEffect(() => {
+    // console.log("loading in the first group");
+
+    if (items?.some((obj) => obj.type === 0)) {
+      setHasTypeZero(items?.some((obj) => obj.type === 0));
+    } else {
+      setHasTypeZero(false);
+    }
+
     if (!selectedGroup && groups.length > 0) {
-      // console.log("items", items, "groups", groups, "product", product);
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
@@ -166,9 +212,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
       });
       selectGroupList(groupRec);
     }
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedGroup, groups]);
+  }, [selectedGroup, groups, items, hasTypeZero]);
 
   // useEffect(() => {
   // 	const textItems = items.filter((item) => item.type === 0) // as TextItem[];
@@ -259,7 +305,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     });
 
     if (filteredArrayId.length > 0) {
-      
       const foundItem = filteredArrayId[0];
       const foundItemIndex = groups.indexOf(foundItem);
       setCurrentIndex(foundItemIndex);
@@ -290,42 +335,12 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
       {!isMobile && !isTrayOpen ? (
         <div style={{ position: "absolute", top: "36%", bottom: "45%" }}>
-          <div
-            className="dgqSKi"
-            onClick={zoomIn}
-          >
-            <SearchPlusSolid />            
+          <div className="dgqSKi" onClick={zoomIn}>
+            <SearchPlusSolid />
           </div>
 
-          <div
-            className="gwevdV"
-            onClick={zoomOut}
-          >
+          <div className="gwevdV" onClick={zoomOut}>
             <SearchMinusSolid />
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
-
-      {isMobile && !isTrayOpen ? (
-        <div style={{ position: "absolute", top: "30%" }}>
-          <div
-            className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomInIcon-sc-1nws045-19 gIdUDj dgqSKi"
-            onClick={zoomIn}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-              <path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z M 18 9 L 18 12 L 15 12 L 15 14 L 18 14 L 18 17 L 20 17 L 20 14 L 23 14 L 23 12 L 20 12 L 20 9 Z"></path>
-            </svg>
-          </div>
-
-          <div
-            className="Atomic__Icon-sc-v58oaw-1 LayoutStyled__ZoomOutIcon-sc-1nws045-20 gIdUDj gwevdV"
-            onClick={zoomOut}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-              <path d="M 19 3 C 13.488281 3 9 7.488281 9 13 C 9 15.394531 9.839844 17.589844 11.25 19.3125 L 3.28125 27.28125 L 4.71875 28.71875 L 12.6875 20.75 C 14.410156 22.160156 16.605469 23 19 23 C 24.511719 23 29 18.511719 29 13 C 29 7.488281 24.511719 3 19 3 Z M 19 5 C 23.429688 5 27 8.570313 27 13 C 27 17.429688 23.429688 21 19 21 C 14.570313 21 11 17.429688 11 13 C 11 8.570313 14.570313 5 19 5 Z M 15 12 L 15 14 L 23 14 L 23 12 Z"></path>
-            </svg>
           </div>
         </div>
       ) : (
@@ -372,73 +387,9 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
       <div className="animate-wrapper-0">
         {/* Personalize A */}
-        {/* {isMobile && (
-          <div
-            className="LayoutStyled__GroupItem-sc-1nws045-2"
-            style={{
-              position: "absolute",
-              top: "4%",
-              right: "33%",
-              cursor: "pointer",
-            }}
-          >
-            <div
-              className="button-53"
-              onClick={() => setSelectedPersonalize(!selectedPersonalize)}
-            >
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "7px 5px",
-                }}
-              >
-                {T._("Personalizează", "Composer")}
-              </span>
-            </div>
-
-            {isMobile && (
-              <div
-                className="LayoutStyled__GroupItem-sc-1nws045-2"
-                style={{
-                  position: "absolute",
-                  top: "-25%",
-                  left: "10.2em",
-                  cursor: "pointer",
-                  width: "70px",
-                  height: "51px",
-                }}
-              >
-                <FooterMobile />
-              </div>
-            )}
-
-            {!isMobile && (
-              <div
-                className="LayoutStyled__GroupItem-sc-1nws045-2"
-                style={{
-                  position: "absolute",
-                  top: "-42%",
-                  left: "11.2em",
-                  cursor: "pointer",
-                  width: "70px",
-                  height: "51px",
-                }}
-              >
-                <Footer />
-              </div>
-            )}
-
-            {selectedPersonalize ? (
-              <Designer togglePersonalize={togglePersonalize} />
-            ) : (
-              ""
-            )}
-          </div>
-        )} */}
 
         <div style={containerStyles}>
+          {/* {groups[currentIndex].name === "MODALITATE IMPRIMARE" && (!hasTypeZero) ? null : ( */}
           <div className="tray-header">
             <TrayPreviewOpenButton
               width={width}
@@ -466,21 +417,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                 onClick={handleLeftClick}
               >
                 <div className="mc-prev">
-                  <svg
-                    aria-hidden="true"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                    role="img"
-                    width="24px"
-                    height="24px"
-                    fill="none"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      d="M11.021 18.967L4.055 12l6.966-6.967M4 12h17"
-                    ></path>
-                  </svg>
+                  <AngleLeftSolid />
                 </div>
               </button>
 
@@ -501,32 +438,19 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         lineHeight: "28px",
                       }}
                     >
-                      {groups[currentIndex].name}
+                      {groups[currentIndex]?.name}
                     </span>
                     <span className="active-marketing-component-index">
                       {" "}
                       {currentIndex + 1} / {groups.length}
                     </span>
                   </div>
-
                 </div>
               </div>
               <button className="next-customization" onClick={handleRightClick}>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                  role="img"
-                  width="24px"
-                  height="24px"
-                  fill="none"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    d="M12.979 18.967L19.945 12 12.98 5.033M20 12H3"
-                  ></path>
-                </svg>
+                <div className="mc-prev">
+                  <AngleRightSolid />
+                </div>
               </button>
             </div>
             {!isMobile && <Footer />}
@@ -534,7 +458,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
             {/* Closed on request of Paul */}
             {/* <MenuTriggerButton width={width} toggleTray={toggleTray} /> */}
           </div>
-
+          {/* )} */}
           <br />
 
           {/* <List>
@@ -574,7 +498,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
 
             {!selectedTrayPreviewOpenButton && (
               <div style={{ width: "100%" }}>
-                <List>                  
+                <List>
                   {/* {width > 400 &&
                     attributes &&
                     !isTrayOpen &&
@@ -639,7 +563,22 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                         return (
                           <ListItemColor
                             key={option.id}
-                            onClick={() => selectOption(option.id)}
+                            onClick={() => {
+                              {
+                                if (
+                                  option.name === "BRODAT" ||
+                                  option.name === "TIPARIT"
+                                ) {
+                                  const indexForGroupTip =  groups.findIndex(
+                                    (obj) => obj.name === "ACOPERIRE TIP"
+                                  );
+                                  selectColorName("");
+                                  setCurrentIndex(0);
+                                  selectGroup(0)
+                                }
+                              }
+                              selectOption(option.id);
+                            }}
                             selected={option.selected}
                             selectedColor={selectedColorName}
                           >
@@ -658,62 +597,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                     {/* {selectedColorName}   */}
                   </List>
                 )}
-
-                {/* NUKA CAROUSEL WHICH IS GREATER THAN 16 slides FOR mobile phone */}
-
-                {/* {selectedAttribute &&
-                  width <= 400 && (
-                    <div
-                      className="mobileCarousel"
-                      style={{
-                        backgroundColor: "#fff",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "8.5vh",
-                        width: "90vw",
-                        paddingLeft: "3em",
-                      }}
-                    >
-                      <List>
-                        {!selectedTrayPreviewOpenButton &&
-                          selectedAttribute &&
-                          !isTrayOpen && (
-                            <Swiper
-                              spaceBetween={1}
-                              slidesPerView={4}
-                              navigation={true}                              
-                              modules={[Navigation]}
-                            >
-                              {selectedAttribute.options.map((option) => (
-                                <>
-                                  <SwiperSlide>
-                                    <ListItemColorWithCarousel
-                                      key={option.id}
-                                      onClick={() => {
-                                        selectOption(option.id);
-                                      }}
-                                      selected={option.selected}
-                                      selectedColor={selectedColorName}
-                                    >
-                                      {option.imageUrl && (
-                                        <ListItemImage
-                                          src={option.imageUrl}
-                                          onClick={() =>
-                                            selectColorName(option.name)
-                                          }
-                                          selected={option.selected}
-                                        />
-                                      )}
-                                    </ListItemColorWithCarousel>
-                                  </SwiperSlide>
-                                </>
-                              ))}
-                            </Swiper>
-                          )}
-                      </List>
-                    </div>
-                  )} */}
               </div>
             )}
           </div>

@@ -57,7 +57,8 @@ const Footer = () => {
 		saveComposition,
 		createQuote,
 		nftSettings, 
-		publicTranslations
+		publicTranslations, 
+		groups
 	} = useZakeke();
 
 	const {
@@ -76,8 +77,13 @@ const Footer = () => {
 		
 		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
 		const staticsVals = publicTranslations?.statics; 
+        
+		const findSizeIndex = groups.findIndex((obj) => obj.name === 'MARIME');
+		console.log(findSizeIndex,'size index');
+		const isSizeNotSelected = groups[findSizeIndex].attributes[0].options[0].selected === true;
+		console.log(isSizeNotSelected,'isSizeNotSelected');
 
-		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode)
+		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode && !isSizeNotSelected)
 			showDialog(
 				'question',
 				<QuestionDialog
@@ -140,7 +146,15 @@ const Footer = () => {
 		// 		/>
 		// 	);
 		else {
-			addToCart([], undefined, useLegacyScreenshot);
+			if(isSizeNotSelected){
+				
+				showError('Size not selected.')
+				// alert('size not selected')
+			}
+			else {
+				addToCart([], undefined, useLegacyScreenshot);
+			}
+			
 		}
 	 };
 
@@ -227,6 +241,8 @@ const Footer = () => {
 	const isOutOfStock = false;
 	const isBuyVisibleForQuoteRule = product?.quoteRule ? product.quoteRule.allowAddToCart : true;
 	const isAddToCartDisabled = isOutOfStock || isAddToCartLoading;
+  
+
 
 	return (
 		<FooterContainer>
@@ -336,7 +352,7 @@ const Footer = () => {
 
 						{/* Add to cart */}
 						{/* {isBuyVisibleForQuoteRule && !isViewerMode && ( */}
-							<AddToCartButton
+						<AddToCartButton
 								ref={addToCartButtonRef}
 								//onPointerEnter={() => {
 								// 	if (isAddToCartDisabled) openOutOfStockTooltip(addToCartButtonRef.current!, 'top', 'top');
@@ -348,7 +364,7 @@ const Footer = () => {
 								primary
 								//onClick={!isAddToCartDisabled ? () => handleAddToCart() : () => null}
 								onClick={() => handleAddToCart()}
-							>
+						>
 								{isAddToCartLoading && <TailSpin color='#FFFFFF' height='25px' />}
 								{!isAddToCartLoading && !isOutOfStock && (
 									<span>
@@ -358,7 +374,7 @@ const Footer = () => {
 									</span>
 								)}
 								{!isAddToCartLoading && isOutOfStock && <span>{T._('OUT OF STOCK', 'Composer')}</span>}
-							</AddToCartButton>
+						</AddToCartButton>
 						{/* )} */}
 					</FooterRightElementsContainer>
 				</>
