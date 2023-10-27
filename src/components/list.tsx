@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const List = styled.ul`
+    position: relative;
     margin: 0;
     padding: 0;
     display: flex;
@@ -122,8 +123,7 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
     };
 
     &:after {
-    content: "${props => { return props.selected ? props.selectedColor : ''
-                        }}";
+    // content: "${props => { return props.selected ? props.selectedColor : '' }}";
     position: absolute;
     bottom: 7%;
     }
@@ -150,13 +150,14 @@ export const ListItemColor = styled.li<{ selected?: boolean, selectedColor?: any
 `
 
 export const ListItemImageNoCarousel = styled.img<{ selected?: any }>`
+    position: relative;
     width: 40px;
     height: 40px;
     object-fit: contain;
     margin: 0px 11px;
     border-radius: 100%;
     border: 1px solid rgb(229, 229, 229);
-
+    
     @media screen and (max-width: 568px) {
     width: 30px;
     height: 30px;

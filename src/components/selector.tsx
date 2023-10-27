@@ -76,6 +76,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const [selectedGroupId, selectGroup] = useState<number | null>(null);
   const [selectedStepId, selectStep] = useState<number | null>(null);
   const [selectedAttributeId, selectAttribute] = useState<number | null>(null);
+  const [selectedOptionId, selectOptionId] = useState<number | null>(null);
+  const [selectedOptionName, selectOptionName] = useState<string | null>(null);
 
   const [selectedColorName, selectColorName] = useState<any | null>(null);
   const [hasTypeZero, setHasTypeZero] = useState<boolean | null>(null);
@@ -141,16 +143,17 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         setStitchTypeGroup(groups[groupToSave]);
       }
 
-      //  console.log(stitchTypeGroup, hasTypeZero, groups, stitchTypeGroup);
+      //console.log(stitchTypeGroup, hasTypeZero, groups, stitchTypeGroup);
+     // console.log(hasTypeZero, stitchTypeGroup, (stitchTypeGroup != null ));
 
-      if (
-        hasTypeZero == false ||
-        items.filter((item) => item.type === 0).length === 0
+      if ( hasTypeZero == false ||
+        items.filter((item) => item.type === 0).length === 0 //|| 
+      //  stitchTypeGroup != null 
       ) {
         const indexToDel = groups.findIndex(
           (obj) => obj.name === "ACOPERIRE TIP"
         );
-        if (indexToDel > 0) groups?.splice(indexToDel, 1);
+        if (!isSceneLoading && !hasTypeZero && indexToDel > 0) groups?.splice(indexToDel, 1);
       }
 
       if (
@@ -214,7 +217,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedGroup, groups, items, hasTypeZero]);
+  }, [selectedGroup, groups]);
 
   // useEffect(() => {
   // 	const textItems = items.filter((item) => item.type === 0) // as TextItem[];
@@ -564,20 +567,29 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                           <ListItemColor
                             key={option.id}
                             onClick={() => {
+                              selectOptionId(option.id)
+                              selectOptionName(option.name)
+                              console.log(option.name);
+                              
+
                               {
                                 if (
                                   option.name === "BRODAT" ||
                                   option.name === "TIPARIT"
                                 ) {
-                                  const indexForGroupTip =  groups.findIndex(
+                                  const indexForGroupTip = groups.findIndex(
                                     (obj) => obj.name === "ACOPERIRE TIP"
                                   );
-                                  selectColorName("");
-                                  setCurrentIndex(0);
-                                  selectGroup(0)
+                                    if(indexForGroupTip > 0 ){
+                                      selectGroup(groups[indexForGroupTip].id);
+                                    }
+                                  
                                 }
                               }
                               selectOption(option.id);
+
+                              console.log(option.id, selectedColorName, selectedAttributeId, groups);
+                              
                             }}
                             selected={option.selected}
                             selectedColor={selectedColorName}
@@ -590,7 +602,19 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                               />
                             )}
 
-                            {/* //{option.name} */}
+                            <div style={{position: 'absolute', top: '120%'}}>
+                             {option.id === selectedOptionId ? option.name : ""}
+                            </div>
+                           
+                            {/* {option.name === "BRODAT" ||
+                             option.name === "TIPARIT" ?
+
+                            <div style={{paddingTop: '1em'}}>
+                            {option.name}
+                              
+                              : 
+                            </div> : null 
+                            } */}
                           </ListItemColor>
                         );
                       })}

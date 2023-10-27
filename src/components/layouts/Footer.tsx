@@ -79,10 +79,8 @@ const Footer = () => {
 		const staticsVals = publicTranslations?.statics; 
         
 		const findSizeIndex = groups.findIndex((obj) => obj.name === 'MARIME');
-		console.log(findSizeIndex,'size index');
 		const isSizeNotSelected = groups[findSizeIndex].attributes[0].options[0].selected === true;
-		console.log(isSizeNotSelected,'isSizeNotSelected');
-
+		
 		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode && !isSizeNotSelected)
 			showDialog(
 				'question',
@@ -147,7 +145,6 @@ const Footer = () => {
 		// 	);
 		else {
 			if(isSizeNotSelected){
-				
 				showError('Size not selected.')
 				// alert('size not selected')
 			}
