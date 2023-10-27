@@ -129,7 +129,10 @@ const FooterMobile = () => {
 	const handleAddToCart = () => {
 		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
 
-		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode)
+		const findSizeIndex = groups.findIndex((obj) => obj.name === 'MARIME');
+		const isSizeNotSelected = groups[findSizeIndex].attributes[0].options[0].selected === true;
+
+		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode && !isSizeNotSelected)
 			showDialog(
 				'question',
 				<QuestionDialog
@@ -203,7 +206,14 @@ const FooterMobile = () => {
 				/>
 			);
 		else {
-			addToCart([], undefined, useLegacyScreenshot);
+
+			if(isSizeNotSelected){
+				showError('Size not selected.')
+				// alert('size not selected')
+			}
+			else {
+				addToCart([], undefined, useLegacyScreenshot);
+			}
 		}
 	};
 
