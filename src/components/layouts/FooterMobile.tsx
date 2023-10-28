@@ -129,7 +129,7 @@ const FooterMobile = () => {
 	const handleAddToCart = () => {
 		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
 
-		const findSizeIndex = groups.findIndex((obj) => obj.name === 'MARIME');
+		const findSizeIndex = groups.findIndex((obj) => obj.name.toLowerCase() === 'marime');
 		const isSizeNotSelected = groups[findSizeIndex]?.attributes[0].options[0].selected === true;
 		console.log(isSizeNotSelected,'isSizeNotSelected');
 		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode && !isSizeNotSelected)
