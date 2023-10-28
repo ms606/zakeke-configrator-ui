@@ -163,9 +163,12 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         const checkToPush = groups.findIndex(
           (obj) => obj.name === "ACOPERIRE TIP"
         );
-
-        if (groups[checkToPush]?.name != "ACOPERIRE TIP") {
+         
+        if (groups[checkToPush]?.name != "ACOPERIRE TIP" ) {
           groups.splice(9, 0, stitchTypeGroup);
+          if (currentIndex === 9) {
+            selectGroup(groups[9].id)
+          } 
         }
       }
     }
