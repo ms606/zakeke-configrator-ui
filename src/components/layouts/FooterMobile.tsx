@@ -130,7 +130,7 @@ const FooterMobile = () => {
 		const cartMessage = eventMessages?.find((message) => message.eventID === 4);
 
 		const findSizeIndex = groups.findIndex((obj) => obj.name === 'MARIME');
-		const isSizeNotSelected = groups[findSizeIndex].attributes[0].options[0].selected === true;
+		const isSizeNotSelected = groups[findSizeIndex]?.attributes[0].options[0].selected === true;
 
 		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode && !isSizeNotSelected)
 			showDialog(
