@@ -153,6 +153,8 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
         const indexToDel = groups.findIndex(
           (obj) => obj.name === "ACOPERIRE TIP"
         );
+        console.log(indexToDel, 'index to delete');
+        
         if (hasTypeZero == false && indexToDel > 0) groups?.splice(indexToDel, 1);
       }
 
