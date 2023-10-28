@@ -79,7 +79,7 @@ const Footer = () => {
 		const staticsVals = publicTranslations?.statics; 
         
 		const findSizeIndex = groups.findIndex((obj) => obj.name === 'MARIME');
-		const isSizeNotSelected = groups[findSizeIndex].attributes[0].options[0].selected === true;
+		const isSizeNotSelected = groups[findSizeIndex]?.attributes[0].options[0].selected === true;
 		
 		if (cartMessage && cartMessage.visible && !isDraftEditor && !isEditorMode && !isSizeNotSelected)
 			showDialog(
