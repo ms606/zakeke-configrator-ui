@@ -127,50 +127,45 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   }
 
   useEffect(() => {
-    // console.log(items,'items');
+    const itemAvailable = items?.filter((item) => item.type === 0).length > 0;
 
-    if (items) {
-      //let indexToRemove = groups.findIndex((obj) => obj.id === -1);
-      // if (indexToRemove === -1) {
+    // console.log(itemAvailable, "itemAvailable", hasTypeZero);
+    if (items && !itemAvailable) {
+      // console.log("a");
 
-      //   groups.splice(indexToRemove, 1);
-
-      const groupToSave = groups.findIndex(
-        (obj) => obj.name === "ACOPERIRE TIP"
-      );
       //console.log(currentIndex, hasTypeZero,groups, groupToSave,'stats');
-      if (groups[groupToSave]?.name === "ACOPERIRE TIP") {
-        setStitchTypeGroup(groups[groupToSave]);
-      }
+      //  console.log(groups[groups.length -1], items, hasTypeZero);
 
-      //console.log(stitchTypeGroup, hasTypeZero, groups, stitchTypeGroup);
-     // console.log(hasTypeZero, stitchTypeGroup, (stitchTypeGroup != null ));
-
-      if ( hasTypeZero == false ||
-        items.filter((item) => item.type === 0).length === 0 //|| 
-      //  stitchTypeGroup != null 
+      if ( groups[groups.length - 1]?.name === "MODALITATE IMPRIMARE"
       ) {
-        const indexToDel = groups.findIndex(
-          (obj) => obj.name === "ACOPERIRE TIP"
-        );
-       // console.log(indexToDel, 'index to delete');
-        
-        if (hasTypeZero == false && indexToDel > 0) groups?.splice(indexToDel, 1);
+        setStitchTypeGroup(groups[groups.length - 1]);
       }
 
       if (
-        stitchTypeGroup != null &&
-        items.filter((item) => item.type === 0).length > 0
+        hasTypeZero == false ||
+        items.filter((item) => item.type === 0).length === 0
       ) {
-        const checkToPush = groups.findIndex(
-          (obj) => obj.name === "ACOPERIRE TIP"
+        const indexToDel = groups.findIndex(
+          (obj) => obj.name === "MODALITATE IMPRIMARE"
         );
-         
-        if (groups[checkToPush]?.name != "ACOPERIRE TIP" ) {
-          groups.splice(9, 0, stitchTypeGroup);
-          if (currentIndex === 9) {
-            selectGroup(groups[9].id)
-          } 
+        // console.log(indexToDel, 'index to delete');
+
+        // if (hasTypeZero == false && indexToDel > 0) groups?.splice(groups.length -1, 1);
+        for (let i = 0; i < groups.length; i++) {
+          // if (hasTypeZero){
+          // console.log(selectedOptionName,'selectedOptionId');
+           if(selectedOptionName !== 'PRINTAT' && selectedOptionName !== 'BRODAT'){          
+            if (groups[i]?.name === "MODALITATE IMPRIMARE") groups.splice(i, 1);
+          }
+        //  }
+        }
+      }
+    }
+
+    if (items && itemAvailable) {
+      if (items.filter((item) => item.type === 1)) {
+        if (groups[groups.length - 1]?.name != "MODALITATE IMPRIMARE") {
+          groups.push(stitchTypeGroup);
         }
       }
     }
@@ -277,12 +272,23 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     selectColorName("");
     setCurrentIndex((currentIndex - 1 + groups.length) % groups.length);
     selectGroup(groups[(currentIndex - 1 + groups.length) % groups.length].id);
+
+    if(items.filter((item) => item.type === 0).length === 0){ 
+      if(groups[groups.length -1].name === 'MODALITATE IMPRIMARE') 
+        if (items?.filter((item) => item.type === 0)) {groups.splice(groups.length -1, 1)}
+    }  
+      
   };
 
   const handleRightClick = () => {
     selectColorName("");
     setCurrentIndex((currentIndex + 1) % groups.length);
     selectGroup(groups[(currentIndex + 1) % groups.length].id);
+
+    if(items.filter((item) => item.type === 0).length === 0){ 
+      if(groups[groups.length -1].name === 'MODALITATE IMPRIMARE') 
+        if (items?.filter((item) => item.type === 0)) {groups.splice(groups.length -1, 1)}
+    }
   };
 
   const toggleTray = () => {
@@ -572,29 +578,54 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                           <ListItemColor
                             key={option.id}
                             onClick={() => {
-                              selectOptionId(option.id)
-                              selectOptionName(option.name)
-                              console.log(option.name);
-                              
 
+                              console.log(selectedAttribute, option, option.id);
+                              
                               {
                                 if (
                                   option.name === "BRODAT" ||
-                                  option.name === "TIPARIT"
+                                  option.name === "TIPARIT" ||
+                                  option.name === "PRINTAT"
                                 ) {
+                                  // const indexForGroupTip = groups.findIndex(
+                                  //   (obj) => obj.name === 'MODALITATE IMPRIMARE'
+                                  // );
+
+                                  // if(indexForGroupTip > 0 ){
+                                  // console.log(
+                                  //   "update group",
+                                    
+                                  //   option.id,
+                                  //   selectedOptionId
+                                  // );
+
+                                  // {groups[groups?.length -1].attributes[0].options?[0].id == option.id && 
+                                  // console.log(option.id)
+                                  // }
+
+                                  // console.log(groups[groups?.length -1].attributes[0].code);
+                                  
                                   const indexForGroupTip = groups.findIndex(
-                                    (obj) => obj.name === "ACOPERIRE TIP"
+                                    (obj) => obj.name === "MODALITATE IMPRIMARE"
                                   );
                                     if(indexForGroupTip > 0 ){
                                       selectGroup(groups[indexForGroupTip].id);
-                                    }
+                                       if(groups[groups?.length -1].attributes[0].code === 'MODALITATE IMPRIMARE'){
+                              //          console.log(option,'selectOption(option.id);selectOption(option.id);');
+                                        
+                                        selectOption(option.id);
+                                       }
+                                      // selectOption(option.id);
+                                      selectOptionId(option.id);
+                                      selectOptionName(option.name);
+                                   }
                                   
+                                } else 
+                                { selectOption(option.id);
+                                  selectOptionId(option.id);
+                                  selectOptionName(option.name);
                                 }
                               }
-                              selectOption(option.id);
-
-                              console.log(option.id, selectedColorName, selectedAttributeId, groups);
-                              
                             }}
                             selected={option.selected}
                             selectedColor={selectedColorName}
@@ -607,19 +638,11 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
                               />
                             )}
 
-                            <div style={{position: 'absolute', top: '120%'}}>
-                             {option.id === selectedOptionId ? option.name : ""}
+                            <div style={{ position: "absolute", top: "120%" }}>
+                              {option.id === selectedOptionId
+                                ? option.name
+                                : ""}
                             </div>
-                           
-                            {/* {option.name === "BRODAT" ||
-                             option.name === "TIPARIT" ?
-
-                            <div style={{paddingTop: '1em'}}>
-                            {option.name}
-                              
-                              : 
-                            </div> : null 
-                            } */}
                           </ListItemColor>
                         );
                       })}
