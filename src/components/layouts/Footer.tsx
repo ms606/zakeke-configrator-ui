@@ -146,7 +146,7 @@ const Footer = () => {
 		// 	);
 		else {
 			if(isSizeNotSelected){
-				showError('Size not selected.')
+				showError('SELECTEAZA MARIME')
 				// alert('size not selected')
 			}
 			else {
@@ -311,11 +311,11 @@ const Footer = () => {
 						)} */}
 
 						{/* PDF preview */}
-						<Button key={'pdf'} onClick={() => handlePdfClick()}>
+						{/* <Button key={'pdf'} onClick={() => handlePdfClick()}>
 							<Icon>
 								<PdfSolid />
 							</Icon>
-						</Button>
+						</Button> */}
 
 						{/* Save compostition */}
 						{!isDraftEditor &&
