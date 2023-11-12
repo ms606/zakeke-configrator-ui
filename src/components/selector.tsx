@@ -60,14 +60,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     productName,
     zoomIn,
     zoomOut,
-    getPDF,
     items,
-    product,
-    setItemText,
-    defaultColor,
-    fonts,
-    addItemText,
-    publicTranslations,
   } = useZakeke();
 
   const { setIsLoading, isMobile } = useStore();

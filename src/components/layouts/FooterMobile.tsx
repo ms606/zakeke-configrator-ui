@@ -40,7 +40,7 @@ const FooterMobileIcon = styled.div<{
 }>`
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-end;
 	border: 1px transparent solid;
 	color: ${(props) => (props.color ? props.color : `#313c46`)};
 	// background-color: ${(props) => (props.backgroundColor ? props.backgroundColor : `transparent`)};
@@ -208,7 +208,7 @@ const FooterMobile = () => {
 		else {
 
 			if(isSizeNotSelected){
-				showError('Size not selected.')
+				showError('SELECTEAZA MARIME')
 				// alert('size not selected')
 			}
 			else {
@@ -336,12 +336,12 @@ const FooterMobile = () => {
 					<FooterMobileIcon gridArea='back' isHidden={selectedGroupId === null} onClick={handleBackClick}>
 						<AngleLeftSolid />
 					</FooterMobileIcon>
-
+{/* 
 					{
 						<FooterMobileIcon gridArea='pdf' onClick={handlePdfClick}>
 							<PdfSolid />
 						</FooterMobileIcon>
-					}
+					} */}
 
 					{/* {!isDraftEditor && !isEditorMode && sellerSettings && sellerSettings.canSaveDraftComposition && (
 						<FooterMobileIcon gridArea='save' onClick={handleSaveClick}>
